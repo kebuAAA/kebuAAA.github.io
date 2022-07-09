@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>决策树（DT） | 小明的博客</title><meta name="keywords" content="机器学习,有监督学习,Decesion Tree"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="人们的决策过程是一个类似“观察因素A的情况，再根据A的情况观察因素B的情况”的形式，从而形成一种树状结构。决策树学习是模仿人类这一结构化决策过程而发展起来的一种有监督机器学习方法。它可以被认为是if-then规则的集合，也可以被认为是定义在特征空间和类空间上的条件概率分布。  模型具有可读性 分类速度快  决策树的思想主要来源于Quinlan在1986年提出的ID3和1993提出的C4.5算法，以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树（DT）">
+<meta property="og:url" content="https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="人们的决策过程是一个类似“观察因素A的情况，再根据A的情况观察因素B的情况”的形式，从而形成一种树状结构。决策树学习是模仿人类这一结构化决策过程而发展起来的一种有监督机器学习方法。它可以被认为是if-then规则的集合，也可以被认为是定义在特征空间和类空间上的条件概率分布。  模型具有可读性 分类速度快  决策树的思想主要来源于Quinlan在1986年提出的ID3和1993提出的C4.5算法，以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-03-26T02:34:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.663Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="有监督学习">
+<meta property="article:tag" content="Decesion Tree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '决策树（DT）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">决策树（DT）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.663Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/">模型</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">有监督学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="决策树（DT）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>人们的决策过程是一个类似“<strong>观察因素A的情况，再根据A的情况观察因素B的情况</strong>”的形式，从而形成一种<strong>树状结构</strong>。决策树学习是模仿人类这一结构化决策过程而发展起来的一种有监督机器学习方法。<br><strong>它可以被认为是if-then规则的集合，也可以被认为是定义在特征空间和类空间上的条件概率分布。</strong></p>
+<ul>
+<li>模型具有可读性</li>
+<li>分类速度快</li>
+</ul>
+<p>决策树的思想主要来源于Quinlan在1986年提出的ID3和1993提出的C4.5算法，以及由Breiman等人1984年提出的CART算法。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p><img src="../md_imgs/决策树（DT）/0.png" alt="image.png"><br>决策树学习本质上是从训练数据集中归纳出一组分类规则或者条件概率模型（在节点处取条件概率最大的进行分类）。<strong>决策树问题一般可以分成特征选择、决策树生成、剪枝三部分。</strong></p>
+<ul>
+<li>特征选择：通过建立一个函数来衡量特征划分的效果</li>
+<li>生成：递归构造决策树的过程</li>
+<li>剪枝：递归产生的决策树往往会递归到不能分类为止，这会导致出现过拟合现象，因此需要已经生成的决策树进行剪枝(pruning)，一般是通过极小化决策树整体的损失函数(loss function)或者代价函数(cost function)来实现。</li>
+</ul>
+<p>剪枝也可以看成是对模型的正则化（Reaularization of DTs）</p>
+<ul>
+<li>min leaf size</li>
+<li>max depth</li>
+<li>max nodes of the tree</li>
+<li>Min decrease in loss(very tempting)</li>
+<li>pru</li>
+</ul>
+<p>不同的决策树算法一般是在特征选择的原则以及剪枝方法上有所区别，下分别介绍不同算法的决策树生成方法。</p>
+<h1 id="ID3和C4-5"><a href="#ID3和C4-5" class="headerlink" title="ID3和C4.5"></a>ID3和C4.5</h1><h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p>借助于热力学中表示分子状态混乱程度的物理量——熵，香农(Shannon)于1948年提出了信息熵的概念，来描述信源的不确定度。描述信源不确定性的函数f应该是信源发出符号的概率p的单减函数，同时考虑到两个或者多个独立符号产生的不确定性应该等各自不确定性之和，即该函数应该具有可加性：</p>
+<script type="math/tex; mode=display">f(p_1,p_2\dots,p_n)=f(p_1)+f(p_2)\dots+f(p_n)$
+故取$f=log(\frac{1}{p})=-log(p)$,由于不确定通常来自多个符号，因此还要在单个符号不确定性的基础上进行加权，n个信源的不确定度I满足：
+
+$$H=-\sum_{i=1}^n p_i\log_2p_i$
+上式即为香农信息熵。熵值越大，则不确定性越高，说明信源越无序；反之则不确定性越低，说明信源越有序。
+对分类问题，用信息熵能够量化描述样本集的信息量，或某个类别的样本出现的不确定性。
+根据每个属性对样本划分后信息熵下降的程度不同，可以判断出属性的重要程度差异。
+使信息熵下降较多的属性的重要性更高，这构成了决策树算法属性选择的基本思想。
+设S是N个样本的集合。样本集S可以分为M个类C={$C_1,C_2,\dots,C_M$}，若$n_m$是类$C_m$(i=1,2,…,M)中的样本数量。则样本S的信息熵定义为：
+
+$$H(S)=-\sum_{m=1}^Mp_m\log_2p_m
+式中p_m=\frac{n_m}{N}</script><p>是样本属于$C_m$的概率的估计值。<br>类似的我们可以定义一个数据的</p>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>设样本集的任一个样本可以用K维属性$A={A_1,A_2,\dots,A_K}$表示，属性$A_i(i=1,2, …,K)$根据样本取值不同将样本S划分为$V_i$个类，即$V_i$个子集${S_{i1},S_{i2},\dots,S_{iV_i}}$。其中子集$S_{iv}$<br>(v=1,2, …,Vi)中有$n_{iv}$<br>(v=1,2, …,Vi)个样本。 子集$S_{iv}$<br>(v=1,2, …,Vi)中属于类Cm(i=1,2,…,M)的样本个数为$n_{ivm}$$<br>. 则使用属性$A_i$对样本集S进行一次划分后，<strong>整体的信息熵可以看做在特征A已知的情况下类的不确定程度（条件熵）</strong>。具体可以表示为：</p>
+<script type="math/tex; mode=display">\begin{align*}
+H(S|A_i)=H(S,A_i)&=-\sum_{v=1}^{V_i}\frac{n_{iv}}{N}I(S_{iv})\\
+&=-\sum_{v=1}^{V_i}\frac{n_{iv}}{N}\sum_{m=1}^M\left(\frac{n_{ivm}}{n_{iv}}\log_2\frac{n_{ivm}}{n_{iv}}\right)
+\end{align*}</script><p>使用属性Ai对样本S进行划分后，与划分前相比，样本变得有序了，即信息熵下降了。与划分前相比，信息熵下降的数量称为信息增益。使用属性Ai对样本S进行划分后得到的信息增益定义为：</p>
+<script type="math/tex; mode=display">G(S,A_i)=H(S)-H(S,A_i)$
+熵增益G(S, Ai)随Ai的取值种类数量同向变化，即取值种类越多，G(S, Ai)越大（取值种类数量越多，用Ai分类后越有序，熵增益越大）。信息增益(information gain)可以看成在得知特征A的信息后类的不确定性减少的程度。
+![image.png](../md_imgs/决策树（DT）/1.png)
+#### 一个简单的例子
+![image.png](../md_imgs/决策树（DT）/2.png)
+
+![image.png](../md_imgs/决策树（DT）/3.png)
+
+![image.png](../md_imgs/决策树（DT）/4.png)
+ps：outloo属性属于分类型，其他属性是数值型，数值型属性具有连续性，在构造决策树时，应该将其二值化或进行分箱处理。
+### 信息增益比
+信息增益准则对那些属性取值比较多的属性有所偏好，**会倾向于去选择属性取值比较多的属性**。
+极端的例子，将ID作为一个属性。ID具有唯一性，用ID这划分数据集，则数据集中有多少个样本，就会被划分为多少个子集。每个子集只有一个人或实体。此时每个子集的信息熵为0(p=1, log2p=log21=0). 每个子集都特别纯。
+计算出来的信息增益特别大。但是，使用身ID属性来划分数据集毫无意义。
+因此，为了改变这种将信息增益作为属性选择准则带来的偏好和不利影响，人们提出了采用信息增益率作为评判划分属性的方法。
+![image.png](../md_imgs/决策树（DT）/5.png)
+
+
+![image.png](../md_imgs/决策树（DT）/6.png)
+## 决策树的生成
+
+1. 对给定样本集，计算其信息熵；
+1. 分别使用每个属性Ai(i=1,2, …,K)对样本集S进行划分，计算分类后的信息熵、信息增益，或信息增益率；
+1. 选取信息增益（ID3算法）或信息增益率最大（C4.5算法）的属性作为根属性；（信息熵下降越多，越说明该属性对样本划分后有序化加大的程度较大，故该属性较为重要）
+1. 使用根属性对样本进行划分，生成一颗子树；
+1. 对每一棵子树，使用其余的属性递归地重复上述过程；
+1. 全部属性选择完毕，算法终止。
+
+![image.png](../md_imgs/决策树（DT）/7.png)
+
+## 决策树的剪枝
+决策树的剪枝其实是对模型对训练数据预测误差与模型复杂度（泛化能力）的一个权衡。一般情况下通过引入一个模型复杂度的函数作为罚函数来得到决策树的损失函数，通过极小化损失函数来实现剪枝的目的：
+
+$$C_{\alpha}(T)=C(T)+\alpha|T|\\
+C(T):训练数据的预测误差\\
+|T|:模型复杂度</script><p>一种比较简单的决策树学习损失函数定义方法是：<br><img src="../md_imgs/决策树（DT）/8.png" alt="image.png"><br>这种情况下的损失函数极小化等价于正则化的极大似然估计，所以也相当于利用正则化的极大似然估计进行模型选择。</p>
+<p>确定完剪枝损失函数后，剪枝其实看剪枝后书的损失函数值是否会减小，如果减小了，则应该减去对应的节点。（因为只需要考虑修建前后损失函数的差，计算可以在局部进行，因此可以借助动态规划算法实现）</p>
+<h1 id="CART算法（classification-and-regression-tree）"><a href="#CART算法（classification-and-regression-tree）" class="headerlink" title="CART算法（classification and regression tree）"></a>CART算法（classification and regression tree）</h1><p>CART也由特征选择、决策树生成和剪枝三部分组成，即可以用来分类也可以用来回归。<br>CART是在给定输入随机变量X条件下输出随机变量Y的条件概率分布的学习方法。<br>CART假设决策树是二叉树，左分支为节点特征值取“是”的分支，右分支为取值为否的分支。<br>CART算法在进行特征选择时回归树利用平方误差最小化的原则，对分类树采用基尼指数（Gini Index)最小化准则.</p>
+<h2 id="特征选择-1"><a href="#特征选择-1" class="headerlink" title="特征选择"></a>特征选择</h2><h3 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h3><p>在回归树中，输入空间（特征空间）被分为M个单元$R_1,R_2,\dots,R_M$，每一个单元上分别有一个固定的输出值$c_m$，于是对于一组特定的输入，回归树模型可以表示为：</p>
+<script type="math/tex; mode=display">f(x)=\sum_{m=1}^{M}c_mI(x\in R_m)  \hspace{20pt}  [I(x):indicator \hspace{4pt}function]</script><p>通过建立$\sum_{x_i\in R_m}(y_i-f(x_i))^2$来表示训练数据的测试误差。因此回归树问题就转化为了如何对特征空间进行划分的问题：</p>
+<ul>
+<li>切分变量splitting variable（特征值）的选择</li>
+<li>切分点splitting point（阈值）的选取</li>
+<li>每一个划分单元输出值（$c_m$）的确定</li>
+</ul>
+<p><img src="../md_imgs/决策树（DT）/9.png" alt="image.png"></p>
+<h3 id="分类树"><a href="#分类树" class="headerlink" title="分类树"></a>分类树</h3><p>与ID3和C4.5不同的是，CART算法借助基尼函数来表示集合的不确定性，基尼指数值越大，样本集合的不确定性越大。<br><img src="../md_imgs/决策树（DT）/10.png" alt="image.png"><br><img src="../md_imgs/决策树（DT）/11.png" alt="image.png"></p>
+<h2 id="树的生成"><a href="#树的生成" class="headerlink" title="树的生成"></a>树的生成</h2><p><img src="../md_imgs/决策树（DT）/12.png" alt="image.png"><br><img src="../md_imgs/决策树（DT）/13.png" alt="image.png"></p>
+<h2 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h2><p>剪枝分为两个步骤</p>
+<ol>
+<li>通过适当的剪枝产生一个子树列</li>
+<li>选取一定的数据集根据基尼系数或者平方差误差进行交叉验证，从子树列找出最优决策树</li>
+</ol>
+<p>由于对训练数据集误差的评价函数的特殊性（基尼指数或者平方误差），在CART剪枝过程中我们可以只研究一个节点剪枝前后预测误差的变化情况。对于决策树上任何一个节点t，如果不剪掉该节点，那么以该节点为根节点的损失函数可以写作：</p>
+<script type="math/tex; mode=display">C_{\alpha}(T_t)=C(T_t)+\alpha|T_t|</script><p>如果减掉该节点，损失函数可以写为（以t节点为单节点）：</p>
+<script type="math/tex; mode=display">C_{\alpha}(t)=C(t)+\alpha</script><p>经过证明发现，在$\alpha$比较小时：</p>
+<script type="math/tex; mode=display">C_{\alpha}(T_t)<C_{\alpha}(t)</script><p>随着$\alpha$的增大:</p>
+<script type="math/tex; mode=display">C_{\alpha}(T_t)=C_{\alpha}(t)然后C_{\alpha}(T_t)>C_{\alpha}(t)</script><p>也就是说当$\alpha$给定时，只要取:</p>
+<script type="math/tex; mode=display">\alpha=\frac{C(t)-C(T_t)}{|T_t|-1}</script><p>，减与不减有相同的损失函数值，但是剪了之后泛化能力更强，于是应该减掉该节点。<br>而且根据Breiman等人的证明，随着$\alpha$的增大，剪枝对应的子树列是不断嵌套的，也就是说我们可以根据计算每一个节点处$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}$$<br>的值来得到不同$\alpha$区间内的最优树，<strong>该函数其实可以用来衡量剪枝后整体损失函数减少的程度</strong>。通过不断剪枝剪到根节点，我们可以得到一系列最优的子树列。<br>最后，在通过独立的<strong>验证数据集</strong>,借助平方误差或者基尼指数来评估泛化误差，找到最优的决策树。<br><img src="../md_imgs/决策树（DT）/14.png" alt="image.png"></p>
+<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><p>优点：</p>
+<ul>
+<li>可解释性强</li>
+<li>可用来处理分类变量</li>
+<li>Interpcetable：可以任意去除一个子节点或者子树</li>
+<li>Fast</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>特征之间存在加性关系时预测效果不太好</li>
+</ul>
+<p><img src="../md_imgs/决策树（DT）/15.png" alt="image.png"></p>
+<ul>
+<li>high variance models（容易过拟合</li>
+<li>预测准确率低</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/">https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="../tags/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">有监督学习</a><a class="post-meta__tags" href="../tags/Decesion-Tree/">Decesion Tree</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"><img class="prev-cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">回归分析</div></div></a></div><div class="next-post pull-right"><a href="../%E5%86%B3%E7%AD%96%E6%A0%91/"><img class="next-cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">决策树</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../Logistic%20Regression/" title="Logistic Regression"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Logistic Regression</div></div></a></div><div><a href="../%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/" title="回归分析"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">回归分析</div></div></a></div><div><a href="../%E6%84%9F%E7%9F%A5%E6%9C%BA%EF%BC%88Perceptron%EF%BC%89/" title="感知机（Perceptron）"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">感知机（Perceptron）</div></div></a></div><div><a href="../%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" title="支持向量机"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">支持向量机</div></div></a></div><div><a href="../%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%EF%BC%88Naive%20Bayes%EF%BC%89/" title="朴素贝叶斯（Naive Bayes）"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">朴素贝叶斯（Naive Bayes）</div></div></a></div><div><a href="../%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" title="监督学习方法"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">监督学习方法</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ID3%E5%92%8CC4-5"><span class="toc-number">2.</span> <span class="toc-text">ID3和C4.5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9"><span class="toc-number">2.1.</span> <span class="toc-text">特征选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="toc-number">2.1.1.</span> <span class="toc-text">信息熵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A"><span class="toc-number">2.1.2.</span> <span class="toc-text">信息增益</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CART%E7%AE%97%E6%B3%95%EF%BC%88classification-and-regression-tree%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">CART算法（classification and regression tree）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9-1"><span class="toc-number">3.1.</span> <span class="toc-text">特征选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E6%A0%91"><span class="toc-number">3.1.1.</span> <span class="toc-text">回归树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E6%A0%91"><span class="toc-number">3.1.2.</span> <span class="toc-text">分类树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E7%94%9F%E6%88%90"><span class="toc-number">3.2.</span> <span class="toc-text">树的生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%AA%E6%9E%9D"><span class="toc-number">3.3.</span> <span class="toc-text">剪枝</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">优缺点</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

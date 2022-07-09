@@ -1,0 +1,282 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>统计机器学习理论 | 小明的博客</title><meta name="keywords" content="机器学习,Statistical learning"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="The frequentist approach views the model parameters as unknown constants and estimates them by matching the model to the available training data using an appropriate metric.  框架 模型选择方法正则化模型选择的方法，正则化可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计机器学习理论">
+<meta property="og:url" content="https://kebuaaa.github.io/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="The frequentist approach views the model parameters as unknown constants and estimates them by matching the model to the available training data using an appropriate metric.  框架 模型选择方法正则化模型选择的方法，正则化可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-03-26T02:34:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.681Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="Statistical learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '统计机器学习理论',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">统计机器学习理论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.681Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">基础理论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="统计机器学习理论"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>The frequentist approach views the model parameters as unknown constants and estimates them by matching the model to the available training data using an appropriate metric.</p>
+</blockquote>
+<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p><img src="../md_imgs/统计机器学习理论/0.png" alt="Statistical learning.png"></p>
+<h2 id="模型选择方法"><a href="#模型选择方法" class="headerlink" title="模型选择方法"></a>模型选择方法</h2><h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><p>模型选择的方法，正则化可以理解成一种对学习策略的改进（防止模型过拟合），在常规的风险函数或者损失函数的基础上加上一个正则化项或者叫罚项，一般具有以下形式：<br><img src="../md_imgs/统计机器学习理论/1.png" alt="image.png"><br>前一项是风险函数（对损失函数取均值），后一项是正则化项。$\lambda$是超参数，需要利用验证数据(validafim data)进行估计</p>
+<h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><h2 id="泛化能力（generalization-ability）"><a href="#泛化能力（generalization-ability）" class="headerlink" title="泛化能力（generalization ability）"></a>泛化能力（generalization ability）</h2><p>泛化能力是指该学习方法对未知数据的预测能力，是学习方法本质上重要的性质。依据测试数据集对模型的泛化能力加以评价是不可靠的，<strong>统计学习理论试图从理论上对学习方法的泛化能力进行分析</strong>。<br>泛化误差：</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    R_{\exp }(\hat{f}) &=E_{P}[L(Y, \hat{f}(X))] \\
+    &=\int_{\mathcal{X} \times \mathcal{Y}} L(y, \hat{f}(x)) P(x, y) \mathrm{d} x \mathrm{~d} y
+\end{aligned}</script><p>事实上，泛化误差就是所学习到的模型的<strong>期望风险</strong></p>
+<h3 id="泛化误差上界"><a href="#泛化误差上界" class="headerlink" title="泛化误差上界"></a>泛化误差上界</h3><p>学习方法的泛化能力分析往往是通过研究泛化误差的概率上界进行的，简称为泛化误差上界(generalization error bound)。</p>
+<ul>
+<li>是<strong>样本容量</strong>的函数，样本容量增加，上界趋于0.</li>
+<li>是<strong>假设空间容量</strong>的函数，假设空间容量越大，模型就越难学，泛化误差上界就越大。</li>
+</ul>
+<p>当假设空间是有限个函数的集合时我们有：<br><img src="../md_imgs/统计机器学习理论/2.png" alt="image.png"><br>证明用到了Hoeffding不等式：</p>
+<script type="math/tex; mode=display">\mathrm{P}[E(\bar{X})-\bar{X} \geqslant t] \leqslant \exp \left(-\frac{2 N^{2} t^{2}}{\sum_{i=1}^{N}\left(b_{i}-a_{i}\right)^{2}}\right)(t>0)</script><p><img src="../md_imgs/统计机器学习理论/3.png" alt="image.png"></p>
+<h1 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h1><h2 id="生成方法和判别方法"><a href="#生成方法和判别方法" class="headerlink" title="生成方法和判别方法"></a>生成方法和判别方法</h2><p>监督学习的方法可以分为生成方法和判别方法，两种方法分别产生生成模型和判别模型。<br>生成方法是指根据给定的数据学习他们的联合概率分布，求出条件概率分布作为预测的模型。如朴素贝叶斯法和隐马尔可夫模型<br>判别方法是直接根据给定的数据直接学习出决策函数或者条件概率分布。如感知机，决策树，支持向量机</p>
+<p>生成方法的特点：</p>
+<ul>
+<li>生成方法的学习收敛速度更快</li>
+<li>当存在隐变量时，仍可以用生成方法学习，此时判别方法就不能用。</li>
+</ul>
+<p>判别方法的特点：</p>
+<ul>
+<li>直接面对预测，往往学习的准确率更高：</li>
+<li>由于直接学习P(Y|X)或f(X),可以对数据进行各种程度上的抽象、定义特征并使用特征，因此可以<strong>简化学习问题</strong>。<h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3>评价分类性能的指标一般是分类准确率：分类正确的样本与总样本数量比（0-1损失函数时的经验风险）。<h4 id="二分类问题"><a href="#二分类问题" class="headerlink" title="二分类问题"></a>二分类问题</h4>通常以我们关注的类为正类，分类器在测试数据集的预测为正确或不正确。<br>二分类问题常用的评价指标是精确率(precision，也叫查准率)和召回率(recall，也叫查全率)<br><img src="../md_imgs/统计机器学习理论/4.bmp" alt="test.bmp"><pre class="line-numbers language-latex" data-language="latex"><code class="language-latex"><span class="token comment">% Please add the following required packages to your document preamble:</span>
+<span class="token comment">% \usepackage&#123;multirow&#125;</span>
+<span class="token comment">% \usepackage[table,xcdraw]\&#123;xcolor\&#125;</span>
+<span class="token comment">% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]&#123;beamer&#125;</span>
+<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">table</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+	<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>|cc|cc|c|<span class="token punctuation">&#125;</span>
+		<span class="token function selector">\hline</span>
+		<span class="token function selector">\multicolumn</span><span class="token punctuation">&#123;</span>2<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>|l|<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\multicolumn</span><span class="token punctuation">&#123;</span>2<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>c|<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\cellcolor</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>9698ED<span class="token punctuation">&#125;</span><span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>Predicted Class<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\\</span> <span class="token function selector">\cline</span><span class="token punctuation">&#123;</span>3-4<span class="token punctuation">&#125;</span>
+		<span class="token function selector">\multicolumn</span><span class="token punctuation">&#123;</span>2<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>|c|<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\multirow</span><span class="token punctuation">&#123;</span>-2<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>*<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\multicolumn</span><span class="token punctuation">&#123;</span>1<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>c|<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\cellcolor</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>96FFFB<span class="token punctuation">&#125;</span><span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>Positive<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\cellcolor</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>96FFFB<span class="token punctuation">&#125;</span><span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>Negative<span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\multirow</span><span class="token punctuation">&#123;</span>-2<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>*<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>Rate<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token function selector">\\</span> <span class="token function selector">\hline</span>
+		<span class="token function selector">\multicolumn</span><span class="token punctuation">&#123;</span>1<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>|c|<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\cellcolor</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>9698ED<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\cellcolor</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>96FFFB<span class="token punctuation">&#125;</span><span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span>Positive<span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\multicolumn</span><span class="token punctuation">&#123;</span>1<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>c|<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>c@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>True Positive(TP)<span class="token function selector">\\</span> (真正例)<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>c@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>False Negative(FN)<span class="token function selector">\\</span> (假反例)<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&amp;</span>
+		<span class="token function selector">\cellcolor</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>96FFFB<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span><span class="token function selector">\color</span><span class="token punctuation">[</span>HTML<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>000000<span class="token punctuation">&#125;</span> <span class="token function selector">\textbf</span><span class="token punctuation">&#123;</span><span class="token function selector">\begin</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">&#123;</span>@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>c@<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>Recall<span class="token function selector">\\</span> <span class="token equation string">$<span class="token equation-command regex">\frac</span>&#123;TP&#125;&#123;TP+FN&#125;$</span><span class="token equation string">$
+<span class="token equation-command regex">\end</span>&#123;tabular&#125;&#125;&#125; <span class="token equation-command regex">\\</span> <span class="token equation-command regex">\cline</span>&#123;2-5&#125; 
+		<span class="token equation-command regex">\multicolumn</span>&#123;1&#125;&#123;|c|&#125;&#123;<span class="token equation-command regex">\multirow</span>&#123;-2&#125;&#123;*&#125;&#123;<span class="token equation-command regex">\cellcolor</span>[HTML]&#123;9698ED&#125;<span class="token equation-command regex">\textbf</span>&#123;Actual Class&#125;&#125;&#125; &amp;
+		<span class="token equation-command regex">\cellcolor</span>[HTML]&#123;96FFFB&#125;<span class="token equation-command regex">\textbf</span>&#123;Negative&#125; &amp;
+		<span class="token equation-command regex">\multicolumn</span>&#123;1&#125;&#123;c|&#125;&#123;<span class="token equation-command regex">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Flase Positive(FP)<span class="token equation-command regex">\\</span> (假正例)<span class="token equation-command regex">\end</span>&#123;tabular&#125;&#125; &amp;
+		<span class="token equation-command regex">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;True Negative(TN)<span class="token equation-command regex">\\</span> (真反例)<span class="token equation-command regex">\end</span>&#123;tabular&#125; &amp;
+		<span class="token equation-command regex">\cellcolor</span>[HTML]&#123;96FFFB&#125;&#123;<span class="token equation-command regex">\color</span>[HTML]&#123;000000&#125; <span class="token equation-command regex">\textbf</span>&#123;<span class="token equation-command regex">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Specificity<span class="token equation-command regex">\\</span> $</span><span class="token function selector">\frac</span><span class="token punctuation">&#123;</span>TN<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>TN+FP<span class="token punctuation">&#125;</span>$<span class="token equation string">$
+<span class="token equation-command regex">\end</span>&#123;tabular&#125;&#125;&#125; <span class="token equation-command regex">\\</span> <span class="token equation-command regex">\hline</span>
+		<span class="token equation-command regex">\multicolumn</span>&#123;2&#125;&#123;|c|&#125;&#123;Rate&#125; &amp;
+		<span class="token equation-command regex">\multicolumn</span>&#123;1&#125;&#123;c|&#125;&#123;<span class="token equation-command regex">\cellcolor</span>[HTML]&#123;96FFFB&#125;<span class="token equation-command regex">\textbf</span>&#123;<span class="token equation-command regex">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Precision<span class="token equation-command regex">\\</span> 
+					$</span><span class="token function selector">\frac</span><span class="token punctuation">&#123;</span>TP<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>TP+FP<span class="token punctuation">&#125;</span>$<span class="token equation string">$
+<span class="token equation-command regex">\end</span>&#123;tabular&#125;&#125;&#125; &amp;
+		<span class="token equation-command regex">\cellcolor</span>[HTML]&#123;96FFFB&#125; &amp;
+		<span class="token equation-command regex">\cellcolor</span>[HTML]&#123;96FFFB&#125;&#123;<span class="token equation-command regex">\color</span>[HTML]&#123;000000&#125; <span class="token equation-command regex">\textbf</span>&#123;<span class="token equation-command regex">\begin</span>&#123;tabular&#125;[c]&#123;@&#123;&#125;c@&#123;&#125;&#125;Accurancy<span class="token equation-command regex">\\</span> $</span><span class="token function selector">\frac</span><span class="token punctuation">&#123;</span>TP+TN<span class="token punctuation">&#125;</span><span class="token punctuation">&#123;</span>TP+TN+FP+FN<span class="token punctuation">&#125;</span>$$
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token function selector">\\</span> <span class="token function selector">\hline</span>
+	<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">tabular</span><span class="token punctuation">&#125;</span>
+<span class="token function selector">\end</span><span class="token punctuation">&#123;</span><span class="token keyword">table</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+此外还可能会用到$F_1$，精确率和召回率的调和平均值</li>
+</ul>
+<script type="math/tex; mode=display">\frac{2}{F_{1}}=\frac{1}{P}+\frac{1}{R}</script><p>当P和R所占权重不一致时，需要引入加权调和平均：$F_\beta$：</p>
+<script type="math/tex; mode=display">\frac{1}{F_{\beta}}=\frac{1}{1+\beta^{2}} \cdot\left(\frac{1}{P}+\frac{\beta^{2}}{R}\right)</script><p>$\beta$越大，R所占权重越大。</p>
+<h2 id="标注问题"><a href="#标注问题" class="headerlink" title="标注问题"></a>标注问题</h2><p>标注问题可以看做更复杂的分类问题，与分类问题不同的是，标注问题的输出是一个标记序列或者叫状态序列。标注问题在信息抽取和自然语言处理领域被广泛应用。如自然语言处理中的词性标注问题，信息抽取中的从英文文章中抽取名词短语等。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/">https://kebuaaa.github.io/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="../tags/Statistical-learning/">Statistical learning</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B--iris%E6%95%B0%E6%8D%AE%E9%9B%86%E7%89%B9%E5%BE%81%E3%80%81%E7%89%B9%E5%BE%81%E9%97%B4%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%88%86%E7%B1%BB%E5%88%AB%E5%88%86%E6%9E%90/"><img class="prev-cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">综合实例--iris数据集特征、特征间关系及分类别分析</div></div></a></div><div class="next-post pull-right"><a href="../%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><img class="next-cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">神经网络</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%B9%BF/" title="EM算法及其推广"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">EM算法及其推广</div></div></a></div><div><a href="../Entroy/" title="Entroy"><img class="cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Entroy</div></div></a></div><div><a href="../Logistic%20Regression/" title="Logistic Regression"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Logistic Regression</div></div></a></div><div><a href="../k%E8%BF%91%E9%82%BB%E6%B3%95(k-nearest%20neighbor)/" title="k近邻法(k-nearest neighbor)"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">k近邻法(k-nearest neighbor)</div></div></a></div><div><a href="../%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/" title="决策树（DT）"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">决策树（DT）</div></div></a></div><div><a href="../%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/" title="回归分析"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">回归分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">模型选择方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">正则化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">交叉验证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B%EF%BC%88generalization-ability%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">泛化能力（generalization ability）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E8%AF%AF%E5%B7%AE%E4%B8%8A%E7%95%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text">泛化误差上界</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">监督学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%E5%92%8C%E5%88%A4%E5%88%AB%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">生成方法和判别方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">分类问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">2.2.1.</span> <span class="toc-text">评价指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">二分类问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E6%B3%A8%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">标注问题</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

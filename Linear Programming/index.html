@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>线性规划 | 小明的博客</title><meta name="keywords" content="优化,线性规划"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="线性规划最先在第二次世界大战时被提出，用于最大化资源的利用效率。其中的“规划”也是一个军事词汇，指按照既定的时刻表去执行任务或者用最佳方式做人员部署。线性规划问题的研究很快得到了大家的关注。  基本形式线性规划的一般形式为：  \begin{array}{cl} \min _{x \in \mathbb{R}^{n}} &amp; Z&#x3D;CX&#x3D;\displaystyle\sum_{j&#x3D;1}^n c^{\m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性规划">
+<meta property="og:url" content="https://kebuaaa.github.io/Linear%20Programming/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="线性规划最先在第二次世界大战时被提出，用于最大化资源的利用效率。其中的“规划”也是一个军事词汇，指按照既定的时刻表去执行任务或者用最佳方式做人员部署。线性规划问题的研究很快得到了大家的关注。  基本形式线性规划的一般形式为：  \begin{array}{cl} \min _{x \in \mathbb{R}^{n}} &amp; Z&#x3D;CX&#x3D;\displaystyle\sum_{j&#x3D;1}^n c^{\m">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-05-21T09:30:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.641Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="优化">
+<meta property="article:tag" content="线性规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/Linear%20Programming/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '线性规划',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">线性规划</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-21T09:30:00.000Z" title="发表于 2022-05-21 17:30:00">2022-05-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.641Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">基础理论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="线性规划"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>线性规划最先在第二次世界大战时被提出，用于最大化资源的利用效率。其中的“规划”也是一个军事词汇，指按照既定的时刻表去执行任务或者用最佳方式做人员部署。线性规划问题的研究很快得到了大家的关注。</p>
+</blockquote>
+<h1 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h1><p>线性规划的一般形式为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{cl}
+\min _{x \in \mathbb{R}^{n}} & Z=CX=\displaystyle\sum_{j=1}^n c^{\mathrm{T}} x, \\
+\text { s.t. } & A x=b, \\
+& G x \leqslant e, 
+\end{array}</script><p>这样的线性规划问题可以通过一些方法转化为一下 标准形线性规划问题(等式约束和决策变量非负)</p>
+<script type="math/tex; mode=display">
+\begin{array}{cl}
+\min _{x \in \mathbb{R}^{n}} & {Z=CX} , \\
+\text { s.t. } & A x=b, \\
+& x \geqslant 0, \\
+&b_i\geqslant 0
+\end{array}</script><p>$A$是$m\times n$型矩阵，m是约束方程的个数，n是决策变量的个数（一般来说$m&lt;n, r(A)=m$.<br>具体的转化方法包括:</p>
+<ol>
+<li>目标函数是求最大值的问题，可以通过将目标函数的系数乘以“-1”来找最小值，即$max\, f(x)$和$min\, -f(x)$对应同一个解。</li>
+<li>不等式约束条件可以通过引入<strong>松弛变量</strong>化为等式约束条件，例如对于不等式约束:</li>
+</ol>
+<script type="math/tex; mode=display">
+x_1+x_2+x_3\le 8</script><p>可以通过引入$x_4=8-x_1-x_2-x_3\ge 0$来实现，即通过引入松弛变量$x_4$，将原来的约束问题转化为:</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+x_1+x_2+x_3+x_4=8\\
+x_4\ge 0    
+\end{align*}</script><ol>
+<li>对于取值无约束的变量$x_k$，可以通过引入两个有约束的变量来表示，如可令$x_k=x_k^{‘}-x_k^{‘’}$,其中$x_k=x_k^{‘}-x_k^{‘’}\ge 0$</li>
+</ol>
+<h1 id="解的概念和基本定理"><a href="#解的概念和基本定理" class="headerlink" title="解的概念和基本定理"></a>解的概念和基本定理</h1><p>考虑标准形线性规划的约束条件:</p>
+<script type="math/tex; mode=display">
+AX=b, X\ge 0</script><p>这里矩阵$A$为$m\times n$矩阵，从矩阵$A$中抽取m列组成新矩阵，若得到的新的矩阵可逆，则认为该矩阵为对应线性规划问题的一个<strong>基</strong>，记为$B$, 称$B$的列向量的为基向量，记为$P_j(j=1, 2, \dots , m)$。</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&A=[B, N]\\
+&|B|\ne 0 \\
+&B=[P_1, P_2, P_3, \dots, P_m], 
+\end{align*}</script><p>与基向量对应的变量$x_j(j=1, 2, \dotsb, m)$称为基变量，记为$X_B=[x_1, x_2, \dots, x_m]^T$, 其余的变量称为非基变量，记为$X_N$。<br>接着令$n-m$个非基变量为0，可以解得约束方程组的解，这里叫做约束方程组的<strong>基本解/基解</strong>：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+&X=[X_B^T, X_N^T]=[x_1, x_2, \dots, x_m, 0, \dots, 0]\\
+&X_B=B^{-1}b
+\end{align*}</script><p>其中满足非负约束条件$X\ge 0$的基解称为<strong>基本可行解/基可行解</strong>。</p>
+<blockquote>
+<p>基可行解都是可行域的顶点</p>
+</blockquote>
+<p>若最优解在基解中，那么该最优解也叫做<strong>基本最优解</strong>。<br><strong>基可行解</strong>对应的基称为<strong>可行基</strong>。<br>基本最优解对应的基称为<strong>可行基</strong>。</p>
+<blockquote>
+<p>当最优解唯一时，最优解亦是基本最优解，当最优解不唯一时，则最优解不一定是基本最优解。</p>
+</blockquote>
+<h2 id="凸集、凸组合、极点"><a href="#凸集、凸组合、极点" class="headerlink" title="凸集、凸组合、极点"></a>凸集、凸组合、极点</h2><p><img src="../md_imgs/Linear%20Programming/2022-05-21-20-31-39.png" alt=""><br><img src="../md_imgs/Linear%20Programming/2022-05-21-20-31-52.png" alt=""><br>线性规划的解的基本定理:</p>
+<ol>
+<li>若可行域有界，则线性规划问题的目标函数一定可以在可行域的顶点上达到最优。</li>
+</ol>
+<blockquote>
+<p>若线性规划有最优解, 则最优值一定可以在可行解集合的某个极点上到达, 最优解就是极点的坐标向量.</p>
+</blockquote>
+<ol>
+<li>线性规划的可行解集合K的点X是极点的充要条件为X是基本可行解.</li>
+</ol>
+<blockquote>
+<p>定理2刻划了可行解集的极点与基本可行解的对应关系，极点是基本可行解，反之，基本可行解一定是极点，但它们并非一一 对应    ，有可能两个或几个基本可行解对应于同一极点（退化基本可行解时）。</p>
+</blockquote>
+<ol>
+<li>若线性规划可行解K非空,则K是凸集. </li>
+</ol>
+<h1 id="迭代算法"><a href="#迭代算法" class="headerlink" title="迭代算法"></a>迭代算法</h1><h2 id="图解法"><a href="#图解法" class="headerlink" title="图解法"></a>图解法</h2><p>。。。</p>
+<h2 id="单纯形法"><a href="#单纯形法" class="headerlink" title="单纯形法"></a>单纯形法</h2><p>单纯形法的基本思路是从某个基可行解（一个顶点）开始，转换到另一个基可行解（顶点），直到目标函数达到最优，对应的基可行解即为最优解。<br>单纯形法中可行解的变换是通过对增广矩阵的行变换实现的，无论是对约束条件还是目标函数进行行变换，都不会改变最优解的取值。<br>为了计算方便，一般通过构造单纯形表进行计算，每迭代一步构造一个新的单纯形表。<br>接下来根据老师ppt的一个例子进行说明:</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{aligned}
+&\max Z=3 x_{1}+4 x_{2} \\
+&\left \{ \begin{array}{l}
+2 x_{1}+x_{2}+x_{3}=40 \\
+x_{1}+3 x_{2}+x_{4}=30 \\
+x_{1}, x_{2}, x_{3}, x_{4} \geq 0
+\end{array}\right.
+\end{aligned}
+\end{equation*}</script><p>为了计算方便，一般取好求逆的矩阵作为基:</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+B_{1}=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1
+\end{array}\right]
+\end{equation*}</script><p>进而解得初始基本可行解:</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+X^{(1)}=(0, 0, 40, 30)^{T}
+\end{equation*}</script><p>作出对应的单纯形表:</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline X_{B} & x_{1} & x_{2} & x_{3} & x_{4} & b & \theta_{i} \\
+\hline x_{3} & 2 & 1 & 1 & 0 & 40 & 40\\
+\hline x_{4} & 1 & 3 & 0 & 1 & 30 & 10\\
+\hline \lambda_{j} & 3 & 4 & 0 & 0 & & \\
+\hline
+\end{array}</script><p>表中$X_B$一列表示选定的基变量，$\theta_i$表示确定换入变量$x_j$后，根据$\displaystyle\frac{b_i}{a_{ij}}$计算得来的，$\lambda_j$表示目标函数对应的系数。<br>接着，我们需要判断得到的解是不是最优解，这个时候应该看对应的$\lambda$，就本题求得的基本可行解来说，通过观察可以发现如果我们适当减小$x_3$或者$x_4$，这样在相应的约束条件可以得到更大的$x_1$或者$x_2$，因为此时$x_4$对应的$\lambda$较大，因此如果将$x_4$作为基变量，我们可以期望获得更大的目标函数值。那么究竟应该让哪个变量退出基变量呢？这个时候就需要结合已有的约束条件(这里对约束条件进行适当变形，以得到更好的观测效果):</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+x_2=40-x_3(\text{解得}x_2\le 40)\\
+x_2=\frac{30-x_4}{3}(\text{解得}x_2\le 10)
+\end{align*}</script><p>这里需要注意的是，我们要保证$x_3, x_4$有一个要大于零（仍然作为基变量）的情况下最大化$x_2$，因此我们其实要比较的就是$x_3, x_4$哪一个退出基变量可以获得更大的$x_2$，其实比较的也就是$\displaystyle\frac{b_i}{a_{i2}}$的值，即写在$\theta$位置的值。(如果取较大的范围，那么就会出现不满足约束条件的情况)</p>
+<blockquote>
+<p>在比较$\displaystyle\frac{b_i}{a_{i2}}$的值的时候，需要注意的是只对$a_{ij}$大于0的值进行考虑，小于零的值不作为出基变量的参考依据，或者说$a_{ij}&lt;0$对应的基变量不会出基。</p>
+</blockquote>
+<p>接着为了能够利用同样的方法进行比较，我们需要对原来的单纯形表通过行变换获得新的单纯形表，新的单纯形表应该以$x_2, x_3$作为基变量，具体进行的行变换是将原来的单纯形表中第三行的值乘以$\frac{1}{3}$, 然后通过行变换将第一个行$x_2$列的值化为0，并将$\lambda$行$x_2$列的值化为0，这个时候再看$\lambda$是否存在大于零的值，如果仍存在大于零的值，则需要进一步进行调整基变量:</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline X_{B} & x_{1} & x_{2} & x_{3} & x_{4} & b & \theta_{i} \\
+\hline x_{3} & 5 / 3 & 0 & 1 & -1 / 3 & 30 & 18 \\
+\hline x_{2} & 1 / 3 & 1 & 0 & 1 / 3 & 10 & 30 \\
+\hline \lambda_{j} & 5 / 3 & 0 & 0 & -4 / 3 & & \\
+\hline
+\end{array}</script><p>再继续进行:</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline X_{B} & x_{1} & x_{2} & x_{3} & x_{4} & b & \theta_{i} \\
+\hline x_{1} & 1 & 0 & 3 / 5 & -1 / 5 & 18 & \\
+\hline x_{2} & 0 & 1 & -1 / 5 & -2 / 5 & 4 & \\
+\hline \lambda_{j} & 0 & 0 & -1 & -1 & & \\
+\hline
+\end{array}</script><blockquote>
+<p>在利用单纯形法解规划问题时，在选择出基变量时，一些特殊的情况是由于解的特殊情况导致的，这里加以解释:<br>(a) 若 $\lambda_{j} \leq 0 \quad(\mathrm{j}=1, 2 ， \ldots, \mathrm{n})$ 得到最解;<br>(b) 某个 $\lambda_{k}&gt;0$ 且 $a_{i k} \leq 0 \quad(i=1, 2, \ldots, \mathrm{m} ）$ 则线性规 划具有无界解。<br>(c) 若存在 $\lambda_{\mathrm{j}}&gt;0$ 且 $a_{i j}(i=1, \ldots, \mathrm{m})$ 不全非正, 则进行换基; </p>
+</blockquote>
+<p><strong>单纯形法也可以用来求解最小值类型的规划问题，但需要注意的是求解目标函数为最小值的规划问题时在基变量的变换上与上述变换方法略有不同</strong>:</p>
+<ul>
+<li>选择进基变量时，我们要找的$\lambda$最小的负数，当所有的检验值都大于等于零说明当前解为基本最优解。</li>
+<li>选择出基变量时，我们要将对应的比值最大的$\theta_i$来作为出基变量的判断依据。</li>
+</ul>
+<h1 id="大M法"><a href="#大M法" class="headerlink" title="大M法"></a>大M法</h1><p>单纯形法求解规划问题的前提是标准型的系数矩阵中有单位矩阵，这在实际问题的求解过程中并不能保证。当这个条件不满足时，为了求解规划问题，我们需要人为添加<strong>人工变量</strong>来得到单位矩阵，进而构造出单位矩阵，<strong>大M法</strong>就是一种通过引入虚拟变量来求解线性规划问题的方法。<br>考虑下列的一个线性规划问题:<br><img src="../md_imgs/Linear%20Programming/2022-05-26-16-40-31.png" alt=""><br>通过观察容易发现该问题虽然是标准型的规划问题，但是并不存在合适的单位阵作为基，因此可以考虑引入一个任意大的正数M来和两个人工变量$x_6, x_7$对上述规划问题进行转化:</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+\begin{aligned}
+&\max Z=3 x_{1}+2 x_{2}-x_3-Mx_6-Mx_7 \\
+&\left\{\begin{array}{l}
+-4 x_{1}+3x_{2}+x_{3}-x_4+x_6=4 \\
+x_{1}-x_2+2 x_{3}+x_{5}=10 \\
+2x_{1}-2x_2+ x_{3}+x_{7}=1\\
+x_{1}, x_{2}, x_{3}, x_{4}, x_5, x_6, x_7 \geq 0
+\end{array}\right.
+\end{aligned}
+\end{equation*}</script><p>下边简单的对转换前后两个规划问题有相同的最优解进行说明:</p>
+<ul>
+<li>首先观察目标函数，因为所有的变量都非负，而M任意大，所以只有当$x_6=x_7=0$时上述问题才<strong>可能有</strong>最优解，而当$x_6=x_7=0$时新规划问题和原规划问题的目标函数完全一致。</li>
+<li>$x_6=x_7=0$时，约束条件也和原规划问题的约束条件完全一致。</li>
+</ul>
+<p>以上两点说明引入M后规划问题对应的解并没有发生改变，接下来可以借助单纯形法对该规划问题的求解过程加以说明，为了计算方便，这里使用的单纯形表与原来的单纯形表有所区别，但是基本思路仍与原来保持一致。</p>
+<p><img src="../md_imgs/Linear%20Programming/2022-05-26-17-05-11.png" alt=""></p>
+<p><em>只进行了一次变换的单纯形表的展示</em></p>
+<p>与原来的单纯形表相比，新的单纯形表增加了$C_j$行，这一行用来写新规划问题目标函数的系数矩阵，还在开头增加了$C_B$列，用来书写基变量目标函数的对应系数，这两个的变动都是为了在求解检验值时能够更加方便的进行运算，在这样的单纯形表下，$\lambda_j$的取值就可以通过对应$C_j$行的值减去（ $C_B$列和$x_i(i=1, 2, \dots, n)$ 列的内积来得到）, 例如 $\lambda_{j1}=3-(-m\times 1+0\times 1+-M\times 2)=3-2M$ 求得。（本质上和通过行变换进行求解结果是一样的，这里只是起到了一个简化运算的作用，因为行变换并未改变目标函数的最优解，因此在更换基变量之后仍然可以借助$C_j$行的进行行变换而不是像之前一样使用$\lambda_j$进行行变换），通过观察$\lambda_j$我们可以得到进基变量为$x_3$(M可以视为趋近正无穷的数字)，然后通过求比值得到出基变量为$x_7$，因为$x_7$为认为添加变量，因此一旦出基后它的系数我们就不再关心了，进而在下一步的运算过程中可以不考虑$x_7$的系数变化.</p>
+<p>大M法下解的类型分析:</p>
+<ul>
+<li><strong>唯一最优解的判断</strong>：最优表中所有非基变量的检验数非零, 则线规划具有唯一最优解</li>
+<li><strong>多重最优解的判断</strong>: 最优表中存在非基变量的检验数为零, 则线则性规划具有多重最优解. </li>
+<li><strong>无界解的判断</strong>: 某个$λ_k&gt;0$且$a_{ik}≤０（i=1，2, …, m）$则线性规划具有无界解</li>
+<li><strong>无可行解的判断</strong>：当用大M单纯形法计算得到最优解并且存在$Ri&gt;0$时即存在认为引入的变量的最优解不为0，则表明原线性规划无可行解。</li>
+<li><strong>退化基本可行解的判断</strong>: 存在某个基变量为零的基本可行解。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/Linear%20Programming/">https://kebuaaa.github.io/Linear%20Programming/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/%E4%BC%98%E5%8C%96/">优化</a><a class="post-meta__tags" href="../tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/">线性规划</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../Lecture2/"><img class="prev-cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Lecture 1-Putting Yourselves into Other People's Shoes</div></div></a></div><div class="next-post pull-right"><a href="../%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/"><img class="next-cover" src="https://tse4-mm.cn.bing.net/th/id/OIP-C.j7Bw19HA9uWHkX0nf_JlkQHaEK?w=307&amp;h=180&amp;c=7&amp;r=0&amp;o=5&amp;dpr=1.25&amp;pid=1.7" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">hexo书写规范</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%B9%BF/" title="EM算法及其推广"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">EM算法及其推广</div></div></a></div><div><a href="../%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98%EF%BC%88SVM%EF%BC%89/" title="对偶问题（SVM）"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">对偶问题（SVM）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">基本形式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">解的概念和基本定理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%B8%E9%9B%86%E3%80%81%E5%87%B8%E7%BB%84%E5%90%88%E3%80%81%E6%9E%81%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">凸集、凸组合、极点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">迭代算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E8%A7%A3%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">图解法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">单纯形法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7M%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">大M法</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

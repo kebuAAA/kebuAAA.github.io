@@ -1,0 +1,622 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>房天下二手房交易数据爬取 | 小明的博客</title><meta name="keywords" content="Python爬虫"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="本次是爬取西安房天下上的二手房交易数据，主要面临的困难有：  网页的重定向问题的识别 不完全规则网页的匹配规则书写问题 爬虫效率问题 滑块验证问题import requests from scrapy.selector import Selector as se import pandas as pd import re headers &#x3D; &amp;#123;     &#39;Connection&#39;: &#39;ke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="房天下二手房交易数据爬取">
+<meta property="og:url" content="https://kebuaaa.github.io/%E6%88%BF%E5%A4%A9%E4%B8%8B%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BA%A4%E6%98%93%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="本次是爬取西安房天下上的二手房交易数据，主要面临的困难有：  网页的重定向问题的识别 不完全规则网页的匹配规则书写问题 爬虫效率问题 滑块验证问题import requests from scrapy.selector import Selector as se import pandas as pd import re headers &#x3D; &amp;#123;     &#39;Connection&#39;: &#39;ke">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-07-05T02:34:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.669Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="Python爬虫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/%E6%88%BF%E5%A4%A9%E4%B8%8B%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BA%A4%E6%98%93%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '房天下二手房交易数据爬取',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">房天下二手房交易数据爬取</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-05T02:34:00.000Z" title="发表于 2022-07-05 10:34:00">2022-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.669Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E7%88%AC%E8%99%AB/">爬虫</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E7%88%AC%E8%99%AB/%E5%AE%9E%E6%88%98/">实战</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="房天下二手房交易数据爬取"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>本次是爬取<a target="_blank" rel="noopener" href="https://xian.esf.fang.com/">西安房天下</a>上的二手房交易数据，主要面临的困难有：</p>
+<ul>
+<li><strong>网页的重定向问题的识别</strong></li>
+<li>不完全规则网页的匹配规则书写问题</li>
+<li>爬虫效率问题</li>
+<li>滑块验证问题<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>selector <span class="token keyword">import</span> Selector <span class="token keyword">as</span> se
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> re
+headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'Connection'</span><span class="token punctuation">:</span> <span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
+    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36 Edg/103.0.1264.37'</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+datas <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+fail_url <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> page <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">73</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># https://xian.esf.fang.com/house/i32/</span>
+    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://xian.esf.fang.com/house/i3'</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>page<span class="token operator">+</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'/'</span><span class="token punctuation">,</span>   headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>
+                            verify<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    html <span class="token operator">=</span> response<span class="token punctuation">.</span>text
+    next_page_url <span class="token operator">=</span> <span class="token string">'https://xian.esf.fang.com/house/i3'</span> <span class="token operator">+</span> \
+        <span class="token builtin">str</span><span class="token punctuation">(</span>page<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'?'</span><span class="token operator">+</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r"t3='(.*?)'"</span><span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>next_page_url<span class="token punctuation">,</span>   headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>
+                            verify<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    next_url <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>response<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+        <span class="token string">'//h4[@class="clearfix"]/a/@href'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> url <span class="token keyword">in</span> next_url<span class="token punctuation">:</span>
+        response1 <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://xian.esf.fang.com'</span><span class="token operator">+</span>url<span class="token punctuation">,</span>   headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>
+                                 verify<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        html <span class="token operator">=</span> response1<span class="token punctuation">.</span>text
+        page_url <span class="token operator">=</span> <span class="token string">'https://xian.esf.fang.com'</span> <span class="token operator">+</span> \
+            url<span class="token operator">+</span><span class="token string">'?'</span><span class="token operator">+</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r"t3='(.*?)'"</span><span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"开始爬取</span><span class="token interpolation"><span class="token punctuation">&#123;</span>page_url<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>page_url<span class="token punctuation">,</span>  headers<span class="token operator">=</span>headers<span class="token punctuation">,</span>
+                                verify<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        data <span class="token operator">=</span> response<span class="token punctuation">.</span>text
+        <span class="token comment"># print(data)</span>
+        <span class="token comment"># //*[@id="lpname"]/h1/span</span>
+        <span class="token comment"># title</span>
+        x1 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[@class="tit_text"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 总价</span>
+        x2 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="trl-item price_esf  sty1"]/i/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 户型</span>
+        x3 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[text()="户型"]/../div/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># '//div[text()="户型"]/../div/text()').extract_first().replace('\n', '').strip()</span>
+        <span class="token comment"># 建筑面积</span>
+        x4 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="trl-item1 w182"]/div/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 单价</span>
+        x5 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="trl-item1 w132"]/div/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 朝向</span>
+        x6 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[text()="朝向"]/../div[@class="tt"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># .replace('\n', '').strip()</span>
+        <span class="token comment"># 楼层</span>
+        x7 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[text()="朝向"]/../../div[@class="trl-item1 w182"]/div[@class="tt"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 总楼层</span>
+        x27 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[text()="朝向"]/../../div[@class="trl-item1 w182"]/div[@class="font14"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 装修</span>
+        x8 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[text()="装修"]/../div/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 小区</span>
+        x9 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="rcont"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 小区位置具体描述</span>
+        x10 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="rcont"]/span/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 区</span>
+        x11 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@id="address"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 区域</span>
+        x12 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@id="address"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑年代</span>
+        x13 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="建筑年代"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 有无电梯</span>
+        x14 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="有无电梯"]/../span[@class="rcont"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 产权性质</span>
+        x15 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="产权性质"]/../span[@class="rcont"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 住宅类别</span>
+        x16 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="住宅类别"]/../span[@class="rcont"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑结构</span>
+        x17 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="建筑结构"]/../span[@class="rcont"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑类别</span>
+        x18 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="建筑类别"]/../span[@class="rcont"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 挂牌时间</span>
+        <span class="token keyword">if</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+                <span class="token string">'//span[text()="挂牌时间"]/../span[@class="rcont"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+            x19 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+                <span class="token string">'//span[text()="挂牌时间"]/../span[@class="rcont"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            x19 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+                <span class="token string">'//span[text()="挂牌时间"]/../span[@class="rcont"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 参考均价</span>
+        x20 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="参考均价"]/../span/i/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 物业类型</span>
+        x21 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="物业类型"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 绿化率</span>
+        x22 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="绿  化  率"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 容积率</span>
+        x23 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="容  积  率"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑类型</span>
+        x24 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="建筑类型"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 人车分流</span>
+        x25 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="人车分流"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 总户数</span>
+        x26 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="总  户  数"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x28 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="总楼栋数"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 总评分</span>
+        x29 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="房源评级|多维度分析房源"]/../div[@class="num_bg"]/h3/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x30 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="交易价值"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x31 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="居住品质"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x32 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="便利指数"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x33 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="物业服务"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        datas<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> x4<span class="token punctuation">,</span> x5<span class="token punctuation">,</span> x6<span class="token punctuation">,</span> x7<span class="token punctuation">,</span> x27<span class="token punctuation">,</span> x8<span class="token punctuation">,</span> x9<span class="token punctuation">,</span> x10<span class="token punctuation">,</span> x11<span class="token punctuation">,</span> x12<span class="token punctuation">,</span> x13<span class="token punctuation">,</span>
+                     x14<span class="token punctuation">,</span> x15<span class="token punctuation">,</span> x16<span class="token punctuation">,</span> x17<span class="token punctuation">,</span> x18<span class="token punctuation">,</span> x19<span class="token punctuation">,</span> x20<span class="token punctuation">,</span> x21<span class="token punctuation">,</span> x22<span class="token punctuation">,</span> x23<span class="token punctuation">,</span> x24<span class="token punctuation">,</span> x25<span class="token punctuation">,</span> x26<span class="token punctuation">,</span> x28<span class="token punctuation">,</span> x30<span class="token punctuation">,</span> x31<span class="token punctuation">,</span> x32<span class="token punctuation">,</span> x33<span class="token punctuation">,</span> x29<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'第</span><span class="token interpolation"><span class="token punctuation">&#123;</span>page<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">&#125;</span></span><span class="token string">页数据爬取完成'</span></span><span class="token punctuation">)</span>
+final_data <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>datas<span class="token punctuation">,</span> columns<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'总价'</span><span class="token punctuation">,</span> <span class="token string">'户型'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'建筑面积'</span><span class="token punctuation">,</span> <span class="token string">'单价'</span><span class="token punctuation">,</span> <span class="token string">'朝向'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'楼层'</span><span class="token punctuation">,</span> <span class="token string">'总楼层'</span><span class="token punctuation">,</span> <span class="token string">'装修'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'小区'</span><span class="token punctuation">,</span> <span class="token string">'小区位置具体描述'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'所属区'</span><span class="token punctuation">,</span> <span class="token string">'所属具体区域'</span><span class="token punctuation">,</span> <span class="token string">'建筑年代'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'有无电梯'</span><span class="token punctuation">,</span> <span class="token string">'产权性质'</span><span class="token punctuation">,</span> <span class="token string">'住宅类别'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'建筑结构'</span><span class="token punctuation">,</span> <span class="token string">'建筑类别'</span><span class="token punctuation">,</span> <span class="token string">'挂牌时间'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'小区参考均价'</span><span class="token punctuation">,</span> <span class="token string">'物业类型'</span><span class="token punctuation">,</span> <span class="token string">'绿化率'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'容积率'</span><span class="token punctuation">,</span> <span class="token string">'小区建筑类型'</span><span class="token punctuation">,</span> <span class="token string">'人车分流'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'总户数'</span><span class="token punctuation">,</span> <span class="token string">'总楼栋数'</span><span class="token punctuation">,</span> <span class="token string">'交易价值'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'居住品质'</span><span class="token punctuation">,</span> <span class="token string">'便利指数'</span><span class="token punctuation">,</span> <span class="token string">'物业服务'</span><span class="token punctuation">,</span>
+                                          <span class="token string">'综合评分'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># final_data=final_data.set_index('id')</span>
+final_data<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span><span class="token string">'数据.xlsx'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p>上述代码是本次校赛仓促之间写出的代码，还有一些地方需要优化：</p>
+<p>本次爬虫总的来看是一次不怎么成功的爬虫项目经历，首先时间限制加上对于Scrapy框架不够熟悉导致在实际爬取数据过程中并没有使用Scrapy框架，临时使用的requests库也存在一些需要优化的地方：</p>
+<ol>
+<li>没有使用beautifulsoup进行网页文件解析而是用了Scrap框架中的解析库。</li>
+<li>匹配规则需要进行优化，对房子网页的结构并没有分辨清楚便开始爬虫，用节点文本作为匹配规则导致部分’朝向’位置写成’进门朝向’的数据并没有被匹配到，这直接导致了爬得数据中朝向、楼价、房价一列出现大量缺失，同样的问题也发生在了建筑年代匹配列（属性值分为有空格和没有空格两种）。</li>
+<li>没有正确分析所需数据需求直接进行盲目爬取，做了很多无用功（这个是老毛病了，遇到问题时冷静思考的能力就丧失了😥）</li>
+<li>代码的逻辑性比较强，但是修改起来相对麻烦，看起来不够简洁。</li>
+<li>爬虫的效率不够高，考虑通过多线程进行进一步优化。</li>
+<li>数据存储的逻辑需要更改，爬虫过程中可能会出现各种报错，最理想的方法是在每次爬虫后保存获得的数据（善用try语句防止意外失误！）</li>
+</ol>
+<h1 id="thinking-经验总结"><a href="#thinking-经验总结" class="headerlink" title=":thinking:经验总结"></a>:thinking:经验总结</h1><ol>
+<li>匹配的精准程度势必会导致匹配到数据变少的问题，最初写的匹配规则存在明显的’过拟合’问题，这也是导致爬取失败的主要原因。制定匹配规则前冷静的观察页面结构是有必要的。首先观察容易发现[‘户型’, ‘建筑面积’, ‘单价’, ‘朝向’, ‘楼层（共34层）’, ‘装修’]这些信息是不太可能出现缺失的（可能为空，但是不会直接没有这一项），因此在匹配这些信息时可以稍微‘粗犷’一些，这也避免了缺失值的出现。</li>
+<li>爬虫数据爬取过程中要时时做好存储与爬取失败定位，不要因为一个页面的错误导致后边页面全部爬取失败，爬虫本身是一个十分浪费时间的事情，这会大大降低效率。</li>
+<li>善用try语句</li>
+</ol>
+<h2 id="关于网页的重定向问题"><a href="#关于网页的重定向问题" class="headerlink" title="关于网页的重定向问题"></a>关于网页的重定向问题</h2><p>在爬取房天下的网页过程中遇到的一个问题是输入网页链接后拿到的html文件中并不是实际我们想要拿到的html文件，主要原因是因为实际访问的页面中还存在一串自动编码:</p>
+<p><img src="../md_imgs/../md_imgs/python爬虫项目/image-20220706121723741.png" alt="s"></p>
+<p>即面临的网页重定向问题，这个问题的解决主要是依据想办法通过初次访问拿到的html文件中做匹配得到真实访问的链接，观察获取到的html文件可以发现，实际的链接在返回html的两个位置:</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>redirect<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">padding-top</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>info<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 18pt<span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>自动跳转中<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>second<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>s...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn-redir<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 14pt<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://xian.esf.fang.com/house/i31/?rfss=1-4906b68e40073d2ab0-41<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击跳转<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> t4<span class="token operator">=</span><span class="token string">'https://xian.esf.fang.com/house/i31/'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> t3<span class="token operator">=</span><span class="token string">'rfss=1-4906b68e40073d2ab0-41'</span><span class="token punctuation">;</span>
+
+
+location<span class="token punctuation">.</span>href<span class="token operator">=</span>t4<span class="token operator">+</span><span class="token string">'?'</span><span class="token operator">+</span>t3<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这些都可以从html文件中直接获取得到，然后这个链接其实才是我们访问所需要的真正链接，第一种情况应该是更常见的一种重定向情况。</p>
+<blockquote>
+<p>下次遇到网页的重定向可以先用正则匹配一下页面的链接来寻找真正可以拿到数据的url，另外就是需要注意的是这里拿到的url并非链接地址栏显示的url，据我观察链接地址栏的url会在一段时间后失效，具体的机理分析仍有待进一步的深入学习</p>
+</blockquote>
+<h1 id="😄终稿"><a href="#😄终稿" class="headerlink" title="😄终稿"></a>😄终稿</h1><p>经过一番重塑修改，对代码的逻辑进行进一步优化，最后写出了最终版本的房天下二手房交易数据爬取py代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> re
+<span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>selector <span class="token keyword">import</span> Selector <span class="token keyword">as</span> se
+<span class="token keyword">import</span> time
+<span class="token comment">#import _thread</span>
+<span class="token comment"># 爬虫结果输出路径</span>
+out_dir <span class="token operator">=</span> <span class="token string">'爬虫结果.csv'</span>
+<span class="token comment">#列名</span>
+columns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'总价'</span><span class="token punctuation">,</span> <span class="token string">'户型'</span><span class="token punctuation">,</span> <span class="token string">'建筑面积'</span><span class="token punctuation">,</span>
+           <span class="token string">'朝向'</span><span class="token punctuation">,</span> <span class="token string">'楼层'</span><span class="token punctuation">,</span> <span class="token string">'总楼层'</span><span class="token punctuation">,</span> <span class="token string">'装修'</span><span class="token punctuation">,</span>
+           <span class="token string">'所在小区'</span><span class="token punctuation">,</span> <span class="token string">'区'</span><span class="token punctuation">,</span> <span class="token string">'区域'</span><span class="token punctuation">,</span> <span class="token string">'建筑年代'</span><span class="token punctuation">,</span>
+           <span class="token string">'有无电梯'</span><span class="token punctuation">,</span> <span class="token string">'挂牌时间'</span><span class="token punctuation">,</span> <span class="token string">'小区参考均价'</span><span class="token punctuation">,</span>
+           <span class="token string">'物业类型'</span><span class="token punctuation">,</span> <span class="token string">'绿化率'</span><span class="token punctuation">,</span> <span class="token string">'容积率'</span><span class="token punctuation">,</span> <span class="token string">'建筑类型'</span><span class="token punctuation">,</span>
+           <span class="token string">'人车分流'</span><span class="token punctuation">,</span> <span class="token string">'总户数'</span><span class="token punctuation">,</span> <span class="token string">'总楼栋数'</span><span class="token punctuation">,</span> <span class="token string">'交易价值'</span><span class="token punctuation">,</span>
+           <span class="token string">'居住品质'</span><span class="token punctuation">,</span> <span class="token string">'便利指数'</span><span class="token punctuation">,</span> <span class="token string">'物业服务'</span><span class="token punctuation">,</span> <span class="token string">'总评分'</span><span class="token punctuation">,</span>
+           <span class="token string">'单价'</span><span class="token punctuation">]</span>
+headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'Connection'</span><span class="token punctuation">:</span> <span class="token string">'keep-alive'</span><span class="token punctuation">,</span>
+    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36 Edg/103.0.1264.37'</span><span class="token punctuation">,</span>
+    <span class="token comment">#'Cookie': 'csrfToken=fxB64yKN6YmKp2x6IBImOond; global_cookie=4qsim60u3xw9srizbptt3nh3q1yl5377g9v; engine_source_cookie=bing; sf_source=bing; city=xian; lastscanpage=0; g_sourcepage=esf_fy%5Exq_pc; unique_cookie=U_4qsim60u3xw9srizbptt3nh3q1yl5377g9v*62',</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment"># 记录匹配失败网页</span>
+fail_url<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">def</span> <span class="token function">get_url</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    获取html文件
+    """</span>
+    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>   headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> verify<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"开始爬取</span><span class="token interpolation"><span class="token punctuation">&#123;</span>url<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> response
+
+
+<span class="token keyword">def</span> <span class="token function">process_url</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    返回重定向后的url(解决网页的重定向问题)
+    """</span>
+    html <span class="token operator">=</span> response<span class="token punctuation">.</span>text
+    <span class="token triple-quoted-string string">""" try:
+        url_head = re.findall(r"t4='(.*?)'", html)[0]
+        url_tail = re.findall(r"t3='(.*?)'", html)[0]
+    except:
+        print(f'&#123;response.url&#125;解析失败') """</span>
+    <span class="token keyword">return</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>html<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//div[@class="redirect"]/a[1]/@href'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># url_head+'?'+url_tail</span>
+
+
+<span class="token keyword">def</span> <span class="token function">parse_page</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    返回当前房源页面的所有房子的链接以及下一个房源页面的url
+    """</span>
+    <span class="token comment"># 解析页面提取页面内的房源url</span>
+    html <span class="token operator">=</span> response<span class="token punctuation">.</span>text
+    house_url_list <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>html<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+        <span class="token string">'//h4[@class="clearfix"]/a/@href'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    temp_url <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>html<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+        <span class="token string">'//a[text()="下一页"]/@href'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> temp_url<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> house_url_list<span class="token punctuation">,</span> <span class="token string">'https://xian.esf.fang.com'</span><span class="token operator">+</span>temp_url
+    <span class="token comment">#elif temp_url[-3:-1]%25==0:</span>
+       <span class="token comment"># return house_url_list,None</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> house_url_list<span class="token punctuation">,</span>temp_url
+<span class="token keyword">def</span> <span class="token function">save</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> out_dir<span class="token punctuation">,</span>column_name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    保存爬取数据
+    """</span>
+    <span class="token keyword">import</span> csv
+    <span class="token keyword">import</span> os
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>out_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>out_dir<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
+            csvout <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>fp<span class="token punctuation">)</span>
+            csvout<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span>  <span class="token comment"># 初次爬取写入列名</span>
+            csvout<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token comment"># 追加写入内容</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>out_dir<span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> fp<span class="token punctuation">:</span>
+            csvout <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>fp<span class="token punctuation">)</span>
+            csvout<span class="token punctuation">.</span>writerow<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">parse_house_page</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    解析房子网页获得需要的数据
+    """</span>
+    data<span class="token operator">=</span>response<span class="token punctuation">.</span>text
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token comment"># title</span>
+        x1 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[@class="tit_text"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#.replace('\n', '').strip()</span>
+        <span class="token comment"># 总价</span>
+        x2 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="trl-item price_esf  sty1"]/i/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 户型</span>
+        x3 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="tt"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑面积</span>
+        x4 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="tt"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token comment"># 朝向</span>
+        x5 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="tt"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>
+        <span class="token comment"># 楼层</span>
+        x6 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="tt"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token comment"># 总楼层</span>
+        x7 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="font14"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span>
+        <span class="token comment"># 装修</span>
+        x8 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="tt"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token comment"># 所在小区</span>
+        x9 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="rcont"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 区</span>
+        x10 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@id="address"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 区域</span>
+        x11 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@id="address"]/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑年代</span>
+        year <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="建筑年代"]/../span/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> year<span class="token punctuation">:</span>
+            x12 <span class="token operator">=</span> year<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            x12 <span class="token operator">=</span> <span class="token boolean">None</span>
+        <span class="token comment"># 有无电梯</span>
+        x13 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="有无电梯"]/../span[@class="rcont"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 挂牌时间</span>
+        date <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="挂牌时间"]/../span[@class="rcont"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> date<span class="token punctuation">:</span>
+            x14 <span class="token operator">=</span> date<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            x14 <span class="token operator">=</span> date<span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 小区参考均价</span>
+        x15 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="参考均价"]/../span/i/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 绿化率</span>
+        x16 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="绿  化  率"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 容积率</span>
+        x17 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="容  积  率"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 建筑类型</span>
+        x18 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="建筑类型"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 人车分流</span>
+        x19 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="人车分流"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 总户数</span>
+        x20 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="总  户  数"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 总楼栋数</span>
+        x21 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//span[text()="总楼栋数"]/../span[@class="rcont "]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 评分</span>
+        x22 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="交易价值"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x23 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="居住品质"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x24 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="便利指数"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x25 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="物业服务"]/../h4/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x26 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//p[text()="房源评级|多维度分析房源"]/../div[@class="num_bg"]/h3/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract_first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 单价</span>
+        x27 <span class="token operator">=</span> se<span class="token punctuation">(</span>text<span class="token operator">=</span>response<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>
+            <span class="token string">'//div[@class="tt"]/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+        data <span class="token operator">=</span> <span class="token punctuation">[</span>x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> x4<span class="token punctuation">,</span> x5<span class="token punctuation">,</span> x6<span class="token punctuation">,</span>
+                x7<span class="token punctuation">,</span> x8<span class="token punctuation">,</span> x9<span class="token punctuation">,</span> x10<span class="token punctuation">,</span> x11<span class="token punctuation">,</span> x12<span class="token punctuation">,</span>
+                x13<span class="token punctuation">,</span> x14<span class="token punctuation">,</span> x15<span class="token punctuation">,</span> x16<span class="token punctuation">,</span> x17<span class="token punctuation">,</span> x18<span class="token punctuation">,</span>
+                x19<span class="token punctuation">,</span> x20<span class="token punctuation">,</span> x21<span class="token punctuation">,</span> x22<span class="token punctuation">,</span> x23<span class="token punctuation">,</span> x24<span class="token punctuation">,</span>
+                x25<span class="token punctuation">,</span> x26<span class="token punctuation">,</span> x27<span class="token punctuation">]</span>
+        save<span class="token punctuation">(</span>data<span class="token punctuation">,</span> out_dir<span class="token punctuation">,</span>columns<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"房源</span><span class="token interpolation"><span class="token punctuation">&#123;</span>response<span class="token punctuation">.</span>url<span class="token punctuation">&#125;</span></span><span class="token string">保存成功"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        fail_url<span class="token punctuation">.</span>append<span class="token punctuation">(</span>response<span class="token punctuation">.</span>url<span class="token punctuation">)</span>
+        save<span class="token punctuation">(</span><span class="token punctuation">[</span>response<span class="token punctuation">.</span>url<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'fail_url.csv'</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'链接地址'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 字符串写入时会默认拆开</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>response<span class="token punctuation">.</span>url<span class="token punctuation">&#125;</span></span><span class="token string">解析失败，请稍后查看实际情况，当前解析失败网页总数为</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">len</span><span class="token punctuation">(</span>fail_url<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+<span class="token keyword">def</span>  <span class="token function">main</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    response <span class="token operator">=</span> get_url<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    true_url<span class="token operator">=</span>process_url<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+    response<span class="token operator">=</span>get_url<span class="token punctuation">(</span>true_url<span class="token punctuation">)</span>
+    house_urls<span class="token punctuation">,</span> next_url <span class="token operator">=</span> parse_page<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>next_url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> url <span class="token keyword">in</span> house_urls<span class="token punctuation">:</span>
+            response <span class="token operator">=</span> get_url<span class="token punctuation">(</span><span class="token string">'https://xian.esf.fang.com'</span><span class="token operator">+</span>url<span class="token punctuation">)</span>
+            true_url<span class="token operator">=</span>process_url<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+            response<span class="token operator">=</span>get_url<span class="token punctuation">(</span>true_url<span class="token punctuation">)</span>
+            parse_house_page<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+        response<span class="token operator">=</span>get_url<span class="token punctuation">(</span>next_url<span class="token punctuation">)</span>
+        true_url <span class="token operator">=</span> process_url<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+        response <span class="token operator">=</span> get_url<span class="token punctuation">(</span>true_url<span class="token punctuation">)</span>
+        house_urls<span class="token punctuation">,</span> next_url <span class="token operator">=</span> parse_page<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span><span class="token punctuation">(</span>next_url<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#将最后一页数据进行解析</span>
+            <span class="token keyword">for</span> url <span class="token keyword">in</span> house_urls<span class="token punctuation">:</span>
+                response<span class="token operator">=</span>get_url<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+                true_url<span class="token operator">=</span>process_url<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+                response<span class="token operator">=</span>get_url<span class="token punctuation">(</span>true_url<span class="token punctuation">)</span>
+                parse_house_page<span class="token punctuation">(</span>response<span class="token punctuation">)</span>    
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    main<span class="token punctuation">(</span><span class="token string">'https://xian.esf.fang.com/house/i31/'</span><span class="token punctuation">)</span>
+    <span class="token comment">#多线程进行有一些问题，仍待进一步修改</span>
+    <span class="token triple-quoted-string string">""" url_list = ['https://xian.esf.fang.com/house/i31/',
+                'https://xian.esf.fang.com/house/i325/',
+                'https://xian.esf.fang.com/house/i350/',
+                'https://xian.esf.fang.com/house/i375/']
+    for url in url_list:
+        _thread.start_new_thread(main,(url,)) """</span>
+    end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"运行程序花费了%s秒"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>end<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>虽然会因为爬取频率过高导致网页请求出现拖动滑块的验证码，但是真的<del>不想改了啊啊</del>很棒了。 </p>
+<blockquote>
+<p>第二次完善之后还是有好多问题😭,多线程爬取数据存在明显问题，还有待进一步完善。不过记得下次可以把try语句写进匹配规则里，因为不知道会遇到什么问题,这是一种很稳妥的渐进爬虫。多线程属于一个相对比较复杂的问题，这块因为本身计算机理论的缺失可能还有待进一步补充,照目前的情况来看，写的爬虫的爬取效率还有待进一步提升，再者就是访问次数过多出现的滑块验证问题还没有解决。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/%E6%88%BF%E5%A4%A9%E4%B8%8B%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BA%A4%E6%98%93%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/">https://kebuaaa.github.io/%E6%88%BF%E5%A4%A9%E4%B8%8B%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BA%A4%E6%98%93%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/Python%E7%88%AC%E8%99%AB/">Python爬虫</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%E7%A2%8E%E7%A2%8E%E5%BF%B5/"><img class="prev-cover" src="../img/cover_img.jpg" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">碎碎念</div></div></a></div><div class="next-post pull-right"><a href="../Python%E4%B8%AD%E7%9A%84%E4%B8%8B%E5%88%92%E7%BA%BF/"><img class="next-cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python中的下划线</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../Scrapy%E6%A1%86%E6%9E%B6/" title="Scrapy框架"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Scrapy框架</div></div></a></div><div><a href="../Working%20with%20APIs/" title="Working with APIs"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Working with APIs</div></div></a></div><div><a href="../python%E7%88%AC%E8%99%AB/" title="python爬虫"><img class="cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">python爬虫</div></div></a></div><div><a href="../urllib/" title="urllib"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">urllib</div></div></a></div><div><a href="../%E7%88%AC%E5%8F%96%E7%94%B5%E5%BD%B1%E9%99%A2%E6%94%BE%E6%98%A0%E7%94%B5%E5%BD%B1%EF%BC%88re%EF%BC%89/" title="爬取电影院放映电影（re）"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">爬取电影院放映电影（re）</div></div></a></div><div><a href="../%E7%BA%BF%E7%A8%8B&%E8%BF%9B%E7%A8%8B/" title="线程&amp;进程"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-08</div><div class="title">线程&amp;进程</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#thinking-%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">:thinking:经验总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BD%91%E9%A1%B5%E7%9A%84%E9%87%8D%E5%AE%9A%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">关于网页的重定向问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%98%84%E7%BB%88%E7%A8%BF"><span class="toc-number">2.</span> <span class="toc-text">😄终稿</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

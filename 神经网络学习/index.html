@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>神经网络学习 | 小明的博客</title><meta name="keywords" content="机器学习,神经网络"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="发展1958年，计算科学家Rosenblatt提出了由两层神经元组成的神经网络，并将之命名为“感知器”(Perceptron)。感知器有两个层次：输入层和输出层。输入层里的“输入单元”只负责传输数据，不做计算。输出层里的“输出单元”则需要对前面一层的输入进行计算。感知器是当时首个可以学习的人工神经网络。Rosenblatt现场演示了其学习识别简单图像的过程。按照不同的连接方式，神经网络可以分为：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络学习">
+<meta property="og:url" content="https://kebuaaa.github.io/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="发展1958年，计算科学家Rosenblatt提出了由两层神经元组成的神经网络，并将之命名为“感知器”(Perceptron)。感知器有两个层次：输入层和输出层。输入层里的“输入单元”只负责传输数据，不做计算。输出层里的“输出单元”则需要对前面一层的输入进行计算。感知器是当时首个可以学习的人工神经网络。Rosenblatt现场演示了其学习识别简单图像的过程。按照不同的连接方式，神经网络可以分为：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-03-26T02:34:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.679Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="神经网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '神经网络学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">神经网络学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.679Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/">模型</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="神经网络学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="发展"><a href="#发展" class="headerlink" title="发展"></a>发展</h1><p>1958年，计算科学家Rosenblatt提出了由两层神经元组成的神经网络，并将之命名为“感知器”(Perceptron)。<br>感知器有两个层次：输入层和输出层。<br>输入层里的“输入单元”只负责传输数据，不做计算。<br>输出层里的“输出单元”则需要对前面一层的输入进行计算。<br>感知器是当时首个可以学习的人工神经网络。Rosenblatt现场演示了其学习识别简单图像的过程。<br><img src="../md_imgs/神经网络学习/0.png" alt="image.png"><br>按照不同的连接方式，神经网络可以分为：</p>
+<ul>
+<li>感知器模型</li>
+<li>多层感知机模型</li>
+<li>前向多层神经网络</li>
+<li>Hopfield神经网络</li>
+<li>动态反馈网络</li>
+<li>自组织神经网络等。</li>
+</ul>
+<p><strong>1986年</strong>，Rumelhar和Hinton等人提出了反向传播（Back Propagation，BP）算法，解决了两层神经网络所需要的复杂计算量问题，从而带动了使用两层神经网络研究的热潮。<br>两层神经网络除了包含一个输入层，一个输出层以外，还增加了一个中间层。<br>中间层和输出层都是计算层。<br>理论证明，<strong>两层神经网络可以无限逼近任意连续函数</strong>。<br>面对复杂的非线性分类任务，带一个隐藏层的两层神经网络可以取得很好的分类结果。<br><strong>2006年</strong>，Hinton在《Science》和相关期刊上发表了论文，首次提出了“深度信念网络”的概念。<br>与传统的训练方式不同，“深度信念网络”有一个“预训练”（Pre-Training）的过程，这可以方便的让神经网络中的权值找到一个接近最优解的值，之后再使用“微调”(Fine-Tuning)技术来对整个网络进行优化训练。<br>这两个技术的运用大幅度减少了训练多层神经网络的时间。<br>他给多层神经网络相关的学习方法赋予了一个新名词——“<strong>深度学习</strong>”。<br><img src="../md_imgs/神经网络学习/1.png" alt="image.png"></p>
+<h2 id="层数的增加意味着抽象表示的深入"><a href="#层数的增加意味着抽象表示的深入" class="headerlink" title="层数的增加意味着抽象表示的深入"></a>层数的增加意味着抽象表示的深入</h2><p>例如在图像分类中，神经网络的第一个隐藏层学习到的是“边缘”的特征。<br>第二个隐藏层学习到的是由“边缘”组成的“形状”的特征。<br>第三个隐藏层学习到的是由“形状”组成的“图案”的特征。<br>最后的隐藏层学习到的是由“图案”组成的“目标”的特征。<br>通过抽取更抽象的特征来对事物进行区分，从而获得更好的区分与分类能力。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>非线性映射逼近</li>
+<li>大规模并行分布式存储</li>
+<li>综合优化处理</li>
+<li>容错性强（不确定性大的问题）</li>
+<li>独特的联想记忆</li>
+<li><p>自组织自适应自学习能力</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="前馈神经网络"><a href="#前馈神经网络" class="headerlink" title="前馈神经网络"></a>前馈神经网络</h3><p>前馈神经网络是实际应用中最常见的神经网络类型。<br>  第一层是输入。<br>  最后一层是输出。<br>  如果有多个隐藏层，称为“深层” 神经网络。<br>每层神经元的活动都是下层中活动的非线性函数。</p>
+<h3 id="递归神经网络"><a href="#递归神经网络" class="headerlink" title="递归神经网络"></a>递归神经网络</h3><p>递归神经网络的连接中有直接的循环，使得信息有时可以回到开始的地方。<br>它们可能有复杂的动态，这可能会使它们很难训练。<br>它们更具生物现实性。<br>递归神经网络是建模时序数据的一种非常自然的方法。<br>它们相当于每个时间片具有一个隐藏层的非常深的网络；<br>除了它们在每个时间片上使用相同的权重并且它们在每个时间片都得到输入。</p>
+<h3 id="对称连接网络"><a href="#对称连接网络" class="headerlink" title="对称连接网络"></a>对称连接网络</h3><p>对称连接网络像递归网络，但是单元之间的连接是对称的（它们在两个方向上具有相同的权重）。<br>对称网络比递归网络更容易分析。 因为它们服从能量函数，所以它们在做的事情上也受到更多的限制。<br>没有隐藏单元的对称连接的网络被称为“霍普菲尔德网络”。<br>具有隐藏单元的对称连接网络称为“玻尔兹曼机器”。</p>
+<h1 id="BP神经网络"><a href="#BP神经网络" class="headerlink" title="BP神经网络"></a>BP神经网络</h1><h2 id="BP（Back-propagation）误差反向传播算法"><a href="#BP（Back-propagation）误差反向传播算法" class="headerlink" title="BP（Back propagation）误差反向传播算法"></a>BP（Back propagation）误差反向传播算法</h2><p><strong>由输入层开始逐层向前计算神经元输出，由输出层开始逐层向后计算神经元的误差。</strong><br>误差函数优化的过程中按照梯度下降法，<strong>保证误差损失函数快速收敛</strong>。</p>
+</li>
+<li><p>梯度下降算法（BGD）：每次学习都会使用整个训练集</p>
+</li>
+<li>随机梯度下降法（SGD, Stochastic Gradient Descent）. SGD算法在每一轮迭代中只用一条随机选取的数据，这将使得迭代次数大大增加.学习时间短，但可能会导致损失函数剧烈波动（尤其在最优解附近），难以判断是否收敛。</li>
+<li><p>小批量梯度下降法（MBGD, Mini-Batch Gradient Descent）。MBGD采用一次迭代多条数据的方法，即每次迭代不是仅有一个样本参与训练，而是有一批样本参与迭代训练。批量大小选择合理的话可以在性能上由于以上两种算法。</p>
+<h1 id="概率神经网络（PNN）"><a href="#概率神经网络（PNN）" class="headerlink" title="概率神经网络（PNN）"></a>概率神经网络（PNN）</h1><p>概率神经网络(<strong>Probabilistic Neural Network, PNN</strong>)由D.F.Speeht博士在1989年首先提出。<br>它是径向基网络的一个分支，属于前馈网络的一种。<br>概率神经网络一般由输入层、模式层、求和层和输出层四层构成。有时也把模式层称为隐含层，把求和层叫做竞争层。</p>
+</li>
+<li><p>输入层负责把特征向量传入网络</p>
+</li>
+<li>模式层又叫隐含层，计算输入特征和训练集中各模式的相似度，将距离送入高斯函数得到输出。模式层的数量即训练集元素的数量。</li>
+<li>求和层又叫竞争层。数量是样本的类别个数</li>
+<li>输出层负责输出求和层中得分最高的一类</li>
+</ul>
+<p><img src="../md_imgs/神经网络学习/2.png" alt="image.png"><br><img src="../md_imgs/神经网络学习/3.png" alt="image.png"><br><strong>特性</strong><br>训练容易，收敛速度快，非常适用于实时处理；<br>可以实现任意的非线性逼近，用PNN网络形成的判决曲面与贝叶斯最优准则下的曲面非常接近；<br>隐含层采用径向基的非线性映射函数，考虑了不同类别模式样本的交错影响，具有很强的容错性；<br>隐含层的传输函数可以选用各种用来估计概率密度的基函数，且分类结果对基函数的形式不敏感；<br>扩充性能好，增加或减少类别模式时不需要重新进行长时间的训练学习；<br>各层神经元的数目比较固定，易于硬件实现。<br><strong>神经网络的性能并不随着隐层数量和隐层神经元数量的增加而增加。因此，建立神经网络隐层的原则是：在满足分类准确率的前提下，网络结构尽可能简单。</strong></p>
+<h1 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h1><p>卷积神经网络（Convolutional Neural Networks, CNN）是一种包含卷积计算且具有深度结构的前馈神经网络，是<strong>深度学习</strong>（deep learning）的代表算法。卷积神经网络在图像、文本、语音的分析和识别。</p>
+<h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p><strong>卷积的本质是一个窗口信号对另一个信号的加权</strong>，通过取一个内部带有权值的窗口，使用该窗口对某个信号进行滤波。移动该窗口对原始信号处理（使得更加平滑），因此卷积的本质是<strong>滤波</strong>。</p>
+<h3 id="一维卷积"><a href="#一维卷积" class="headerlink" title="一维卷积"></a>一维卷积</h3><p>一维卷积的运算通常为对于一个被研究的数据序列f(t),先确定一个滤波器函数g(t)，然后将g翻转得到得到g(-t)，接着再把翻转后的函数向右平移n个单位得到g(n-t),通过对g(n-t)平移得到在f(t)定义域上的g(n-t),在相同t值处取函数值相乘（定义内积运算），即：</p>
+<script type="math/tex; mode=display">f(t)g(t)=\int f(t)g(n-t)</script><h3 id="二维卷积"><a href="#二维卷积" class="headerlink" title="二维卷积"></a>二维卷积</h3><p>在实际生活过程中我们遇到的大多数数据都是二维的，为了对这些数据进行处理我们需要定义二维的卷积运算，具体操作是：首先定义一个带有权值的<strong>小窗口</strong>，即滤波器，然后沿着行或列移动窗口对图像的特征进行加权平均。<br>下面简单介绍一下图像卷积的基本过程：</p>
+<h4 id="卷积-1"><a href="#卷积-1" class="headerlink" title="卷积"></a>卷积</h4><p>通过设定一个一定大小的滤波器，对图像对应位置的像素进行加权平均可以得到一个值。然后移动滤波器进行重复计算。<br><img src="../md_imgs/神经网络学习/4.png" alt="image.png"><br>设计不同形状、权值分布的滤波器，实现边缘检测、浮雕、模糊等图像处理与分析目的。<br>因此图像的卷积操作在本质上也是一种滤波。<br>彩色图像一般有3个颜色通道，可以将滤波器分别作用于每个颜色通道，从而得到3个通道的卷积结果。</p>
+<h4 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h4><p>一般的卷积操作会导致原始图像的大小发生改变，为了使得在卷积后图像的大小不发生改变，常常会对原图进行填充，在原始图像的四周添加0以使得卷积的结果形状保持不变。<br><img src="../md_imgs/https://cdn.nlark.com/yuque/0/2022/gif/23180166/1642736657562-05e11853-5488-48c0-a7fe-2fc93bafd2e4.gif#clientId=u19f7fa78-c50b-4&amp;crop=0&amp;crop=0&amp;crop=1&amp;crop=1&amp;from=ui&amp;id=u2b999755&amp;margin=%5Bobject%20Object%5D&amp;name=%E5%9B%BE%E7%89%871.gif&amp;originHeight=449&amp;originWidth=395&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=250554&amp;status=done&amp;style=none&amp;taskId=u4870a104-6f17-425f-b179-2a60f2fafb4&amp;title=" alt="图片1.gif"></p>
+<h4 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h4><p>池化是对卷积结果进行进一步的降维。本质也是一种卷积操作，使用滤波器（最大值或者最小值函数）提取图像的局部特征。<br>池化的一个好处是<strong>平移旋转</strong>不变性。<br><img src="../md_imgs/神经网络学习/5.png" alt="image.png"></p>
+<h2 id="卷积神经网络的结构"><a href="#卷积神经网络的结构" class="headerlink" title="卷积神经网络的结构"></a>卷积神经网络的结构</h2><p>卷积神经网络的结构一般包括输入层，卷积层，池化层，全连接层，输出层。<br><img src="../md_imgs/神经网络学习/6.png" alt="image.png"></p>
+<h3 id="从一个图像卷积神经网络的例子看卷积神经网络"><a href="#从一个图像卷积神经网络的例子看卷积神经网络" class="headerlink" title="从一个图像卷积神经网络的例子看卷积神经网络"></a>从一个图像卷积神经网络的例子看卷积神经网络</h3><p>从我们认知图像的机制出发（先感知颜色和局部特征，然后感知纹理和几何形状等更复杂的特征，最后形成整个物体的概念），人们设计出了一种卷积神经网络来进行模仿。<br>由多个卷积层构成，每个卷积层包含多个卷积核，用这些卷积核从左向右、从上往下依次扫描整个图像，得到称为特征图（feature map）的输出数据。<br>网络前面的卷积层捕捉图像局部、细节信息，有小的感受野，即输出图像的每个像素只利用输入图像很小的一个范围。<br>后面的卷积层感受野逐层加大，用于捕获图像更复杂，更抽象的信息。<br>经过多个卷积层的运算，最后得到图像在各个不同尺度的抽象表示。</p>
+<ul>
+<li>输入层接收图像的像素数据，既可以是单通道的灰度图像，也可以是三通道彩色图像。</li>
+<li>卷积层使用滤波器对输入层进行卷积操作。卷积操作用于提取图像的特征。可以使用多个卷积核，获取不同的图像特征。</li>
+<li>经过卷积运算之后，图像尺寸变小了。可以先对图像进行扩充（padding），例如在周边补0，然后用尺寸扩大后的图像进行卷积，保证卷积结果图像和原图像尺寸相同。</li>
+<li>卷积操作完成对输入图像的降维和特征抽取，但特征图像的维数还很高，计算耗时，易过拟合。为此引入了下采样技术，也称为pooling即池化操作。池化的做法是对图像的某一个区域用一个值代替，如最大值或平均值。如果采用最大值，叫做max池化；如果采用均值，叫做均值池化。</li>
+<li>最后，一个池化层的输出送入全连接层之前，还要对特征进行正则化，将其变换到[0,1]区间。</li>
+<li>卷积神经网络的输出层一般是类别标签。需要将数据集的类别标签量化编码，为了不使机器学习模型认为类别是有序的，一般需要对类标签进行独热(one-hot)编码。</li>
+</ul>
+<p>在图像分类中，通常有两层以上的卷积层和池化层，用于图像局部特征、全局特征的多次提取和降维。卷积层的神经元与池化层的神经元并不是全连接的。一个卷积核得到的特征图，对应一种池化操作。如果需要再次卷积操作，则只将该池化操作得到结果与下一个卷积层的单个神经元发生联系，而不必与其它神经元都发生联系。<br><strong>实际应用的过程中经常是多通道图像，需要对各个通道进行卷积然后进行累加</strong></p>
+<h3 id="激励函数的选择"><a href="#激励函数的选择" class="headerlink" title="激励函数的选择"></a>激励函数的选择</h3><p>传统的sigmoid激活函数能满足激励函数的要求，但是也存在如下缺点：</p>
+<ul>
+<li>输入值很小或者很大时，输出曲线基本变为水平直线，导致局部梯度值非常非常小，不利于梯度下降的优化算法。</li>
+<li>当输入为0时，输出不为0，由于每一层的输出都要作为下一层的输入，而未0中心化会影响梯度下降，影响梯度下降的动态性。</li>
+</ul>
+<p>在卷积神经网络中，更常使用的是ReLU (Recitified Linear Unit)线性整流函数。<br><img src="../md_imgs/神经网络学习/7.png" alt="image.png"><br>Relu函数的优点是不会出现梯度消失，收敛速度快；<br>前向计算量小，只需要计算max(0, x)，不像sigmoid中有指数计算；<br>反向传播计算快，导数计算简单，无需指数计算；<br>有些神经元的值为0，使网络具有稀疏性质，可减小过拟合。<br>缺点是比较脆弱，反向传播中如果一个参数为0，后面的参数就会不更新。学习性能和参数设置有关系。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/">https://kebuaaa.github.io/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="../tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"><img class="prev-cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">神经网络</div></div></a></div><div class="next-post pull-right"><a href="../%E7%B3%BB%E7%BB%9F/"><img class="next-cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">系统</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E6%8E%A8%E5%B9%BF/" title="EM算法及其推广"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">EM算法及其推广</div></div></a></div><div><a href="../Entroy/" title="Entroy"><img class="cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Entroy</div></div></a></div><div><a href="../Logistic%20Regression/" title="Logistic Regression"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Logistic Regression</div></div></a></div><div><a href="../k%E8%BF%91%E9%82%BB%E6%B3%95(k-nearest%20neighbor)/" title="k近邻法(k-nearest neighbor)"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">k近邻法(k-nearest neighbor)</div></div></a></div><div><a href="../%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/" title="决策树（DT）"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">决策树（DT）</div></div></a></div><div><a href="../%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/" title="回归分析"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">回归分析</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%91%E5%B1%95"><span class="toc-number">1.</span> <span class="toc-text">发展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E6%95%B0%E7%9A%84%E5%A2%9E%E5%8A%A0%E6%84%8F%E5%91%B3%E7%9D%80%E6%8A%BD%E8%B1%A1%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%B7%B1%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">层数的增加意味着抽象表示的深入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.3.1.</span> <span class="toc-text">前馈神经网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.3.2.</span> <span class="toc-text">递归神经网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="toc-number">1.3.3.</span> <span class="toc-text">对称连接网络</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">2.</span> <span class="toc-text">BP神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BP%EF%BC%88Back-propagation%EF%BC%89%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">BP（Back propagation）误差反向传播算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E7%8E%87%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88PNN%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">概率神经网络（PNN）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">4.</span> <span class="toc-text">卷积神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.1.</span> <span class="toc-text">卷积</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.1.1.</span> <span class="toc-text">一维卷积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.1.2.</span> <span class="toc-text">二维卷积</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF-1"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">卷积</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A1%AB%E5%85%85"><span class="toc-number">4.1.2.2.</span> <span class="toc-text">填充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%A0%E5%8C%96"><span class="toc-number">4.1.2.3.</span> <span class="toc-text">池化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">4.2.</span> <span class="toc-text">卷积神经网络的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E4%B8%80%E4%B8%AA%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BE%8B%E5%AD%90%E7%9C%8B%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">4.2.1.</span> <span class="toc-text">从一个图像卷积神经网络的例子看卷积神经网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BF%80%E5%8A%B1%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">4.2.2.</span> <span class="toc-text">激励函数的选择</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>方差分析 | 小明的博客</title><meta name="keywords" content="Statistics"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="本章小结  方差分析的基本原理——误差来源分解（理解） 方差分析的基本假设（理解）  单因素方差分析（重点）  有&#x2F;无交互作用的双因素方差分析（理解）   方差分析就是检验各总体均值是否相等来判断分类型自变量对数值型因变量是否有显著性影响。  在研究一个或者多个分类型自变量和一个数值型因变量之间的关系时，方差分析是主要的方法。  有关术语在方差分析中，要检验的分类型自变量叫做因素或者因子(fac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="方差分析">
+<meta property="og:url" content="https://kebuaaa.github.io/Analysis%20of%20Variance/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="本章小结  方差分析的基本原理——误差来源分解（理解） 方差分析的基本假设（理解）  单因素方差分析（重点）  有&#x2F;无交互作用的双因素方差分析（理解）   方差分析就是检验各总体均值是否相等来判断分类型自变量对数值型因变量是否有显著性影响。  在研究一个或者多个分类型自变量和一个数值型因变量之间的关系时，方差分析是主要的方法。  有关术语在方差分析中，要检验的分类型自变量叫做因素或者因子(fac">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-04-21T12:06:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:02:36.658Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="Statistics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/Analysis%20of%20Variance/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '方差分析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:02:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">方差分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-21T12:06:00.000Z" title="发表于 2022-04-21 20:06:00">2022-04-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:02:36.658Z" title="更新于 2022-07-09 10:02:36">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="方差分析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>本章小结</p>
+<ul>
+<li>方差分析的基本原理——误差来源分解（理解）</li>
+<li><p>方差分析的基本假设（理解）</p>
+</li>
+<li><p>单因素方差分析（<strong>重点</strong>）</p>
+</li>
+<li>有/无交互作用的双因素方差分析（理解）</li>
+</ul>
+</blockquote>
+<p><strong>方差分析</strong>就是检验各总体均值是否相等来判断分类型自变量对数值型因变量是否有显著性影响。</p>
+<blockquote>
+<p>在研究一个或者多个分类型自变量和一个数值型因变量之间的关系时，方差分析是主要的方法。</p>
+</blockquote>
+<h1 id="有关术语"><a href="#有关术语" class="headerlink" title="有关术语"></a>有关术语</h1><p>在方差分析中，要检验的分类型自变量叫做因素或者因子(factor)。<br>因素的不同表现称为水平或者处理。<br>每个因子水平下得到的样本数据称为观测值。</p>
+<blockquote>
+<p>水平或处理(treatment)。每个因子水平下得到的样本数据称为观测值。例如, 要分析行业对被投诉次数是否有显著影响。这里的行业是要检验的对象，称为因素或因子；零售业、旅游业、航空公司、家电制造业是行业这一因素的具体表现，称为水平或处理；在每个行业下得到的样本数据（被投诉次数）称为观测值。由于这里只涉及行业一个因素，因此称为单因素 4 水平的试验。因素的每一个水平可以看做一个总体，如零售业、旅游业、航空公司、家电制造业可以看做 4 个总体，上面的数据可以看做从这 4 个总体中抽取的样本数据。被投诉次数是一个数值型变量，行业是自变量，一个分类型变量。</p>
+</blockquote>
+<h1 id="误差分解"><a href="#误差分解" class="headerlink" title="误差分解"></a>误差分解</h1><p>方差分析是通过对数据误差来源的分析来判断不同总体的均值是否相等，进而分析自变量对因变量是否有显著影响<br>一般认为，数据误差分为组间误差和组内误差</p>
+<ul>
+<li>组内误差：水平内部的数据误差，反映的是样本内部数据的离散程度，一般源于随机抽取过程中随机因素的影响造成的（<strong>随机误差</strong>）。</li>
+<li>组间误差：不同水平之间的误差，既包括抽样本身导致的<strong>随机误差</strong>，也包括系统性因素造成的<strong>系统误差</strong>。</li>
+</ul>
+<p>在方差分析中，数据的误差是用平方和来表示的。<br><strong>反映全部数据误差大小的平方和称为总平方和，记为 SST</strong>。例如，所抽取的全部 23 家企业被投诉次数之间的误差平方和就是总平方和，它反映了全部观测值的离散状况。<br><strong>反映组内误差大小的平方和称为组内平方和</strong>，<strong>也称为误差平方和或残差平方和</strong>，<strong>记为 SSE</strong>。例如，每个样本内部的数据平方和加在一起就是组内平方和，它反映了每个样本内各观测值的离散状况。<br><strong>反映组间误差大小的平方和称为组间平方和，也称为因素平方和，记为 SSA</strong>。例如，四个行业被投诉次数之间的误差平方和就是组间平方和，它反映了样本均值之间的差异程度。</p>
+<blockquote>
+<p>一般来说，如果组间误差和组内误差的比值接近 1，也就是说不存在系统误差，那么就说明研究的因素对对应的因变量没有影响，例如对于判断行业对被投诉次数是否有显著影响这一问题上，实际上就是检验被投诉次数的差异主要是由什么原因引起的，如果是系统误差，那么就可以认为不同行业对被投诉次数有显著影响，这也使得研究能转换为检验四个行业被投诉次数的均值是否相等。</p>
+</blockquote>
+<h1 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h1><p>三个基本假设，每一个子标题对应一些检验方法，检验方法不需要掌握</p>
+<ol>
+<li><p><strong>每个总体服从正态分布（正态性假设）</strong></p>
+<ol>
+<li>偏度与峰度进行检验（也可以计算对应的 Z-score, 偏度: Z-score=偏度系数/偏度标准误）</li>
+<li>图形检验法(计算所有水平的均值作频数直方图布，P-P 图，Q-Q 图，大样本下效果较好)</li>
+<li>非参数检验法（直接检验总体的分布是否符合正态分布）</li>
+</ol>
+</li>
+<li><p><strong>总体的方差必须相同（方差齐性假设）</strong></p>
+<ol>
+<li>图形检验法（箱线图）</li>
+<li>参数与非参数检验法<ul>
+<li>overlinetlett’s test</li>
+<li>Levene’s test</li>
+<li>Flinger-Killeen test</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>数据观测值是独立的</strong></p>
+<p>注意：</p>
+<p>  方差分析的三种假设一正态性、方差齐性、独立性，均需在方差分析之前检验是否成立。</p>
+<p>  但是对于正态性和方差齐性的检验，不必过于严格，二者出现些许不满足，并不会对方差分析的结果产生较大影响，不能仅仅因为某项检验未能完美通过，就放弃方差分析这一种数据分析的重要方法。<br>  在上述假设条件下，问题也就转换为了自变量的各个水平的均值是否相等。样本的均值越接近，四个总体均值相等的证据越充分。</p>
+  <!-- 在无显著影响的原假设下，可以把不同水平下抽取的样本看作来自同一个正态总体的样本，按照样本均值的抽样分布可知，这样得到的不同水平下的样本均值应服从正态分布。 -->
+</li>
+</ol>
+<h1 id="问题的一般提法"><a href="#问题的一般提法" class="headerlink" title="问题的一般提法"></a>问题的一般提法</h1><p>假设因素有 k 个水平，对应 k 个均值:</p>
+<script type="math/tex; mode=display">
+H_0:\mu_1=\mu_2=\dots=\mu_k</script><script type="math/tex; mode=display">
+H_1:\mu_1, \mu_2, \dots, \mu_k不全相等</script><h1 id="单因素方差分析"><a href="#单因素方差分析" class="headerlink" title="单因素方差分析"></a>单因素方差分析</h1><p>当方差分析中只涉及一个分类型自变量时称为<strong>单因素方差分析</strong>。<br>针对一次单因素方差分析，这里用 A 表示因素，$A_i$表示因素的不同水平, 每一个观测值用$x_{ij}$表示，不同水平抽取的样本量可以相等也可以不相等。分析步骤如下:</p>
+<ol>
+<li><p><strong>提出假设</strong>:</p>
+<script type="math/tex; mode=display">
+H_0:\mu_1=\mu_2=\dots=\mu_k\hspace{10pt} 自变量对因变量无显著影响</script><script type="math/tex; mode=display">
+H_1:\mu_1, \mu_2, \dots, \mu_k不全相等\hspace{10pt} 自变量对因变量有显著影响</script></li>
+<li><p><strong>构造检验统计量</strong>：<br>检验统计量的构造分为三步<br>首先计算各个水平下样本观察值的均值记为$\overline{x}_i$；<br>接着<strong>计算所有观测值的均值</strong>记为$\overline{x}, $；<br>再然后是<strong>计算各个误差平方和</strong>：<br>SST: 全部观测值和总均值的误差平方和：</p>
+<script type="math/tex; mode=display">
+ \begin{equation}
+ \operatorname{SST}=\sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(x_{i j}-\overline{x}\right)^{2}
+ \end{equation}</script><p>SSA：各组均值与总均值的误差平方和:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\mathrm{SSA}=\sum_{i=1}^{k} n_{i}\left(\overline{x}_{i}-\overline{x}\right)^{2}
+\end{equation}</script><p>SSE：每个水平或者组的个样本数据与其组内均值的误差平方和:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\operatorname{SSE}=\sum_{i=1}^{k} \sum_{j=1}^{n_{i}}\left(x_{i j}-\overline{x}_{i}\right)^{2}
+\end{equation}</script><p>上述三个平方和的关系满足:</p>
+<script type="math/tex; mode=display">
+\mathrm{SST}=\mathrm{SSA}+\mathrm{SSE}</script><p>计算统计量，为了<strong>消除观测值数目对误差平方和大小的影响</strong>，这里计算他们的平均值——用平方和除以自由度，结果称为均方（mean square）, 也称为方差，三个平方和的自由度分别为:</p>
+<p>SST:n-1, n 为观测值数目</p>
+<p>SSA:k-1, k 为某一因素水平的个数</p>
+<p>SSE:n-k。</p>
+<p>实际应用过程中，只计算 SSA 的均方和 SSE 的均方。SSA 的均方又叫做组间均方或者组间方差，记为 MSA:</p>
+<script type="math/tex; mode=display">
+MSA=\frac{SSA}{k-1}</script><p>SSE 的均方也称为组内均方或者组内方差，记为 MSE:</p>
+<script type="math/tex; mode=display">
+MSE=\frac{SSE}{n-k}</script><p>一般用$\frac{MSA}{MSE}$的比值来衡量系统误差的大小，因为$H_0$为真的条件下，$\frac{MSA}{MSE}$服从分子自由度为 k-1、分母自由度为 n-k 的 F 分布：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+F=\frac{M S A}{M S E} \sim F(k-1, n-k)
+\end{equation}</script></li>
+<li><p><strong>统计决策</strong><br>根据给定的显著性水平 $\alpha$, 在 $F$ 分布表中查找与分子自由度 $d f_{1}=k-1$ 、分母自 由度 $d f_{2}=n-k$ 相应的临界值 $F_{a}(k-1, n-k)$ 。<br>若 $F&gt;F_{a}$, 则拒绝原假设 $H_{0}: \mu_{1}=\mu_{2}=\cdots=\mu_{k}$, 表明 $\mu_{i}(i=1, 2, \cdots, k)$ 之间 的差异是显著的;<br>若 $F&lt;F_{a}$, 则不拒绝原假设 $H_{0}$, 没有证据表明 $\mu_{i}(i=1, 2, \cdots, k)$ 之间有显著差异; </p>
+<blockquote>
+<p>当检验的因素只有两个水平时, 单因素方差分析与两个独立样本均值之差的 $t$ 检验的结果完全相同, 因为当 因素的水平 $k=2$ 时, 检验的 $t$ 统计量与 $F$ 统计量的关系为: $F=t^{2}$ 。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="单因素方差分析表"><a href="#单因素方差分析表" class="headerlink" title="单因素方差分析表"></a>单因素方差分析表</h2><p>为了使计算过程更加清晰，通常将上述过程的内容列在一张表内，这就是<strong>方差分析表</strong>((analysis of variance table), 一般形式如下:</p>
+<p><img src="../md_imgs/Analysis%20of%20Variance/2022-04-22-17-09-31.png" alt=""></p>
+<p>_方差分析可以借助 excel 快速进行，具体方法可以在网上搜索。_</p>
+<h2 id="关系强度的测量"><a href="#关系强度的测量" class="headerlink" title="关系强度的测量"></a>关系强度的测量</h2><p>前边介绍的方法只是说明了分类自变量对数值因变量是否有显著差异，而没有对差异化的程度进行一个度量。</p>
+<blockquote>
+<p>严格来说，只要组间平方和不等于 0，我们都可以说明这两个变量是存在关系的，只是说当组间平方和比组内平方和大时，就意味着两个变量之间的关系比较显著。<br>于是我们也希望得到一种衡量两个变量之间关系强度的方法，这时就可以借助 SSA 占 SST 的比例大小来衡量:</p>
+</blockquote>
+<script type="math/tex; mode=display">
+R^2=\frac{SSA}{SST}</script><p>组间平方和和组内平方和的相对大小反映了两个变量的关系强度。</p>
+<h2 id="多重比较"><a href="#多重比较" class="headerlink" title="多重比较"></a>多重比较</h2><p>当拒绝原假设，我们期望发现到底是哪些均值是不相等的，这个时候就需要对不同水平的均值进行进一步的分析，这个时候使用的方法就是<strong>多重比较方法</strong>(multiole comparison procedures)。接下来以费希尔提出的最小显著差异方法(least significant difference，LSD)为例:</p>
+<ol>
+<li>提出假设：$H_0：\mu_i=\mu_j;H_1:\mu_i\ne\mu_j$</li>
+<li><p>建立检验统计量，根据不同水平样本的特点，这里可以构建 t 统计量:</p>
+<script type="math/tex; mode=display">
+t=\frac{(\overline{x}_i-\overline{x}_j)-(\mu_i-\mu_j)}{\sqrt{MSE(\frac{1}{n_i}+\frac{1}{n_j})}}\sim t(n-k)</script><p>n 为样本总数，k 为水平个数。在显著性水平$\alpha$下，如果有:</p>
+<script type="math/tex; mode=display">
+|\overline{x}_i-\overline{x}_j|>t_{\frac{\alpha}{2}}\sqrt{MSE(\frac{1}{n_i}+\frac{1}{n_j})}=LSD</script><p>那么就拒绝$H_0$，否则就不拒绝。在具体实践过程中，就是对指定因素的某两个水平分别进行检验即可。</p>
+</li>
+</ol>
+<h1 id="双因素方差分析"><a href="#双因素方差分析" class="headerlink" title="双因素方差分析"></a>双因素方差分析</h1><p>当涉及到两个分类型自变量时，方差分析就成了<strong>双因素方差分析</strong>(two-way analysis variance)。双因素方差分析需要考虑的一个问题是两个自变量对因变量的影响是否是相互独立的。如果是相互独立的，我们就可以将这样的方差分析叫做无交互作用(interaction)的双因素方差分析或者叫<strong>无重复双因素分析</strong>（two-factor without replication），这种方差分析的本质是分别判断两个自变量对因变量是否有显著影响。若不独立，则叫做有交互作用的方差分析/<strong>可重复双因素</strong>(two-factor with replication)分析。</p>
+<h2 id="无交互作用的双因素方差分析"><a href="#无交互作用的双因素方差分析" class="headerlink" title="无交互作用的双因素方差分析"></a>无交互作用的双因素方差分析</h2><p>类比单因素方差分析，双因素方差分析的数据结构如下:</p>
+<p><img src="../md_imgs/Analysis%20of%20Variance/2022-04-22-19-47-48.png" alt="an image"></p>
+<p>根据数据结构中的表示，这里列出假设检验的整个过程:<br><strong>提出假设</strong><br>建立假设时应该分别根据列因素和行因素提出如下假设。<br>行因素假设:</p>
+<script type="math/tex; mode=display">
+H_{0}: \mu_{1}=\mu_{2}=\cdots=\mu_{i}=\cdots=\mu_{k} \quad 行因素(自变量)对因变量没有显著影响</script><script type="math/tex; mode=display">
+H_{1}: \mu_{i}(i=1, 2, \cdots, k) 不全相等 行因素(自变量)对因变量有显著影响</script><p>列因素假设:</p>
+<script type="math/tex; mode=display">
+H_{0}: \mu_{1}=\mu_{2}=\cdots=\mu_{j}=\cdots=\mu_{r} \quad 列因素(自变量)对因变量没有显著影响</script><script type="math/tex; mode=display">
+H_{1}: \mu_{j}(j=1, 2, \cdots, r )不全相等 列因素(自变量)对因变量有显著影响</script><p><strong>构造检验统计量</strong><br>在构造需要的统计量之前，需要先分解误差平方和:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+\operatorname{SST} &=\sum_{i=1}^{k} \sum_{j=1}^{r}\left(x_{i j}-\overline{\overline{x}}\right)^{2} \\
+&=\sum_{i=1}^{k} \sum_{j=1}^{r}\left(\overline{x}_{i \cdot} -\overline{\overline{x}}\right)^{2}+\sum_{i=1}^{k} \sum_{j=1}^{r}\left(\overline{x}_{\cdot j}-\overline{\overline{x}}\right)^{2}+\sum_{i=1}^{k} \sum_{j=1}^{r}\left(x_{i j}-\overline{x}_{i} .-\overline{x}_{\cdot j}+\overline{\overline{x}}\right)^{2}\\
+&=SSR+SSC+SSE
+\end{aligned}
+\end{equation}</script><p>其中 SSR 代表行因素产生的误差平方和，SSC 代表列因素产生的误差平方和，SSE 表示除行因素和列因素之外的剩余因素所产生的的误差平方和，称为<strong>随机误差平方和</strong>。<br>接下来是各误差平方和的自由度大小:</p>
+<script type="math/tex; mode=display">
+SST:kr-1</script><script type="math/tex; mode=display">
+SSR:k-1</script><script type="math/tex; mode=display">
+SSC:r-1</script><script type="math/tex; mode=display">
+SSE:(k-1)(r-1)</script><p>类似地，将 SSR、SSC、SSE 除上对应的自由度可以得到误差项的均方 MSR、MSC、MSE。<br>接着在检验行因素对因变量的影响是否显著可以采用下面的统计量:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+F_{R}=\frac{M S R}{M S E} \sim F(k-1, (k-1)(r-1))
+\end{equation}</script><p>列因素:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+F_{C}=\frac{M S C}{M S E} \sim F(r-1, (k-1)(r-1))
+\end{equation}</script><p><strong>统计决策</strong><br>若 $F_{R}&gt;F_{\alpha}$, 则拒绝原假设 $H_{0}: \mu_{1}=\mu_{2}=\cdots=\mu_{i}=\cdots=\mu_{k}$, 表明 $\mu_{i}(i=1, 2, \cdots$, k) 之间的差异是显著的; 也就是说, 所检验的行因素对观测值有显著影响。<br>若 $F_{C}&gt;F_{\alpha}$, 则拒绝原假设 $H_{0}: \mu_{1}=\mu_{2}=\cdots=\mu_{j}=\cdots=\mu_{r}$, 表明 $\mu_{j}(j=1, 2, \cdots$, r) 之间的差异是显著的; 也就是说, 所检验的列因素对观测值有显著影响。</p>
+<h3 id="分析表"><a href="#分析表" class="headerlink" title="分析表"></a>分析表</h3><p><img src="../md_imgs/Analysis%20of%20Variance/2022-04-22-20-24-26.png" alt=""></p>
+<h3 id="关系强度的测量-1"><a href="#关系强度的测量-1" class="headerlink" title="关系强度的测量"></a>关系强度的测量</h3><p>两个自变量对因变量的联合效应定义为$R^2$</p>
+<script type="math/tex; mode=display">
+R^2=\frac{联合效应}{总效应}=\frac{SSR+SSC}{SST}</script><p><strong>因此，对于两个自变量而言，进行双因素方差分析要优于分别对两个因素进行单因素方差分析。与单因素方差分析相比，双因素方差分析下的误差平方和 SSE 与将两个因素分别进行单因素方差分析所得出的任何一个平方和都小，而且 P 值也变得更小了。这是因为在双因素方差分析中，误差平方和不包括两个自变量中的任何一个，因而减少了残差效应。而在单因素方差分析时，没有被研究的因素的误差包含在其中，这导致方差分析的误差增大。</strong></p>
+<h2 id="有交互作用的双因素方差分析"><a href="#有交互作用的双因素方差分析" class="headerlink" title="有交互作用的双因素方差分析"></a>有交互作用的双因素方差分析</h2><p>有交互作用的方差分析与无交互作用的方差分析相似，主要区别是有交互作用情况下因为两个自变量的交互作用在选取数据时要对两个变量的某一特定水平都进行多次抽样（对交互作用引起的误差要单独考虑），有交互作用的数据分结构如下所示:<br><img src="../md_imgs/Analysis%20of%20Variance/2022-05-11-10-42-31.png" alt=""></p>
+<h3 id="分析表-1"><a href="#分析表-1" class="headerlink" title="分析表"></a>分析表</h3><p><img src="../md_imgs/Analysis%20of%20Variance/2022-05-11-10-45-49.png" alt=""><br>与无交互作用相比，有交互作用的方差分析多了一项交互作用导致的误差平方和（SSRC）:</p>
+<script type="math/tex; mode=display">
+\begin{equation*}
+\operatorname{SSRC}=m \sum_{i=1}^{k} \sum_{j=1}^{r}\left(\bar{x}_{i j}-\bar{x}_{i} .-\bar{x}_{\cdot j}+\overline{\bar{x}}\right)^{2}
+\end{equation*}</script><p>SSRC有时也记为SSAB<br>此时对应的误差平方和SSE表示为:</p>
+<script type="math/tex; mode=display">
+SSE=SST-SSR-SSC-SSRC</script><p><strong>注意不同误差平方和自由度的大小</strong></p>
+<h1 id="方差分析→线性回归"><a href="#方差分析→线性回归" class="headerlink" title="方差分析→线性回归"></a>方差分析→线性回归</h1><p>方差分析到线性回归的过渡本质上是对抽样数据的误差对总体分布情况的误差进行分解的过程，行因素对抽样总体所造成的偏差可以用抽样总体的均值$\mu$与指定水平下总体的均值$\mu_i$的偏离情况$\alpha_i$来表示，接着引入误差项$\varepsilon_{ij}$来表示随机因素对因变量的影响，于是对于单因素方差分析模型，我们可以把抽样数据表示为:</p>
+<script type="math/tex; mode=display">
+X_{ij}=\mu+\alpha_i+\varepsilon_{ij}</script><p>因为总体数据服从正态分布，所以误差项$\varepsilon_{ij}=X_{ij}-(\mu+\alpha_i)\sim N(0,\sigma^2)$。于是单因素方差分析的原假设可以写作:</p>
+<script type="math/tex; mode=display">
+H_0:\alpha_1=\alpha_2=\cdots=\alpha_k=0</script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/Analysis%20of%20Variance/">https://kebuaaa.github.io/Analysis%20of%20Variance/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/Statistics/">Statistics</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../Regularization/"><img class="prev-cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">解读正则化</div></div></a></div><div class="next-post pull-right"><a href="../Lecture%200/"><img class="next-cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Lecture 0 introductions</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../Hypothesis%20testing/" title="假设检验"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">假设检验</div></div></a></div><div><a href="../Linear%20Regression/" title="一元线性回归"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-13</div><div class="title">一元线性回归</div></div></a></div><div><a href="../pvalues/" title="p-values"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-11</div><div class="title">p-values</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.</span> <span class="toc-text">有关术语</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AE%E5%88%86%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">误差分解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%81%87%E8%AE%BE"><span class="toc-number">3.</span> <span class="toc-text">基本假设</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E4%B8%80%E8%88%AC%E6%8F%90%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">问题的一般提法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">单因素方差分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">5.1.</span> <span class="toc-text">单因素方差分析表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%BC%BA%E5%BA%A6%E7%9A%84%E6%B5%8B%E9%87%8F"><span class="toc-number">5.2.</span> <span class="toc-text">关系强度的测量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E6%AF%94%E8%BE%83"><span class="toc-number">5.3.</span> <span class="toc-text">多重比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">双因素方差分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E5%8F%8C%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">6.1.</span> <span class="toc-text">无交互作用的双因素方差分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%A1%A8"><span class="toc-number">6.1.1.</span> <span class="toc-text">分析表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%BC%BA%E5%BA%A6%E7%9A%84%E6%B5%8B%E9%87%8F-1"><span class="toc-number">6.1.2.</span> <span class="toc-text">关系强度的测量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E4%BA%A4%E4%BA%92%E4%BD%9C%E7%94%A8%E7%9A%84%E5%8F%8C%E5%9B%A0%E7%B4%A0%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">6.2.</span> <span class="toc-text">有交互作用的双因素方差分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E8%A1%A8-1"><span class="toc-number">6.2.1.</span> <span class="toc-text">分析表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%E2%86%92%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">7.</span> <span class="toc-text">方差分析→线性回归</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

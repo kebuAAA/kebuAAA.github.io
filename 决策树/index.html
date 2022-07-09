@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>决策树 | 小明的博客</title><meta name="keywords" content="机器学习编程,Decesion Tree"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="决策树学习决策树是一种用来进行分类和回归的无参有监督学习方法，其目的是创建一种模型，从模型特征中学习简单的决策远着呢，从而预测一个目标变量的值。scikit-learn tree模块提供DecisionTreeClassifier类和DecisionTreeRegressor类，分别用于分类和回归问题。 分类问题DecisionTreeClassifier类的格式如下：class sklearn.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树">
+<meta property="og:url" content="https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="决策树学习决策树是一种用来进行分类和回归的无参有监督学习方法，其目的是创建一种模型，从模型特征中学习简单的决策远着呢，从而预测一个目标变量的值。scikit-learn tree模块提供DecisionTreeClassifier类和DecisionTreeRegressor类，分别用于分类和回归问题。 分类问题DecisionTreeClassifier类的格式如下：class sklearn.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600">
+<meta property="article:published_time" content="2022-03-26T02:34:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.663Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="机器学习编程">
+<meta property="article:tag" content="Decesion Tree">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '决策树',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">决策树</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.663Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="决策树"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="决策树学习"><a href="#决策树学习" class="headerlink" title="决策树学习"></a>决策树学习</h2><p>决策树是一种用来进行分类和回归的无参有监督学习方法，其目的是创建一种模型，从模型特征中学习简单的决策远着呢，从而预测一个目标变量的值。<br>scikit-learn tree模块提供<code>DecisionTreeClassifier</code>类和<code>DecisionTreeRegressor</code>类，分别用于分类和回归问题。</p>
+<h3 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h3><p><code>DecisionTreeClassifier</code>类的格式如下：<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">sklearn</span><span class="token punctuation">.</span>tree<span class="token punctuation">.</span>DecisionTreeClassifier<span class="token punctuation">(</span>criterion<span class="token operator">=</span><span class="token string">'gini'</span><span class="token punctuation">,</span> splitter<span class="token operator">=</span><span class="token string">'best'</span><span class="token punctuation">,</span> max_depth<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> min_samples_split<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> min_samples_leaf<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> min_weight_fraction_leaf<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> max_features<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> max_leaf_nodes<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> min_impurity_decrease<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> min_impurity_split<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> class_weight<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> presort<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<ul>
+<li>splitter：接收字符串，可选，表示节点分割策略，默认为’best’, 还可以是’random’</li>
+<li>max_depth:接收整数或None，表示决策树的最大深度，默认为None，表示所有叶子节点为纯节点</li>
+</ul>
+<p>对数据集构造决策树，首先生成DecisionTreeClassifier类的一个实例（如clf），然后使用该实例调用<code>fit()</code>方法进行训练。<br><code>fit(X, y, sample_weight=None, check_input=True, X_idx_sorted=None)</code><br>其中X, y为数组，表示样本输入属性值和目标值。<br>对训练好的决策树模型，可以使用<code>predict()</code>方法对新的样本进行预测。<code>predict()</code>的格式为：<br>predict(X, check_input=True)<br>其中X接收与fit()方法中X有相同特征的数组。predict()将返回新样本值的预测类别。<br>sklearn.tree模块提供了训练的决策树模型的<strong>文本描述输出方法</strong><code>export_graphviz()</code>，如果要查看训练的<strong>决策树模型参数</strong>，可以使用该方法，其格式为：<br><pre class="line-numbers language-python" data-language="python"><code class="language-python">sklearn<span class="token punctuation">.</span>tree<span class="token punctuation">.</span>export_graphviz<span class="token punctuation">(</span>decision_tree<span class="token punctuation">,</span> out_file<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> max_depth<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> feature_names<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> class_names<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> label<span class="token operator">=</span>’<span class="token builtin">all</span>’<span class="token punctuation">,</span> filled<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> leaves_parallel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> impurity<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> node_ids<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> proportion<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> rotate<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> rounded<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> special_characters<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> precision<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br><img src="../md_imgs/决策树/0.png" alt="image.png"><br><img src="../md_imgs/决策树/1.png" alt="image.png"><br><code>export_graphviz()</code>返回dot_data参数，表示要输入到GraphViz的决策树模型描述，仅在out_file为None时返回。<br><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#例8-3 构造打篮球的决策树</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token comment">#读数据文件</span>
+PlayBasketball <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'D:/my_python/ch08/data/PlayBasketball2.csv'</span><span class="token punctuation">,</span>
+                             sep <span class="token operator">=</span> <span class="token string">','</span><span class="token punctuation">,</span>encoding <span class="token operator">=</span> <span class="token string">'ANSI'</span><span class="token punctuation">)</span>
+<span class="token comment">#观察playgolf数据集的列名称，即属性名称</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'PlayBasketball数据集的列名称（属性）为：\n'</span><span class="token punctuation">,</span>PlayBasketball<span class="token punctuation">.</span>columns<span class="token punctuation">)</span>
+<span class="token comment">#观察数据集</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'PlayBasketball数据集为:\n'</span><span class="token punctuation">,</span>PlayBasketball<span class="token punctuation">)</span>
+<span class="token comment">#设置训练用的各属性及值，其中Outlook属性用数值代替：Sunny: 1; Rain:2</span>
+train_data<span class="token operator">=</span>PlayBasketball<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'Weather'</span><span class="token punctuation">,</span> <span class="token string">'Temperature/℃'</span><span class="token punctuation">,</span> <span class="token string">'Courses'</span><span class="token punctuation">,</span> <span class="token string">'Partner'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token comment">#观察训练集</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>train_data<span class="token punctuation">)</span>
+<span class="token comment">#设置训练用的目标属性及值</span>
+train_target<span class="token operator">=</span>PlayBasketball<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'Play'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token comment">#观察目标集</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>train_target<span class="token punctuation">)</span>
+<span class="token comment">#导入scikit-learn的tree模块</span>
+<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> tree
+<span class="token comment">#调用决策树分类器，添加参数</span>
+clf <span class="token operator">=</span> tree<span class="token punctuation">.</span>DecisionTreeClassifier<span class="token punctuation">(</span>criterion<span class="token operator">=</span><span class="token string">'entropy'</span><span class="token punctuation">,</span>max_depth<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token comment">#将训练集和目标集进行匹配训练</span>
+clf<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>train_data<span class="token punctuation">,</span>train_target<span class="token punctuation">)</span>
+
+dot_data<span class="token operator">=</span>tree<span class="token punctuation">.</span>export_graphviz<span class="token punctuation">(</span>clf<span class="token punctuation">,</span> out_file<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span>
+                              feature_names<span class="token operator">=</span>train_data<span class="token punctuation">.</span>columns<span class="token punctuation">,</span>
+                              class_names<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+                              filled<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> rounded<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token comment">#观察dot_data决策结果数据文件</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'dot_data决策结果数据文件为：\n'</span><span class="token punctuation">,</span>dot_data<span class="token punctuation">)</span>
+<span class="token comment">#导入graphviz模块，将训练生成的决策树数据文件可视化。要求事先已安装好graphviz模块。</span>
+<span class="token keyword">import</span> graphviz
+<span class="token comment">#设置环境变量，将graphviz的bin目录加到PATH</span>
+<span class="token keyword">import</span> os
+os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"PATH"</span><span class="token punctuation">]</span> <span class="token operator">+=</span> os<span class="token punctuation">.</span>pathsep <span class="token operator">+</span> <span class="token string">'D:/Program Files/Graphviz2.38/bin/'</span>
+<span class="token comment">#决策树可视化</span>
+<span class="token comment">#中文的办法：#graph = graphviz.Source(dot_data.replace('helvetica','"Microsoft YaHei"'), encoding='utf-8')</span>
+graph<span class="token operator">=</span>graphviz<span class="token punctuation">.</span>Source<span class="token punctuation">(</span>dot_data<span class="token punctuation">)</span>
+graph
+<span class="token comment">#使用决策树进行预测，观察对新的数据的决策结果</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'新的数据为[1,30,6,False]时的决策结果为：'</span><span class="token punctuation">,</span>clf<span class="token punctuation">.</span>predict<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'新的数据为[2,25,2,True]时的决策结果为：'</span><span class="token punctuation">,</span>clf<span class="token punctuation">.</span>predict<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'新的数据为[1,25,2,True]时的决策结果为：'</span><span class="token punctuation">,</span>clf<span class="token punctuation">.</span>predict<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91/">https://kebuaaa.github.io/%E5%86%B3%E7%AD%96%E6%A0%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BC%96%E7%A8%8B/">机器学习编程</a><a class="post-meta__tags" href="../tags/Decesion-Tree/">Decesion Tree</a></div><div class="post_share"><div class="social-share" data-image="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../%E5%86%B3%E7%AD%96%E6%A0%91%EF%BC%88DT%EF%BC%89/"><img class="prev-cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">决策树（DT）</div></div></a></div><div class="next-post pull-right"><a href="../%E4%BA%A7%E7%94%9F%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/"><img class="next-cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">产生和加载数据集</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../Tensorflow%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/" title="Tensorflow深度学习框架"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Tensorflow深度学习框架</div></div></a></div><div><a href="../scikit-learn%E5%BA%93/" title="scikit-learn库"><img class="cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">scikit-learn库</div></div></a></div><div><a href="../%E4%BA%A7%E7%94%9F%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86/" title="产生和加载数据集"><img class="cover" src="https://images.pexels.com/photos/768125/pexels-photo-768125.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">产生和加载数据集</div></div></a></div><div><a href="../%E5%9B%9E%E5%BD%92/" title="回归"><img class="cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">回归</div></div></a></div><div><a href="../%E5%9B%BE%E5%83%8F/" title="图像"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">图像</div></div></a></div><div><a href="../%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%A5%9E%E5%99%A8sklearn%E5%81%9A%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%EF%BC%9F/" title="如何使用机器学习神器sklearn做特征工程？"><img class="cover" src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">如何使用机器学习神器sklearn做特征工程？</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">决策树学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">分类问题</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

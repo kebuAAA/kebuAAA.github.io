@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>hexo书写规范 | 小明的博客</title><meta name="keywords" content="blog,Hexo"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="对hexo博客的写作常用方法以及butterfly主题的使用技巧进行一个简单的记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo书写规范">
+<meta property="og:url" content="https://kebuaaa.github.io/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="对hexo博客的写作常用方法以及butterfly主题的使用技巧进行一个简单的记录。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tse4-mm.cn.bing.net/th/id/OIP-C.j7Bw19HA9uWHkX0nf_JlkQHaEK?w=307&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7">
+<meta property="article:published_time" content="2022-06-20T05:32:06.000Z">
+<meta property="article:modified_time" content="2022-07-09T02:00:34.661Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tse4-mm.cn.bing.net/th/id/OIP-C.j7Bw19HA9uWHkX0nf_JlkQHaEK?w=307&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7"><link rel="shortcut icon" href="../img/favicon.png"><link rel="canonical" href="https://kebuaaa.github.io/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hexo书写规范',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-07-09 10:00:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="../img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="../tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="../categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://tse4-mm.cn.bing.net/th/id/OIP-C.j7Bw19HA9uWHkX0nf_JlkQHaEK?w=307&amp;h=180&amp;c=7&amp;r=0&amp;o=5&amp;dpr=1.25&amp;pid=1.7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="../index.html">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="../index.html"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="../archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="../tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="../categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="../link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="../about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">hexo书写规范</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-20T05:32:06.000Z" title="发表于 2022-06-20 13:32:06">2022-06-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-09T02:00:34.661Z" title="更新于 2022-07-09 10:00:34">2022-07-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="../categories/%E4%BE%BF%E6%8D%B7%E9%AB%98%E6%95%88/">便捷高效</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="hexo书写规范"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="插入bilibili视频"><a href="#插入bilibili视频" class="headerlink" title="插入bilibili视频"></a>插入bilibili视频</h1><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> 30% 45%<span class="token punctuation">;</span><span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span><span class="token property">margin-bottom</span><span class="token punctuation">:</span> 10px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>//player.bilibili.com/player.html?aid=67554570&amp;bvid=BV1XJ411P7yW&amp;cid=117115530&amp;page=1&amp;danmaku=0&amp;high_quality=1<span class="token punctuation">"</span></span> <span class="token attr-name">scrolling</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no<span class="token punctuation">"</span></span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">frameborder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no<span class="token punctuation">"</span></span> <span class="token attr-name">framespacing</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">allowfullscreen</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="butterfly-tag-plugins"><a href="#butterfly-tag-plugins" class="headerlink" title="butterfly tag plugins"></a>butterfly tag plugins</h1><h2 id="note"><a href="#note" class="headerlink" title="note"></a>note</h2><div class="tabs" id="note"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#note-1">简介</button></li><li class="tab"><button type="button" data-href="#note-2">通用设置</button></li><li class="tab"><button type="button" data-href="#note-3">用法 1</button></li><li class="tab"><button type="button" data-href="#note-4">用法 2（自定义 icon）</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="note-1"><p>butterfly提供了两种不同的note形式，一种可以自定义icon，一种是为了编辑方便预先默认了一些icon。</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="note-2"><p>修改 <code>主题配置文件</code></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">note</span><span class="token punctuation">:</span>
+  <span class="token comment"># Note tag style values:</span>
+  <span class="token comment">#  - simple    bs-callout old alert style. Default.</span>
+  <span class="token comment">#  - modern    bs-callout new (v2-v3) alert style.</span>
+  <span class="token comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span>
+  <span class="token comment">#  - disabled  disable all CSS styles import of note tag.</span>
+  <span class="token key atrule">style</span><span class="token punctuation">:</span> simple
+  <span class="token key atrule">icons</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">border_radius</span><span class="token punctuation">:</span> <span class="token number">3</span>
+  <span class="token comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span>
+  <span class="token comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span>
+  <span class="token key atrule">light_bg_offset</span><span class="token punctuation">:</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>icons</code>和<code>light_bg_offset</code>只对<em>方法一</em>生效</p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="note-3"><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% note <span class="token url">[<span class="token content">class</span>] [<span class="token variable">no-icon</span>]</span> [style] %&#125;
+Any content (support inline tags too.io).
+&#123;% endnote %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class</td>
+<td>【可选】标识，不同的标识有不同的配色（ default / primary / success / info / warning / danger ）</td>
+</tr>
+<tr>
+<td>no-icon</td>
+<td>【可选】不显示 icon</td>
+</tr>
+<tr>
+<td>style</td>
+<td>【可选】可以覆盖配置中的 style （simple/modern/flat/disabled）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>flat</p>
+</blockquote>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% note flat %&#125;
+默認 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note default flat %&#125;
+default 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note primary flat %&#125;
+primary 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note success flat %&#125;
+success 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note info flat %&#125;
+info 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note warning flat %&#125;
+warning 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note danger flat %&#125;
+danger 提示塊標籤
+&#123;% endnote %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="note flat"><p>默認 提示塊標籤</p>
+</div>
+
+<div class="note default flat"><p>default 提示塊標籤</p>
+</div>
+
+<div class="note primary flat"><p>primary 提示塊標籤</p>
+</div>
+
+<div class="note success flat"><p>success 提示塊標籤</p>
+</div>
+
+<div class="note info flat"><p>info 提示塊標籤</p>
+</div>
+
+<div class="note warning flat"><p>warning 提示塊標籤</p>
+</div>
+
+<div class="note danger flat"><p>danger 提示塊標籤</p>
+</div>
+
+<blockquote>
+<p>no-icon</p>
+</blockquote>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% note no-icon %&#125;
+默認 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note default no-icon %&#125;
+default 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note primary no-icon %&#125;
+primary 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note success no-icon %&#125;
+success 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note info no-icon %&#125;
+info 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note warning no-icon %&#125;
+warning 提示塊標籤
+&#123;% endnote %&#125;
+
+&#123;% note danger no-icon %&#125;
+danger 提示塊標籤
+&#123;% endnote %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="note no-icon flat"><p>默認 提示塊標籤</p>
+</div>
+
+<div class="note default no-icon flat"><p>default 提示塊標籤</p>
+</div>
+
+<div class="note primary no-icon flat"><p>primary 提示塊標籤</p>
+</div>
+
+<div class="note success no-icon flat"><p>success 提示塊標籤</p>
+</div>
+
+<div class="note info no-icon flat"><p>info 提示塊標籤</p>
+</div>
+
+<div class="note warning no-icon flat"><p>warning 提示塊標籤</p>
+</div>
+
+<div class="note danger no-icon flat"><p>danger 提示塊標籤</p>
+</div><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="note-4"><blockquote>
+<p>3.2.0 以上版本支持</p>
+</blockquote>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% note <span class="token url">[<span class="token content">color</span>] [<span class="token variable">icon</span>]</span> [style] %&#125;
+Any content (support inline tags too.io).
+&#123;% endnote %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td>【可选】顔色 (default / blue / pink / red / purple / orange / green)</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>【可选】可配置自定义 icon (只支持 fontawesome 图标, 也可以配置 no-icon )</td>
+</tr>
+<tr>
+<td>style</td>
+<td>【可选】可以覆盖配置中的 style（simple/modern/flat/disabled）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>flat</p>
+</blockquote>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% note 'fab fa-cc-visa' flat %&#125;
+你是刷 Visa 還是 UnionPay
+&#123;% endnote %&#125;
+&#123;% note blue 'fas fa-bullhorn' flat %&#125;
+2021年快到了....
+&#123;% endnote %&#125;
+&#123;% note pink 'fas fa-car-crash' flat %&#125;
+小心開車 安全至上
+&#123;% endnote %&#125;
+&#123;% note red 'fas fa-fan' flat%&#125;
+這是三片呢？還是四片？
+&#123;% endnote %&#125;
+&#123;% note orange 'fas fa-battery-half' flat %&#125;
+你是刷 Visa 還是 UnionPay
+&#123;% endnote %&#125;
+&#123;% note purple 'far fa-hand-scissors' flat %&#125;
+剪刀石頭布
+&#123;% endnote %&#125;
+&#123;% note green 'fab fa-internet-explorer' flat %&#125;
+前端最討厭的瀏覽器
+&#123;% endnote %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="note icon-padding flat"><i class="note-icon fab fa-cc-visa"></i><p>你是刷 Visa 還是 UnionPay</p>
+</div>
+<div class="note blue icon-padding flat"><i class="note-icon fas fa-bullhorn"></i><p>2021年快到了….</p>
+</div>
+<div class="note pink icon-padding flat"><i class="note-icon fas fa-car-crash"></i><p>小心開車 安全至上</p>
+</div>
+<div class="note red icon-padding flat"><i class="note-icon fas fa-fan"></i><p>這是三片呢？還是四片？</p>
+</div>
+<div class="note orange icon-padding flat"><i class="note-icon fas fa-battery-half"></i><p>你是刷 Visa 還是 UnionPay</p>
+</div>
+<div class="note purple icon-padding flat"><i class="note-icon far fa-hand-scissors"></i><p>剪刀石頭布</p>
+</div>
+<div class="note green icon-padding flat"><i class="note-icon fab fa-internet-explorer"></i><p>前端最討厭的瀏覽器</p>
+</div>
+
+<blockquote>
+<p>disabled</p>
+</blockquote>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">&#123;% note 'fab fa-cc-visa' disabled %&#125;
+你是刷 Visa 還是 UnionPay
+&#123;% endnote %&#125;
+&#123;% note blue 'fas fa-bullhorn' disabled %&#125;
+2021年快到了....
+&#123;% endnote %&#125;
+&#123;% note pink 'fas fa-car-crash' disabled %&#125;
+小心開車 安全至上
+&#123;% endnote %&#125;
+&#123;% note red 'fas fa-fan' disabled %&#125;
+這是三片呢？還是四片？
+&#123;% endnote %&#125;
+&#123;% note orange 'fas fa-battery-half' disabled %&#125;
+你是刷 Visa 還是 UnionPay
+&#123;% endnote %&#125;
+&#123;% note purple 'far fa-hand-scissors' disabled %&#125;
+剪刀石頭布
+&#123;% endnote %&#125;
+&#123;% note green 'fab fa-internet-explorer' disabled %&#125;
+前端最討厭的瀏覽器
+&#123;% endnote %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="note icon-padding disabled"><i class="note-icon fab fa-cc-visa"></i><p>你是刷 Visa 還是 UnionPay</p>
+</div>
+<div class="note blue icon-padding disabled"><i class="note-icon fas fa-bullhorn"></i><p>2021年快到了….</p>
+</div>
+<div class="note pink icon-padding disabled"><i class="note-icon fas fa-car-crash"></i><p>小心開車 安全至上</p>
+</div>
+<div class="note red icon-padding disabled"><i class="note-icon fas fa-fan"></i><p>這是三片呢？還是四片？</p>
+</div>
+<div class="note orange icon-padding disabled"><i class="note-icon fas fa-battery-half"></i><p>你是刷 Visa 還是 UnionPay</p>
+</div>
+<div class="note purple icon-padding disabled"><i class="note-icon far fa-hand-scissors"></i><p>剪刀石頭布</p>
+</div>
+<div class="note green icon-padding disabled"><i class="note-icon fab fa-internet-explorer"></i><p>前端最討厭的瀏覽器</p>
+</div><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+<p>参考文档：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.bootcss.com/docs/">Hexo官方写作文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/dc584b87/">butterfly页面配置教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/4aa8abbe/">Butterfly 主题配置-1</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/D0n9X1n/hexo-blog-encrypt/blob/master/ReadMe.zh.md">博客加密</a></li>
+<li><a target="_blank" rel="noopener" href="https://gahotx.cn/posts/522b7e2e.html">插入哔哩哔哩视频</a></li>
+<li><a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/2df239ce/">标签外挂</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-browsersync">浏览器实时显示编辑效果</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kebuaaa.github.io/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/">https://kebuaaa.github.io/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kebuaaa.github.io" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="../tags/blog/">blog</a><a class="post-meta__tags" href="../tags/Hexo/">Hexo</a></div><div class="post_share"><div class="social-share" data-image="https://tse4-mm.cn.bing.net/th/id/OIP-C.j7Bw19HA9uWHkX0nf_JlkQHaEK?w=307&amp;h=180&amp;c=7&amp;r=0&amp;o=5&amp;dpr=1.25&amp;pid=1.7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="../Linear%20Programming/"><img class="prev-cover" src="https://images.pexels.com/photos/733854/pexels-photo-733854.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">线性规划</div></div></a></div><div class="next-post pull-right"><a href="../%E7%A2%8E%E7%A2%8E%E5%BF%B5/"><img class="next-cover" src="../img/cover_img.jpg" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">碎碎念</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="../hello-world/" title="博客的第一次整顿"><img class="cover" src="https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-05</div><div class="title">博客的第一次整顿</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%92%E5%85%A5bilibili%E8%A7%86%E9%A2%91"><span class="toc-number">1.</span> <span class="toc-text">插入bilibili视频</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#butterfly-tag-plugins"><span class="toc-number">2.</span> <span class="toc-text">butterfly tag plugins</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#note"><span class="toc-number">2.1.</span> <span class="toc-text">note</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://tse4-mm.cn.bing.net/th/id/OIP-C.j7Bw19HA9uWHkX0nf_JlkQHaEK?w=307&amp;h=180&amp;c=7&amp;r=0&amp;o=5&amp;dpr=1.25&amp;pid=1.7')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 可不</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../js/utils.js"></script><script src="../js/main.js"></script><script src="../js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
