@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Robot';
+    src: url('/font/Roboto-Medium.ttf') format("truetype");
+    /* src: url('/font/ZiTiChuanQiXueJiaHei-FenSiMianFei-2.woff') format('woff'); */
+
+}
+@font-face {
+    font-family: 'ZiTiChuanQiXueJiaHei';
+    src: url('/font/ZiTiChuanQiXueJiaHei-FenSiMianFei-2.woff') format('woff');
+    font-size: 4em;
+    
+}
+@font-face {
+    font-family: 'SourceHanSerifSC-Light';
+    src: url('/font/SourceHanSerifSC-Light.woff') format("woff");
+    
+}
+body {
+    font-family: 'Robot','SourceHanSerifSC-Light','ZiTiChuanQiXueJiaHei',"Microsoft YaHei", sans-serif;
+}
