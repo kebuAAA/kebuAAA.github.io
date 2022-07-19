@@ -10,11 +10,11 @@
     font-size: 4em;
     
 }
-@font-face {
+/* @font-face {
     font-family: 'SourceHanSerifSC-Light';
     src: url('/font/SourceHanSerifSC-Light.woff') format("woff");
     
-}
+} */
 body {
-    font-family: 'Robot','SourceHanSerifSC-Light','ZiTiChuanQiXueJiaHei',"Microsoft YaHei", sans-serif;
+    font-family: 'Robot','SourceHanSerifSC-Light'/* ,'ZiTiChuanQiXueJiaHei',"Microsoft YaHei", sans-serif */;
 }
