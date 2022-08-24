@@ -11,3 +11,7 @@
 #aside-content .card-widget {
     background: var(--light_bg_color)
 }
+/* 页脚透明色 */
+#footer:before {
+    content: none !important;
+}
