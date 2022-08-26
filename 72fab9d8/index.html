@@ -1,0 +1,391 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>集成学习 | 小明的博客</title><meta name="keywords" content="机器学习,Ensemble Learning"><meta name="author" content="可不"><meta name="copyright" content="可不"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="概述 集成学习(Ensemble Learning)是将多个弱机器学习器结合，构建一个有较强性能的机器学习器的方法。 构成集成学习的弱学习器称为基学习器、基估计器。 根据集成学习的各基估计器类型是否相同，可以分为同质和异质两种方法。 集成学习常用的方法有Bagging,、随机森林、AdaBoost、梯度树提升(Gradient Tree Boosting)、XGBoost等方法。 分类 根据每个基">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成学习">
+<meta property="og:url" content="https://xiaoming.vercel.app/72fab9d8/index.html">
+<meta property="og:site_name" content="小明的博客">
+<meta property="og:description" content="概述 集成学习(Ensemble Learning)是将多个弱机器学习器结合，构建一个有较强性能的机器学习器的方法。 构成集成学习的弱学习器称为基学习器、基估计器。 根据集成学习的各基估计器类型是否相同，可以分为同质和异质两种方法。 集成学习常用的方法有Bagging,、随机森林、AdaBoost、梯度树提升(Gradient Tree Boosting)、XGBoost等方法。 分类 根据每个基">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10022.webp">
+<meta property="article:published_time" content="2022-03-26T02:34:00.000Z">
+<meta property="article:modified_time" content="2022-08-25T05:59:58.200Z">
+<meta property="article:author" content="可不">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="Ensemble Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10022.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://xiaoming.vercel.app/72fab9d8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/4.0.27/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://gcore.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://gcore.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '集成学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-08-25 13:59:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-plugins@latest/lib/tag_plugins.min.css" media="defer" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/carousel-touch.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-tag-plugins@latest/lib/mindmap.min.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">101</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">62</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">集成学习<a class="post-edit-link" href="https://github.dev/kebuAAA/myblog/blob/main/source/_posts/集成学习.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-25T05:59:58.200Z" title="更新于 2022-08-25 13:59:58">2022-08-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/">模型</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="集成学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="概述">概述</h1>
+<p>集成学习(Ensemble Learning)是将多个弱机器学习器结合，构建一个有较强性能的机器学习器的方法。<br>
+构成集成学习的弱学习器称为基学习器、基估计器。<br>
+根据集成学习的各基估计器类型是否相同，可以分为同质和异质两种方法。<br>
+集成学习常用的方法有Bagging,、随机森林、AdaBoost、梯度树提升(Gradient Tree Boosting)、XGBoost等方法。</p>
+<h1 id="分类">分类</h1>
+<p>根据每个基学习器是否同属一个种类。可以将集成学习分为同质和异质两种类型。</p>
+<h2 id="同质集成学习">同质集成学习</h2>
+<p>同质表示各个基学习器都属于同一个种类，比如都是决策树学习器，或者同为神经网络学习器。<br>
+目前来说，同质个体学习器的应用最为广泛。一般的集成学习均指同质个体学习器。而同质个体学习器使用最多的模型是CART决策树和神经网络。<br>
+<strong>同质个体学习器按照个体学习器之间是否存在依赖关系可以分为两类。</strong><br>
+第一种是个体学习器之间不存在强依赖关系，一系列个体学习器可以<strong>并行生成</strong>，代表算法有Bagging和随机森林（Random Forest）系列算法。<br>
+第二类是个体学习器之间存在强依赖关系，一般来说当前的个体学习器的输入要依赖于上一个个体学习器的输出，一系列个体学习器基本都需要串行生成，代表算法是Boosting系列算法。</p>
+<h2 id="异质集成学习">异质集成学习</h2>
+<p>异质指是所有的个体学习器不全是一个种类的。例如对分类问题，对训练集采用支持向量机个体学习器、逻辑回归个体学习器和朴素贝叶斯个体学习器来学习，再通过某种结合策略来确定最终的分类强学习器。</p>
+<h1 id="增强数据多样性的方法">增强数据多样性的方法</h1>
+<h2 id="数据样本">数据样本</h2>
+<p>可以采用输入样本扰动、输入特征扰动、输出表示扰动等方法来增加输入数据样本多样性。</p>
+<h3 id="输入样本扰动">输入样本扰动</h3>
+<p>根据原始数据产生多个不同种类的数据子集，然后利用不同的数据子集训练个体学习器。</p>
+<ul>
+<li>重采样法，有放回采样得到固定样本容量的数据子集；</li>
+<li>序列采样法，根据前一轮的学习结果进行采样；</li>
+<li>混合采样方法。</li>
+</ul>
+<h3 id="输入特征扰动">输入特征扰动</h3>
+<p>从初始特征集中抽取出若干特征性子集，再基于每个特征子集训练基学习器。<br>
+不仅能产生差异性大的个体，还会因属性数的减少而大幅节省计算时间。</p>
+<ul>
+<li>随机子空间算法</li>
+<li>随机森林算法</li>
+<li>特征及拆分：将原始特征集拆分为多个不相交的特征子集分别训练个体学习器。在高维特征的学习任务重，特征集拆分具有良好的表现效果。</li>
+</ul>
+<h3 id="输出参数扰动">输出参数扰动</h3>
+<p>对输出表示进行操纵以增强多样性，可对训练样本的类标进行变动．</p>
+<ul>
+<li>翻转法，随机改变一些训练样本的标记；</li>
+<li>输出调制法，将分类输出转化为回归输出后构建个体学习器;</li>
+<li>将原始任务拆解为多个可同时求解的子任务，或将多分类拆解为一系列的二分类问题。</li>
+</ul>
+<h2 id="算法参数">算法参数</h2>
+<p>使用不同的<strong>参数集</strong>产生不同的个体学习器。<br>
+即使每个个体学习器都使用相同的训练集，由于使用的参数不同，输出会随参数改变而变化。<br>
+example：在神经网络中，通过改变网络中的节点数，或者将不同的初始权重分配给网络，或者使用不同的网络拓扑结构来提高网络多样性。</p>
+<h2 id="模型结构多样性">模型结构多样性</h2>
+<p>由个体学习器的内部结构或外部结构的不同所产生。<br>
+例如在神经网络集成系统中添加一些决策树通常会提高整体的性能。</p>
+<h1 id="结合策略">结合策略</h1>
+<h2 id="弱学习器常用">弱学习器常用</h2>
+<h3 id="平均法">平均法</h3>
+<p>将各个个体学习群的输出进行平均或加权平均，作为集成学习的结果。适用大规模数据集的集成，学习的权重较多，加权平均法易导致过拟合</p>
+<h3 id="投票法">投票法</h3>
+<p>将各个个体学习器的输出进行投票，将投票结果作为集成学习的输出。</p>
+<ul>
+<li>绝对多数投票法（超过半数）</li>
+<li>相对多数投票法</li>
+<li>加权投票法</li>
+</ul>
+<h2 id="学习法">学习法</h2>
+<p>将训练集弱学习器的学习结果作为输入，将训练集的输出作为输出，重新训练一个学习器来得到最终结果。<br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/0.png" alt="image.png"></p>
+<h1 id="常用方法">常用方法</h1>
+<h2 id="bootstrap-aggregating-bagging-并行">Bootstrap Aggregating（Bagging）–并行</h2>
+<p><strong>算法步骤</strong>：给定一个大小为n的训练集D，Bagging算法从中均匀、有放回地（即使用自助抽样法）选出m个大小为n’的子集Di，作为新的训练集。在这m个训练集上使用分类、回归等算法，则可得到m个模型，再通过取平均值、取多数票等方法，即可得到Bagging的结果。</p>
+<p>如果抽取的数据集的随机子集是特征的随机子集，叫做随机子空间 (<strong>Random Subspaces</strong>).<br>
+如果基估计器构建在对于样本和特征抽取的子集之上时，叫做随机补丁(<strong>Random Patches</strong>).</p>
+<p>Bagging方法在原始训练集的随机子集上构建一类黑盒估计器的多个实例，然后把这些估计器的预测结果结合起来形成最终的预测结果。<br>
+该方法通过在构建模型的过程中引入随机性，来减少基估计器的方差。<br>
+在多数情况下，Bagging方法提供了一种非常简单的方式来对单一模型进行改进，而无需修改背后的算法。<br>
+Bagging方法可以<strong>减小过拟合</strong>，通常在强分类器和复杂模型上使用时表现的很好。<br>
+下边介绍一种对分类器权重进行学习的方法：</p>
+<h2 id="stacking">Stacking</h2>
+<p><img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/1.png" alt="image.png"></p>
+<h2 id="boosting-串行">Boosting–串行</h2>
+<p>Boosting算法是一类将弱学习器（<strong>分类正确率略大于或小于50%，否则可能导致分类器权重变成负数如AdaBoost</strong>）提升为强学习器的集成学习方法，通过改变训练样本的权值，学习多个分类器，并将这些分类器进行<strong>线性组合</strong>，提高泛化性能。<br>
+<strong>大多数Boost方法会改变数据的概率分布（数据权值）</strong>，具体而言就是提高<strong>前一个学习器</strong>错分类的数据的权值，降低正确分类数据的权值，使得被错误分类的数据在下轮的训练中更受关注 <strong>（串行）</strong>；<br>
+然后根据不同分布调用弱学习算法得到一系列弱学习器实现，再将这些学习器线性组合。<br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/2.png" alt="image.png"><br>
+<strong>强化之好处</strong><br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/3.png" alt="image.png"></p>
+<h3 id="adaboost-数据挖掘十大算法之一">AdaBoost–数据挖掘十大算法之一</h3>
+<p><img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/4.png" alt="image.png"><br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/5.png" alt="image.png"><br>
+说明：</p>
+<ul>
+<li>学习过程中强调被分类错误的数据：
+<ul>
+<li>提高分类器分类错误的样本数据的权值</li>
+<li>提高误差率小的弱分类器的权值（加权多数表决）</li>
+</ul>
+</li>
+<li>误差率的解释：由于数据的样本有权重，所以在在计算模型的分类误差率时要把分类错误的样本数据占的权值来进行计数。即训练器上的分类误差率等于各个分类错误样本的权值之和。</li>
+<li>分类错误的样本权值被扩大<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mn>2</mn><msub><mi>α</mi><mi>t</mi></msub></mrow></msup><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msub><mi>ϵ</mi><mi>t</mi></msub></mrow><msub><mi>ϵ</mi><mi>t</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">e^{2\alpha_t}=\frac{1-\epsilon_t}{\epsilon_t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:-0.0037em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3063079999999998em;vertical-align:-0.44509999999999994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8612079999999999em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathdefault mtight">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">−</span><span class="mord mtight"><span class="mord mathdefault mtight">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.29634285714285713em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.44509999999999994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>（分类器分类正确的几率odds）.</li>
+<li>H(x)的自变量的正负确定输出的类的类型，绝对值决定分类的置信度</li>
+<li>每次学习一个基本分类器，同时根据基分类器的错误率给定该分类器的权重，再根据该分类器的分类结果更新数据集的权值分布。</li>
+</ul>
+<h4 id="训练误差分析">训练误差分析</h4>
+<p>AdaBoost最基本的性质是它能在学习过程中不断减少训练误差。<br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/6.png" alt="image.png"></p>
+<p>损失函数的整合更加简洁，保证<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">Z_{t+1}&lt;1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，就能保证学习过程中能降低损失函数。<br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/7.png" alt="image.png"><br>
+取等条件即是我们更新权重的方法</p>
+<h4 id="另一个角度看adaboost-一个有内涵的机器学习方式">另一个角度看AdaBoost（一个有内涵的机器学习方式）</h4>
+<p>AdaBoost算法可以看成是加法模型（基分类器的线性组合）、损失函数为指数函数(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>x</mi><mi>p</mi><mo stretchy="false">(</mo><mo>−</mo><mi>y</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">exp(-yf(x))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">e</span><span class="mord mathdefault">x</span><span class="mord mathdefault">p</span><span class="mopen">(</span><span class="mord">−</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>)、学习算法为前向分步算法时的二类分类模型。</p>
+<h3 id="reginboost">ReginBoost</h3>
+<p>AdaBoost方法固定权重意味着输入样本并不会改变基学习器的权重，这样的话有的时候分类可能是有问题的，下边介绍一种<strong>随着输入值</strong>改变的动态权重算法<br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/8.png" alt="image.png"><br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/9.png" alt="image.png"><br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/10.png" alt="image.png"><br>
+两种分类器，一种划分种类，一种用来鉴别分类的可信度（以输入点与临近五个样本点之间的距离来衡量，KNN）<br>
+训练误差可能不会很高，但测试误差会相对更低。</p>
+<h3 id="树提升算法-boosting-tree">树提升算法（boosting tree）</h3>
+<p>提升树是以分类树或回归树为基本分类器的提升方法。提升树被认为是统计学习中性能最好的方法之一。提升方法实际采用加法模型和前向分步算法。以决策树为基函数的提升方法叫做提升树。</p>
+<h4 id="model">Model</h4>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>f</mi><mi>M</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mi>T</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">;</mo><msub><mi mathvariant="normal">Θ</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f_M(x)=\sum_{m=1}^{M}T(x;\Theta_m)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.0954490000000003em;vertical-align:-1.267113em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.882887em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.267113em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">Θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">;</mo><msub><mi mathvariant="normal">Θ</mi><mi>m</mi></msub><mo stretchy="false">)</mo><mtext>表示决策树</mtext></mrow><annotation encoding="application/x-tex">T(x;\Theta_m)\text{表示决策树}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">Θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord text"><span class="mord cjk_fallback">表示决策树</span></span></span></span></span></span></p>
+<p>考虑到分类决策树的强化算法与AdaBoost算法类似，下面侧重讨论回归问题的提升树</p>
+<h4 id="向前步进算法">向前步进算法</h4>
+<p><img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/11.png" alt="image.png"><br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/12.png" alt="image.png"></p>
+<h4 id="gradient-tree-boosting">Gradient Tree Boosting</h4>
+<p>对于一般的损失函数，使用向前步进算法优化决策树并不容易。于是通过优化损失函数的极值求法来进行优化：<br>
+<img src= "/img/loading.gif" data-lazy-src="../md_imgs/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/13.png" alt="image.png"></p>
+<h5 id="xgboost">XGBoost</h5>
+<p>XGBoost是一个优化的分布式梯度增强库，设计为<strong>高效、灵活和可移植</strong>。在梯度增强框架下实现了机器学习算法。XGBoost提供了一个并行的树增强，可以快速、准确地解决许多数据科学问题。<br>
+XGBoost也使用<strong>决策树作为基估计器</strong>。适用于大数据集的学习。<br>
+但在XGBoost中，<strong>每棵树是一个一个往里面加的</strong>，每加一个都是希望效果能够提升。<br>
+一开始树是0，然后往里面加树，相当于多了一个函数，再加第二棵树，相当于又多了一个函数，以此类推。<br>
+要保证加入新的函数能够提升整体表达效果。提升表达效果的意思就是说加上新的树之后，目标函数（就是损失）的值会下降。<br>
+通过在目标函数加上一个惩罚项来减少叶子节点的个数以防止过拟合。<br>
+优化目标函数：</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://xiaoming.vercel.app">可不</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://xiaoming.vercel.app/72fab9d8/">https://xiaoming.vercel.app/72fab9d8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://xiaoming.vercel.app" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><a class="post-meta__tags" href="/tags/Ensemble-Learning/">Ensemble Learning</a></div><div class="post_share"><div class="social-share" data-image="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10022.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://gcore.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/daddfc09/"><img class="prev-cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10025.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">项目创建（代码规范）</div></div></a></div><div class="next-post pull-right"><a href="/ac38a68c/"><img class="next-cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10031.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">隐马尔可夫模型</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/48d4318c/" title="EM算法及其推广"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10009.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">EM算法及其推广</div></div></a></div><div><a href="/b0c1c655/" title="Entroy"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10040.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Entroy</div></div></a></div><div><a href="/ff80a634/" title="Logistic Regression"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10052.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">Logistic Regression</div></div></a></div><div><a href="/b6e6478a/" title="决策树（DT）"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10051.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">决策树（DT）</div></div></a></div><div><a href="/763d1c5d/" title="回归分析"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10048.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">回归分析</div></div></a></div><div><a href="/6a835baa/" title="图像处理"><img class="cover" src= "/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10007.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-26</div><div class="title">图像处理</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E8%B4%A8%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.1.</span> <span class="toc-text">同质集成学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E8%B4%A8%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.2.</span> <span class="toc-text">异质集成学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A2%9E%E5%BC%BA%E6%95%B0%E6%8D%AE%E5%A4%9A%E6%A0%B7%E6%80%A7%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">增强数据多样性的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%B7%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">数据样本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E6%9C%AC%E6%89%B0%E5%8A%A8"><span class="toc-number">3.1.1.</span> <span class="toc-text">输入样本扰动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E7%89%B9%E5%BE%81%E6%89%B0%E5%8A%A8"><span class="toc-number">3.1.2.</span> <span class="toc-text">输入特征扰动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0%E6%89%B0%E5%8A%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">输出参数扰动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%8F%82%E6%95%B0"><span class="toc-number">3.2.</span> <span class="toc-text">算法参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="toc-number">3.3.</span> <span class="toc-text">模型结构多样性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E5%90%88%E7%AD%96%E7%95%A5"><span class="toc-number">4.</span> <span class="toc-text">结合策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B1%E5%AD%A6%E4%B9%A0%E5%99%A8%E5%B8%B8%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">弱学习器常用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E6%B3%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">平均法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%95%E7%A5%A8%E6%B3%95"><span class="toc-number">4.1.2.</span> <span class="toc-text">投票法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">学习法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bootstrap-aggregating-bagging-%E5%B9%B6%E8%A1%8C"><span class="toc-number">5.1.</span> <span class="toc-text">Bootstrap Aggregating（Bagging）–并行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stacking"><span class="toc-number">5.2.</span> <span class="toc-text">Stacking</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#boosting-%E4%B8%B2%E8%A1%8C"><span class="toc-number">5.3.</span> <span class="toc-text">Boosting–串行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#adaboost-%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95%E4%B9%8B%E4%B8%80"><span class="toc-number">5.3.1.</span> <span class="toc-text">AdaBoost–数据挖掘十大算法之一</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">训练误差分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%A7%92%E5%BA%A6%E7%9C%8Badaboost-%E4%B8%80%E4%B8%AA%E6%9C%89%E5%86%85%E6%B6%B5%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">另一个角度看AdaBoost（一个有内涵的机器学习方式）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reginboost"><span class="toc-number">5.3.2.</span> <span class="toc-text">ReginBoost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95-boosting-tree"><span class="toc-number">5.3.3.</span> <span class="toc-text">树提升算法（boosting tree）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#model"><span class="toc-number">5.3.3.1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%91%E5%89%8D%E6%AD%A5%E8%BF%9B%E7%AE%97%E6%B3%95"><span class="toc-number">5.3.3.2.</span> <span class="toc-text">向前步进算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gradient-tree-boosting"><span class="toc-number">5.3.3.3.</span> <span class="toc-text">Gradient Tree Boosting</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#xgboost"><span class="toc-number">5.3.3.3.1.</span> <span class="toc-text">XGBoost</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/4.0.27/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.2.0/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://my-twikoo-one.vercel.app',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://my-twikoo-one.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/twikoo/1.4.18/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/Scripts/js/snowflake.js"></script><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://gcore.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0.5s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><script defer src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-tag-plugins@latest/lib/mindmap.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
