@@ -1,4 +1,4 @@
-window.onload = () => {
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">window.onload = () => {
     // 添加 相册壁纸拖拽（电脑）和长按（手机）切换背景 监听 没相册可删除，或者看下面创建相册教程
     try {
         let time = ''

@@ -1,4 +1,4 @@
-setInterval(() => {
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css">setInterval(() => {
     // let create_time = Math.round(new Date('2021-10-15 00:00:00').getTime() / 1000); //在此行修改建站时间
     // 有苹果用户发现safari浏览器不能正常运行，百度了一下发现是格式化的问题，改成下面这种应该就可以了。感谢反馈。
     let create_time = Math.round(new Date('2022/06/17 14:00:00').getTime() / 1000); //在此行修改建站时间
