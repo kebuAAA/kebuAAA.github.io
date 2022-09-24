@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/markmap-toolbar@0.14.3/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://gcore.jsdelivr.net/npm/d3@6.7.0"></script><script src="https://gcore.jsdelivr.net/npm/markmap-view@0.14.3"></script><script src="https://gcore.jsdelivr.net/npm/markmap-toolbar@0.14.3/dist/index.umd.min.js"></script><script>(r => {
+                setTimeout(r);
+              })(() => {
+  const {
+    markmap,
+    mm
+  } = window;
+  const toolbar = new markmap.Toolbar();
+  toolbar.attach(mm);
+  const el = toolbar.render();
+  el.setAttribute('style', 'position:absolute;bottom:20px;right:20px');
+  document.body.append(el);
+})</script><script>((getMarkmap, getOptions, root, jsonOptions) => {
+        const markmap = getMarkmap();
+        window.mm = markmap.Markmap.create('svg#mindmap', (getOptions || markmap.deriveOptions)(jsonOptions), root);
+      })(() => window.markmap,null,{"type":"root","depth":0,"content":"","children":[{"type":"heading","depth":1,"payload":{"lines":[0,1]},"content":"<a href=\"#美化页面显示\">美化页面显示</a>"},{"type":"heading","depth":1,"payload":{"lines":[1,2]},"content":"<a href=\"#site/post\">site/post</a>"},{"type":"heading","depth":1,"payload":{"lines":[2,3]},"content":"<a href=\"#introduction\">Introduction</a>"},{"type":"heading","depth":1,"payload":{"lines":[3,4]},"content":"<a href=\"#特征统计量\">特征统计量</a>"},{"type":"heading","depth":1,"payload":{"lines":[4,5]},"content":"<a href=\"#平稳性\">平稳性</a>","children":[{"type":"heading","depth":2,"payload":{"lines":[5,6]},"content":"<a href=\"#注意\">注意</a>"},{"type":"heading","depth":2,"payload":{"lines":[6,7]},"content":"<a href=\"#从图形分析序列的平稳性\">从图形分析序列的平稳性</a>"},{"type":"heading","depth":2,"payload":{"lines":[7,8]},"content":"<a href=\"#平稳序列自相关系数的估计\">平稳序列自相关系数的估计</a>"}]},{"type":"heading","depth":1,"payload":{"lines":[8,9]},"content":"<a href=\"#白噪声序列\">白噪声序列</a>"},{"type":"heading","depth":1,"payload":{"lines":[9,10]},"content":"<a href=\"#平稳时间序列分析\">平稳时间序列分析</a>","children":[{"type":"heading","depth":2,"payload":{"lines":[10,11]},"content":"<a href=\"#基础方法\">基础方法</a>"}]},{"type":"heading","depth":1,"payload":{"lines":[11,12]},"content":"<a href=\"#自回归过程\">自回归过程</a>"},{"type":"heading","depth":1,"payload":{"lines":[12,13]},"content":"<a href=\"#移动平均过程\">移动平均过程</a>"},{"type":"heading","depth":1,"payload":{"lines":[13,14]},"content":"<a href=\"#arma过程\">ARMA过程</a>"}],"payload":{}},{"initialExpandLevel":1,"maxWidth":300,"color":null,"colorFreezeLevel":0})</script>
+</body>
+</html>
