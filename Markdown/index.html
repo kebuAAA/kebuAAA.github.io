@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Markdown语法规范 | 小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="文字编辑 对齐方式和文本字体大小 markdown实现文本对齐也可以借助内嵌html实现: &amp;lt;p align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;这是一个右对齐&amp;lt;&amp;#x2F;p&amp;gt;&amp;lt;p align&amp;#x3D;&amp;quot;left&amp;quot;&amp;gt;这是一个左对齐&amp;lt;&amp;#x2F;p&amp;gt;&amp;lt;c"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.top/Markdown/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4e3a07c287f8fb6cfc09bf5a7fdc1dd7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "e8bjif1knd");</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Markdown语法规范',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-28 10:34:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><link rel="stylesheet" href="/Scripts/css/tags.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/Scripts/css/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="小明的博客"><span class="site-name">小明的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Markdown语法规范<a class="post-edit-link" href="https://github.dev/kebuAAA/myblog/blob/main/source/_posts/Markdown.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-06T02:32:00.000Z" title="发表于 2022-04-06 10:32:00">2022-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-28T02:34:00.000Z" title="更新于 2022-09-28 10:34:00">2022-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%BE%BF%E6%8D%B7%E9%AB%98%E6%95%88/">便捷高效</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Markdown语法规范"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="文字编辑">文字编辑</h1>
+<h2 id="对齐方式和文本字体大小">对齐方式和文本字体大小</h2>
+<p>markdown实现文本对齐也可以借助内嵌html实现:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">&quot;right&quot;</span>&gt;</span>这是一个右对齐<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">&quot;left&quot;</span>&gt;</span>这是一个左对齐<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span>这是一个左对齐<span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p align="right">这是一个右对齐</p>
+<p align="left">这是一个左对齐</p>
+<center>居中</center>
+<h1 align="center">一个居中的h1标题</h1>
+<center>一个居中的标题</center>
+<center>
+<font size="16">
+一个调节字体大小为16后的居中标题
+</font>
+</center>
+<h2 id="换行">换行</h2>
+<p>markdown换行有两种方式:<br>
+段内换行是两个空格加上一个回车<br>
+这是一个段内换行</p>
+<p>段落换行则是直接一个回车</p>
+<p>注意观察两种换行情境下行间距大小</p>
+<h2 id="上下标">上下标</h2>
+<p>可以使用上标标签<sup></sup>和下标标签<sub></sub>。<br>
+例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">n<span class="tag">&lt;<span class="name">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sup</span>&gt;</span>+b<span class="tag">&lt;<span class="name">sub</span>&gt;</span>1<span class="tag">&lt;/<span class="name">sub</span>&gt;</span>n+8=0</span><br></pre></td></tr></table></figure>
+<p>n<sup>2</sup>+b<sub>1</sub>n+8=0</p>
+<h2 id="高亮">高亮</h2>
+<p>可以使用高亮标签<mark></mark>。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">这是<span class="tag">&lt;<span class="name">mark</span>&gt;</span>高亮文本<span class="tag">&lt;/<span class="name">mark</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这是<mark>高亮文本</mark></p>
+<p><mark>除了文本高亮以外，还可以对文本的颜色进行修改</mark>，一般修改文本的颜色有两种方式:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;#0099ff&quot;</span>&gt;</span>十六进制颜色表示方式 #0099ff<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>红色<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><font color=#0099ff>十六进制颜色表示方式 #0099ff</font><br>
+<font color=red>红色</font><br>
+就实用性来讲，感觉十六进制没有后边一种好用一些，一些常见的颜色都可以直接跟英文名得到。<br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/singit/article/details/49179643">一些不常用的颜色点这里</a></p>
+<h2 id="表格">表格</h2>
+<p>也可以插入 html 的表格，<a target="_blank" rel="noopener" href="http://pressbin.com/tools/excel_to_html_table/index.html">这是一个表格转 html 的网站</a></p>
+<h1 id="图片插入">图片插入</h1>
+<p>再插入图片位置的下方<code>_Image Caption_</code>插入斜体表示索引</p>
+<h2 id="多张图片的并排处理">多张图片的并排处理</h2>
+<p>借助html语言嵌入:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">pic1.jpg</span> <span class="attr">border</span>=<span class="string">0</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">pic2.jpg</span> <span class="attr">border</span>=<span class="string">0</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>tr定义行，th定义表头，td定义列</p>
+<h1 id="网页插入">网页插入</h1>
+<p>对于那些 Markdown 语法没有规定的情形，可以直接在 Markdown 里面使用 Html 语法。只有 2 点限制：(1)Html 的块级元素必须用空行和 Markdown 的内容分隔开。(2)Html 标签前后没有空格。</p>
+<p><a target="_blank" rel="noopener" href="https://daringfireball.net/projects/markdown/syntax#html">这是一个文档</a></p>
+<h2 id="折叠列表">折叠列表</h2>
+<p>利用markdown的网页插入功能，可以实现在markdown中拥有折叠列表:</p>
+<details>
+  <summary>折叠文本</summary>
+  此处可书写文本
+  嗯，是可以书写文本的
+</details>
+<details>
+  <summary>折叠代码块</summary>
+  <pre><code> 
+     System.out.println("虽然可以折叠代码块");
+     System.out.println("但是代码无法高亮");
+  </code></pre>
+</details>
+主要使用的是`html5` 中的`details`标签
+<p>对上述进行灵活变通，还可以插入图片进入折叠列表</p>
+<h3 id="复杂文件的插入">复杂文件的插入</h3>
+<p>复杂的网页插入可以使用<code>iframe</code>标签，这样对原来的网页做更改或者替代都会相对容易些,例如:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;/assets/css-box-model/example4.html&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300px&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">scrolling</span>=<span class="string">&quot;auto&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span> <span class="attr">style</span>=<span class="string">&quot;box-shadow: 0px 0px 20px -10px #888;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在<code>src</code>处可以写上去引用的文件所在位置，另外为了防止插入的html被博客的页面布局渲染，可以在配置文件中将<code>skip-render</code>上添加进去对应的文件，目前本博客看到的部分开头的思维导图就是这样嵌入进去,对于hexo博客，则可以使用<code>iframe</code>外挂标签来实现该功能。</p>
+<h2 id="表格">表格</h2>
+<!-- <table border='0' border-spacing='0' cellspacing='0'>
+<tr>
+   <td><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src=1655800422583.png border=0></td>
+   <td><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src=1655800452395.png border=0></td>
+</tr>
+<tr>
+   <td><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src=1655800477095.png border=0></td>
+   <td><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src=1655800559254.png border=0></td>
+</tr>
+</table> -->
+<h1 id="列表">列表</h1>
+<p>有序列表用<code>1.</code>来实现，通过回车可以实现自动编号。<br>
+这里介绍一下待办列表的写法</p>
+<ul>
+<li>[x] 这是一个已办</li>
+<li>[ ] 这是一个待办</li>
+</ul>
+<h1 id="mermaid">mermaid</h1>
+<h2 id="flowchart">Flowchart</h2>
+<p>收藏夹里有一个在线编辑的网站可以用。<br>
+<a target="_blank" rel="noopener" href="https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNpNj8EKgzAMhl-l5LSBHrajh8G0wm4D5816KDabZdpKbdmG9d1XJ8JySv7vCyQTNFogJPAwfGhJSZkioc7VhRtRkzg--RLf1pN0V2inxH7l6UJINlFs5Ci1mtc4-y1cFXpCqwJH11lyqP9Z-dKe5Bs71hBBj6bnUoQbpsVkYFvskUESWsHNkwFTc_DcILjFXEirDSTWOIyAO6tvH9Vs8-pQycM7PSR33o04fwFaGEkQ">Live editor</a><br>
+一个最短的 mermaid 就像下边演示的这样，</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line"><span class="code">    node_name[内容]---|线上内容| node_name1&#123;中括号内写内容&#125;</span></span><br></pre></td></tr></table></figure>
+<p>渲染效果如下所示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR</span><br><span class="line">    node_name[内容]---|线上内容| node_name1&#123;中括号内写内容&#125;</span><br></pre></td></tr></table></figure>
+<p>第一行声明创建的图表类型，node_name 用来表示节点的名字，后边跟用{}、[]包裹着节点处的内容，然后‘—’表示节点之间的连接线段，长度用字符串长度代表，连接方式也在字符串中有所体现。最后||包裹的内容表示在连接线段上的内容，记得与节点声明隔一个空格。</p>
+<p><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/Markdown/mermaid-diagram-20220411184808.svg" alt=""></p>
+<h1 id="表格文件">表格文件</h1>
+<p>Markdown 的表格用‘|’表示列，用三个或者多个连字符并排表示列标题，常见的表格形式如下。通过调整引号进行单元格内容的对齐操作</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">| 列名 1 |  列名 2  | 列名三 |</span><br><span class="line">| :----- | :------: | -----: |</span><br><span class="line">| 左对齐 | 居中对齐 | 右对齐 |</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">列名 1</th>
+<th style="text-align:center">列名 2</th>
+<th style="text-align:right">列名三</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对齐</td>
+<td style="text-align:right">右对齐</td>
+</tr>
+</tbody>
+</table>
+<p>另外需要注意的是两条‘|’的距离可以任意长，这个不会对显示内容有什么影响。</p>
+<h1 id="参考文献">参考文献</h1>
+<p>参考文献的引入主要使用markdown的脚注语法，一般来说引用位置应该写<code>[^数字]</code>其中数字代表引用文献的序号，然后在文章末尾的地方生成脚注，具体语法为:</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">[<span class="symbol">^数字</span>]: <span class="link">url</span></span><br></pre></td></tr></table></figure>
+<p>然后会生成对应的脚注，据我目前的观察来看<code>[^数字]</code>是生成参考文献的一种方法，如果不加<code>^</code>则可以吧这种语法当成普通的脚注生成来使用，相对来说也比较简单，对于参考文献下的生成效果可以参看本文的参考文献<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>。</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p><a href="../72fab9d8">集成学习</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://kobal.top">爱编程的小明</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://kobal.top/Markdown/">https://kobal.top/Markdown/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kobal.top" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Markdown/">Markdown</a></div><div class="post_share"><div class="social-share" data-image="https://markdown.com.cn/hero.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90/" title="网页解析"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10042.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网页解析</div></div></a></div><div class="next-post pull-right"><a href="/Vscode/" title="Vscode常用快捷键"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://code.visualstudio.com/assets/images/code-stable.png" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vscode常用快捷键</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">爱编程的小明</div><div class="author-info__description">只要不折腾，万般可将就</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如网页加载较慢请尝试魔法上网，博客图文可能无关可以忽略</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E5%AD%97%E7%BC%96%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">文字编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F%E5%92%8C%E6%96%87%E6%9C%AC%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.1.</span> <span class="toc-text">对齐方式和文本字体大小</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">一个居中的h1标题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%A0%87"><span class="toc-number">2.2.</span> <span class="toc-text">上下标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E4%BA%AE"><span class="toc-number">2.3.</span> <span class="toc-text">高亮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.4.</span> <span class="toc-text">表格</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">图片插入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%BC%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%B9%B6%E6%8E%92%E5%A4%84%E7%90%86"><span class="toc-number">3.1.</span> <span class="toc-text">多张图片的并排处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E6%8F%92%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">网页插入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E5%8F%A0%E5%88%97%E8%A1%A8"><span class="toc-number">4.1.</span> <span class="toc-text">折叠列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E6%96%87%E4%BB%B6%E7%9A%84%E6%8F%92%E5%85%A5"><span class="toc-number">4.1.1.</span> <span class="toc-text">复杂文件的插入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">4.2.</span> <span class="toc-text">表格</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">列表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mermaid"><span class="toc-number">6.</span> <span class="toc-text">mermaid</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#flowchart"><span class="toc-number">6.1.</span> <span class="toc-text">Flowchart</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">表格文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">8.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10003.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Lasso回归"/></a><div class="content"><a class="title" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归">Lasso回归</a><time datetime="2023-11-14T16:00:00.000Z" title="更新于 2023-11-15 00:00:00">2023-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/岭回归_20231109082818.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="岭回归"/></a><div class="content"><a class="title" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归">岭回归</a><time datetime="2023-11-07T16:00:00.000Z" title="更新于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/优雅论文排版_20230921093206.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="优雅论文排版"/></a><div class="content"><a class="title" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版">优雅论文排版</a><time datetime="2023-09-20T16:00:00.000Z" title="更新于 2023-09-21 00:00:00">2023-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/多元统计分析_多元正态曲线.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="多元统计分析"/></a><div class="content"><a class="title" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析">多元统计分析</a><time datetime="2023-06-16T02:22:54.000Z" title="更新于 2023-06-16 10:22:54">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hypothesis%20testing/" title="假设检验"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10030.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="假设检验"/></a><div class="content"><a class="title" href="/Hypothesis%20testing/" title="假设检验">假设检验</a><time datetime="2023-05-09T02:34:00.000Z" title="更新于 2023-05-09 10:34:00">2023-05-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.kobal.top/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.staticfile.org/twikoo/1.6.22/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.kobal.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><script src="/Scripts/js/fireworks.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0.5s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/wow/1.1.2/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>

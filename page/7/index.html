@@ -1,20 +1,21 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="只要不折腾，万般可将就">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小明的博客">
-<meta property="og:url" content="https://kobal.cn/page/7/index.html">
-<meta property="og:site_name" content="小明的博客">
-<meta property="og:description" content="只要不折腾，万般可将就">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kobal.cn/img/avatar.webp">
-<meta property="article:author" content="爱编程的小明">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kobal.cn/img/avatar.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.cn/page/7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.staticfile.org/fancyapps-ui/4.0.27/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="只要不折腾，万般可将就"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.top/page/7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4e3a07c287f8fb6cfc09bf5a7fdc1dd7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "e8bjif1knd");</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
   translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
   noticeOutdate: undefined,
-  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -25,7 +26,7 @@
     post: false
   },
   runtime: '',
-  date_suffix: {
+  dateSuffix: {
     just: '刚刚',
     min: '分钟前',
     hour: '小时前',
@@ -35,85 +36,96 @@
   copyright: undefined,
   lightbox: 'fancybox',
   Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://gcore.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://gcore.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
   islazyload: true,
-  isAnchor: true
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '小明的博客',
   isPost: false,
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2022-09-11 12:17:21'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
+  postUpdate: '2024-07-06 16:50:45'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
         }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
       }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
         document.documentElement.setAttribute('data-theme', 'dark')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
         }
       }
-      win.activateLightMode = function () {
+      win.activateLightMode = () => {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
@@ -121,9 +133,9 @@
       }
       const t = saveToLocal.get('theme')
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
       const asideStatus = saveToLocal.get('aside-status')
       if (asideStatus !== undefined) {
         if (asideStatus === 'hide') {
@@ -133,35 +145,83 @@
         }
       }
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
       }
-    }
-    detectApple()
-    })(window)</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/Scripts/css/cardlistpost.min.css"/>
+      detectApple()
+    })(window)</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><link rel="stylesheet" href="/Scripts/css/tags.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/Scripts/css/cardlistpost.min.css"/>
 <style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
   white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
-<link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/index_img.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小明的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://travellings.link"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">小明的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/5e83a838/" title="综合实例"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10038.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="综合实例"></a></div><div class="recent-post-info"><a class="article-title" href="/5e83a838/" title="综合实例">综合实例</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-26T02:34:00.000Z" title="更新于 2022-08-26 10:34:00">2022-08-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/">编程</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/%E9%A1%B9%E7%9B%AE/">项目</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/">机器学习实战</a></span></div><div class="content">
+<link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="小明的博客"><span class="site-name">小明的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">小明的博客</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/Matplotlib/" title="Matplotlib库"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://matplotlib.org/_static/images/logo2.svg" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Matplotlib库"></a></div><div class="recent-post-info"><a class="article-title" href="/Matplotlib/" title="Matplotlib库">Matplotlib库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-31T16:08:00.000Z" title="发表于 2022-04-01 00:08:00">2022-04-01</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-19T16:08:00.000Z" title="更新于 2022-09-20 00:08:00">2022-09-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/Python%E5%BA%93/">Python库</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%BA%93/">Python库</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Matplotlib/">Matplotlib</a></span></div><div class="content">将本文结合代码使用效果更佳哦❤️❤️
+
+
+matplotlib is a desktop plotting package designed for creating (mostly twodimensional) publication-quality plots. The project was started by John Hunter in 2002 to enable a MATLAB-like plotting interface in Python.
+Over time, matplotlib has spawned a number of add-on toolkits for data visualization
+that use matplotlib for their underlying plotting. One of these is seaborn
+
+
+
+中文pdf
+
+老规矩，先放官方的文档,一大堆漂亮的demo袭来
+
+plot创建
+在matplotlib中，所有plot都存在与Figure对象中，需要先利用matplotlib.pyplot.Figur ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/" title="隐马尔可夫模型"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10044.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="隐马尔可夫模型"></a></div><div class="recent-post-info"><a class="article-title" href="/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/" title="隐马尔可夫模型">隐马尔可夫模型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T06:31:00.000Z" title="发表于 2022-03-27 14:31:00">2022-03-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-28T06:31:00.000Z" title="更新于 2022-03-28 14:31:00">2022-03-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/">模型</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Hidden-Markov-Model/">Hidden-Markov-Model</a></span></div><div class="content">与时间相关的变量在某一状态的取值StS_tSt​往往与它周围其它的状态相关，为了简化问题，提出一种假设叫齐次马尔科夫性假设：
+
+每一个时间状态的概率分布只与它的前一个状态相关
+
+满足这个假设的随机过程叫做马尔科夫过程，也称为马尔科夫链。
+若StS_tSt​是不可被观察的，那么则称为隐马尔可夫模型。隐马尔可夫模型虽然不能观察到StS_tSt​，但是会有一个输出OtO_tOt​,对此我们作出以下假设：
+
+观测独立性假设：OtO_tOt​只与StS_tSt​相关
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="python基础知识"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://www.python.org/static/community_logos/python-logo.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="python基础知识"></a></div><div class="recent-post-info"><a class="article-title" href="/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="python基础知识">python基础知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T04:27:00.000Z" title="发表于 2022-03-27 12:27:00">2022-03-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-29T04:27:00.000Z" title="更新于 2022-08-29 12:27:00">2022-08-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/%E5%9F%BA%E7%A1%80/">基础</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%9F%BA%E7%A1%80/">Python基础</a></span></div><div class="content">迭代器和生成器
+for element in [1, 2, 3]:    print(element)for element in (1, 2, 3):    print(element)for key in &#123;&#x27;one&#x27;:1, &#x27;two&#x27;:2&#125;:    print(key)for char in &quot;123&quot;:    print(char)for line in open(&quot;myfile.txt&quot;):    print(line, end=&#x27;&#x27;)
+我们之所以能通过 for 方法如此轻松的打印这些内容，从本质上说是因为列表元组等这些东西是一个可迭代对象。而 for 方法则可以调用迭代器对象的方法来实现对整个迭代对象的遍历。for 驱动可迭代对象调用 iter()返回了一个有next()方法的迭代器对象(可以通过 next（）访问），该方法可以逐一访问对象中的所有元素。
+
+生成器则是用来为迭代器产生数据的，写法类似于标准的函数，但当他们要返回数据时要使用 yield 函数 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/Numpy/" title="Numpy"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10049.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Numpy"></a></div><div class="recent-post-info"><a class="article-title" href="/Numpy/" title="Numpy">Numpy</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T02:49:00.000Z" title="发表于 2022-03-27 10:49:00">2022-03-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-28T02:49:00.000Z" title="更新于 2022-03-28 10:49:00">2022-03-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/Python%E5%BA%93/">Python库</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%BA%93/">Python库</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Numpy/">Numpy</a></span></div><div class="content">numpy(numerical  Python) 是 Python 数值计算最重要的基础包，大多数提供科学计算的包都是用 NumPy 的数组为构建基础。
+NumPy 可以用于数值计算的一个重要原因是因为他能处理大数组的数据：
+
+在连续的内存块储存数据，独立于其他 Python 内置对象（C 语言编写的算法库，在 C 的基础上封装）
+可以在整个数组上执行复杂的计算，不需要 for loop
+
+速查
+
+图片对应pdf.pdf
+介绍
+基本用法
+NumPy 最重要的一个特点就是 ndarray(n 维数组对象，一个快速而灵活的大数据集容器)
+Creating ndarray
+python 默认创建数组的数据类型是浮点数（方便科学计算）
+
+
+np.array():
+
+
+支持任何序列对象
+
+
+np.zeros（）
+np.empty()创建一个数组，值可能为 0 有些情况下为垃圾值
+np.arrange():类似于内置的 range 返回一个
+
+数组的数据类型
+
+类型转换–np.astype
+可以在创建数组时指定数值类型，也可以通过 np.astype()来转换数据类型（该函数会重新创建一个新的数组 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B/" title="综合实例"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10036.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="综合实例"></a></div><div class="recent-post-info"><a class="article-title" href="/%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B/" title="综合实例">综合实例</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-26T02:34:00.000Z" title="发表于 2022-03-26 10:34:00">2022-03-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-26T02:34:00.000Z" title="更新于 2022-08-26 10:34:00">2022-08-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%BC%96%E7%A8%8B/">编程</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BC%96%E7%A8%8B/">机器学习编程</a></span></div><div class="content">
 本文主要记录在学习机器学习过程中做的一些简单的小项目，项目代码均来自于杨志晓老师的《Python机器学习一本通》一书，机缘巧合之下这本书也算是我接触Python机器学习的启蒙书籍，书本很厚，但是其实内容不多，至今犹记得去年年末封在宿舍独自一人啃这本书的心酸经历，一本书看来收获颇丰。
 
 加载boston数据集、另存并重新访问
-from sklearn import datasets
-import pandas as pd
-import numpy as np
-import seaborn as sns
-boston=datasets.load_boston()
-print('boston.data的形状为：',boston.data.shape)
-print('boston.target的形状为：',boston.target.shape)
-print('boston.target的特征名称为：\n',boston.feature_names)
-df_boston=pd.DataFrame(np.hstack((boston.data,boston.target.reshape(-1, ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/4d712855/" title="SQL"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10041.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="SQL"></a></div><div class="recent-post-info"><a class="article-title" href="/4d712855/" title="SQL">SQL</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-25T16:16:00.000Z" title="发表于 2022-03-26 00:16:00">2022-03-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-26T16:16:00.000Z" title="更新于 2022-03-27 00:16:00">2022-03-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/SQL/">SQL</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="content">
+from sklearn import datasetsimport pandas as pdimport numpy as npimport seaborn as snsboston=datasets.load_boston()print(&#x27;boston.data的形状为：&#x27;,boston.data.shape)print(&#x27;boston.target的形状为：&#x27;,boston.target.shape)print(&#x27;boston.target的特征名称为：\n&#x27;,boston.feature_names)df_boston=pd.DataFrame(np.hstack((boston.data,bos ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/SQL/" title="SQL"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10009.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="SQL"></a></div><div class="recent-post-info"><a class="article-title" href="/SQL/" title="SQL">SQL</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-25T16:16:00.000Z" title="发表于 2022-03-26 00:16:00">2022-03-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-26T16:16:00.000Z" title="更新于 2022-03-27 00:16:00">2022-03-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/SQL/">SQL</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="content">
+
 关系型数据库的命名是因为数据库展现了表单形式的不同类型数据之间的关系。
-SQL是结构化数据查询语言，是我们用来像数据管理系统（Data Management system）下达指令时用到的.
-Sqlite是一个轻量的DBMS。
+SQL 是结构化数据查询语言，是我们用来像数据管理系统（Data Management system）下达指令时用到的.
+Sqlite 是一个轻量的 DBMS。
 SQL
-SQL既不是一个API也不是一种协议，而是一种声明式语言，只需要告诉它做什么即可。
-它是关系型数据库的通用语言。SQL查询是客户端发送给数据库服务器的文本字符串，指
-明需要执行的具体操作。
+SQL 既不是一个 API 也不是一种协议，而是一种声明式语言，只需要告诉它做什么即可。
+它是关系型数据库的通用语言。SQL 查询是客户端发送给数据库服务器的文本字符串，指明需要执行的具体操作。
 
 
 SQL is everywhere
@@ -170,7 +230,7 @@ SQL is everywhere
 SQL enables us to pull data from many sources
 
 
-SQL语句的三种类型：
+SQL 语句的三种类型：
 
 
 DDL（Data Definition Language，数据定义语言）：处理用户、数据库以及表单的创建、删除、约束和权限等
@@ -179,21 +239,18 @@ DDL（Data Definition Language，数据定义语言）：处理用户、数据�
 DML（Data Manipulation Language，数据操纵语言） 用来查询或者变更表中的记录。
 
 
-DCL（Data Control Language，数据控制语言） 用来确认或者取消对数据库中的数据进行的变更。除此之外，还可以对 RDBMS 的用户是否有权限操 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/264bec0e/" title="统计机器学习理论"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10046.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="统计机器学习理论"></a></div><div class="recent-post-info"><a class="article-title" href="/264bec0e/" title="统计机器学习理论">统计机器学习理论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-24T13:51:00.000Z" title="发表于 2022-03-24 21:51:00">2022-03-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-07T13:51:00.000Z" title="更新于 2022-09-07 21:51:00">2022-09-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">基础理论</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Statistical-learning/">Statistical learning</a></span></div><div class="content">
+DCL（Data Control Language，数据控制语言） 用来确认或者取消对数据库中的数据进行的变更。除此之外，还可以对 RDBMS 的 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" title="统计机器学习理论"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10038.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="统计机器学习理论"></a></div><div class="recent-post-info"><a class="article-title" href="/%E7%BB%9F%E8%AE%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA/" title="统计机器学习理论">统计机器学习理论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-24T13:51:00.000Z" title="发表于 2022-03-24 21:51:00">2022-03-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-20T13:51:00.000Z" title="更新于 2022-10-20 21:51:00">2022-10-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">基础理论</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></span></div><div class="content">Statistical learning
+
 The frequentist approach views the model parameters as unknown constants and estimates them by matching the model to the available training data using an appropriate metric.
 
 框架
 
-模型选择方法
-正则化
-模型选择的方法，正则化可以理解成一种对学习策略的改进（防止模型过拟合），在常规的风险函数或者损失函数的基础上加上一个正则化项或者叫罚项，一般具有以下形式：
-
-前一项是风险函数（对损失函数取均值），后一项是正则化项。λ\lambdaλ是超参数，需要利用验证数据(validafim data)进行估计
-交叉验证
 泛化能力（generalization ability）
 泛化能力是指该学习方法对未知数据的预测能力，是学习方法本质上重要的性质。依据测试数据集对模型的泛化能力加以评价是不可靠的，统计学习理论试图从理论上对学习方法的泛化能力进行分析。
 泛化误差：
-Rexp⁡(f^)=EP[L(Y,f^(X))]=∫X×YL ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/c6cd2d55/" title="Working with APIs"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10045.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Working with APIs"></a></div><div class="recent-post-info"><a class="article-title" href="/c6cd2d55/" title="Working with APIs">Working with APIs</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-23T13:46:00.000Z" title="发表于 2022-03-23 21:46:00">2022-03-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-24T13:46:00.000Z" title="更新于 2022-03-24 21:46:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/%E5%9F%BA%E7%A1%80/">基础</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E7%88%AC%E8%99%AB/">Python爬虫</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/API/">API</a></span></div><div class="content">
+Rexp⁡(f^)=EP[L(Y,f^(X))]=∫X×YL(y,f^(x))P(x,y)dx dy\begin{aligned}
+	R_{\exp }(\hat{f}) &amp;=E_{P}[L(Y, \hat{f}(X))] \\
+	&amp;=\int_{\mathcal{X} \times \mathcal{Y}} L(y, \hat{f ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/Working%20with%20APIs/" title="Working with APIs"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10043.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Working with APIs"></a></div><div class="recent-post-info"><a class="article-title" href="/Working%20with%20APIs/" title="Working with APIs">Working with APIs</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-23T13:46:00.000Z" title="发表于 2022-03-23 21:46:00">2022-03-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-24T13:46:00.000Z" title="更新于 2022-03-24 21:46:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/%E5%9F%BA%E7%A1%80/">基础</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E7%88%AC%E8%99%AB/">Python爬虫</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/API/">API</a></span></div><div class="content">
 An API is a collection of tools that allows different applications to interact.
 
 与我们获取网页相似，我们对API发出请求数据的请求，然后服务器作出相应，返回我们请求的数据。这一过程在python中主要通过requests库实现
@@ -208,26 +265,19 @@ post请求成功会返回一个201的状态码
 
 
 For example, we use POST requests to send information (instead of retrieve it), and to create objects on the API’s server. With the GitHub API, we can use POST requests to create new repositories.
-Different API endpoints choose what types of reques ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/daddfc09/" title="项目创建（代码规范）"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10030.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="项目创建（代码规范）"></a></div><div class="recent-post-info"><a class="article-title" href="/daddfc09/" title="项目创建（代码规范）">项目创建（代码规范）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-23T12:55:00.000Z" title="发表于 2022-03-23 20:55:00">2022-03-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-24T12:55:00.000Z" title="更新于 2022-03-24 20:55:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/%E5%9F%BA%E7%A1%80/">基础</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%9F%BA%E7%A1%80/">Python基础</a></span></div><div class="content">模块导入
+Different API endpoints choose what types of reques ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" title="代码规范"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://www.python.org/static/community_logos/python-logo.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="代码规范"></a></div><div class="recent-post-info"><a class="article-title" href="/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" title="代码规范">代码规范</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-23T12:55:00.000Z" title="发表于 2022-03-23 20:55:00">2022-03-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-24T12:55:00.000Z" title="更新于 2022-03-24 20:55:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/%E5%9F%BA%E7%A1%80/">基础</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%9F%BA%E7%A1%80/">Python基础</a></span></div><div class="content">文件组织
 python中模块的导入要用到import函数，若要导入自定的模块，若导入模块与运行文件在同一目录下，则直接输入导入模块的名字即可。若不在同一目录，则需要写出相对路径。模块可以看做是类和函数的集合。
-查看模块搜索路径–sys.path
-包
-为了python应用更具扩展性，我们可以多个模块组织成文件层次，这就产生了包。
-在对模块打包后再调用模块时，一般要输入：
-import package.module names
+查看模块搜索路径：sys.path
+包 &amp;库
+一般认为一个’*.py’文件是一个module，为了python应用更具扩展性，我们可以多个模块(module)组织成文件层次，这就产生了包(package)。
+
+一个文件夹是一个package，一个package下可以有多个module，但是一个module只能属于一个package。
+
 
 包的出现使得在创建模块时名字的冲突问题得以解决。需要注意的是在每个文件夹下都要建立一个_init__.py文件以保证Python将该文件夹所在的路径当做一个存在的包来处理，该文件夹可以是空的，也可以用来执行一些初始化代码或者声明全局 变量
-跨路径导入模块/包
-import语句除了支持import+package/module和直接import+*外，导入自定义的模块或者包要注明文件的路径。我们可以用&quot;.“和”…&quot;分别表示当前节点和当前节点的父级节点，还以上边图片中的文件结构为例子，如果在surround文件中导入echo和equalizer，应 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/14ea6df7/" title="数据库"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10041.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="数据库"></a></div><div class="recent-post-info"><a class="article-title" href="/14ea6df7/" title="数据库">数据库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-23T05:18:00.000Z" title="发表于 2022-03-23 13:18:00">2022-03-23</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-24T05:18:00.000Z" title="更新于 2022-03-24 13:18:00">2022-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="content">
-Databases—learn to love them, love to hate them.
-初学生爱，爱极生恨
-
-使用 RDBMS 时，最常见的系统结构就是客户端 / 服务器类型（C/S类型）
-数据库应用系统是在数据库管理系统支持下建立的计算机应用系统。数据库、数据库管理系统、数据库应用系统三者之间的关系如下图:
-
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/eb81e10/" title="time模块"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10016.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="time模块"></a></div><div class="recent-post-info"><a class="article-title" href="/eb81e10/" title="time模块">time模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-18T05:28:00.000Z" title="发表于 2022-03-18 13:28:00">2022-03-18</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-19T05:28:00.000Z" title="更新于 2022-03-19 13:28:00">2022-03-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/Python%E5%BA%93/">Python库</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%BA%93/">Python库</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Time-Library/">Time Library</a></span></div><div class="content">这一模块常用的是计时器函数，其次是时间戳函数。
+Python中的库(library)是借用其他编程语言的概念，没有特别具体的定义，Python库着重强调其功能性。在Python中，具有某些功能的模块和包都可以被称作库。
+导入模块/包
+import语句 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/time%E6%A8%A1%E5%9D%97/" title="time模块"><img class="post-bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10034.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="time模块"></a></div><div class="recent-post-info"><a class="article-title" href="/time%E6%A8%A1%E5%9D%97/" title="time模块">time模块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-18T05:28:00.000Z" title="发表于 2022-03-18 13:28:00">2022-03-18</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-19T05:28:00.000Z" title="更新于 2022-03-19 13:28:00">2022-03-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Python/Python%E5%BA%93/">Python库</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Python%E5%BA%93/">Python库</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/Time-Library/">Time-Library</a></span></div><div class="content">这一模块常用的是计时器函数，其次是时间戳函数。
 
 time.sleep(sec)：计时器函数，让工作暂停
 time.time():返回当前时间的时间戳，计算自1970.1.1到现在的时间差（通常叫做纪元，是不同系统之间最简单的交换日期和时间的方法）。
@@ -237,60 +287,102 @@ time.mktime():把stuct_time转化为纪元值（struct_time只能精确到秒）
 time.strftime(format, [t])： 把一个struct_time转换成格式化的时间字符串。格式由传入的format确定。支持的符号表如下：
 
 
-import time
-nowtime=time.time()
-print("today",nowtime)
-str1=time.strftime("今天是%Y年%m月的第%d天",time.localtime())
-print(str1)
-# ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/48d4318c/" title="EM算法及其推广"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10002.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="EM算法及其推广"></a></div><div class="recent-post-info"><a class="article-title" href="/48d4318c/" title="EM算法及其推广">EM算法及其推广</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-17T14:03:00.000Z" title="发表于 2022-03-17 22:03:00">2022-03-17</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-18T14:03:00.000Z" title="更新于 2022-03-18 22:03:00">2022-03-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">基础理论</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/EM%E7%AE%97%E6%B3%95/">EM算法</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E4%BC%98%E5%8C%96/">优化</a></span></div><div class="content">EM算法
-对于一般概率模型的学习策略，我们往往会采取极大似然估计或者贝叶斯估计的方法对模型的参数进行估计，但是需要注意的是这种估计方法都是建立在待估参数全部为已经知道结果的参数（观测变量）的基础之上的。当模型中有隐变量/潜在变量（数据不可观测的变量）时，往往会给极大化似然函数带来困难（隐变量可能会使得似然很难，包含有和或者积分的对数，难以利用传统的方法求得解析解）。
-
-由于隐变量的取值是无法直接观测得到的，因此我们称这种情况下的观测数据为“不完全数据”，当隐变量的观测值已知时才称为完全数据。
-
-面对上述问题我们很自然的一种想法是通过迭代算法来求解近似最大值，而EM算法正是在针对这个问题的求解过程中导出的一种来近似求解的对数似然函数极大化问题的算法。EM算法主要分为两步：
-
-E:求期望(expectation)
-M:求极大(maximization)
-
-EM算法的核心思想是在既定样本数据下在因变量最有可能的分布状态下利用极大似然估计模型的参数。
-算法导出
-针对一个含有隐变量的概率模型，这里假设隐变量为Z，观测数据Y关于参数θ\thetaθ的对数似然函数为L(θ)L(\theta)L(θ) ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/ff80a634/" title="Logistic Regression"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10008.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Logistic Regression"></a></div><div class="recent-post-info"><a class="article-title" href="/ff80a634/" title="Logistic Regression">Logistic Regression</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-17T09:25:00.000Z" title="发表于 2022-03-17 17:25:00">2022-03-17</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-18T09:25:00.000Z" title="更新于 2022-03-18 17:25:00">2022-03-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/">模型</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">有监督学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">有监督学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E5%9B%9E%E5%BD%92/">回归</a></span></div><div class="content">
-Logistic regression, despite its name, is a linear model for classification rather than regression. Logistic regression is also known in the literature as logit regression, maximum-entropy classification (MaxEnt) or the log-linear classifier. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function.
-
-Binary classification
-对于生活中常见的二分类问题，我们可以通过建立一个回归方程来解决，我们希望有一个函数h(x)的输入在[0,1]之间（二分类问题一般将类标签定义为0和1，因此[0,1]以外的值会给分类带来很多麻烦。下边介绍一个比较常用的函数 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/13bfde8e/" title="监督学习方法"><img class="post_bg" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10001.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="监督学习方法"></a></div><div class="recent-post-info"><a class="article-title" href="/13bfde8e/" title="监督学习方法">监督学习方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-16T11:09:00.000Z" title="发表于 2022-03-16 19:09:00">2022-03-16</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-30T02:12:00.000Z" title="更新于 2022-08-30 10:12:00">2022-08-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/">模型</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">有监督学习</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="article-meta-link">•</span><a class="article-meta__tags" href="/tags/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">有监督学习</a></span></div><div class="content">
-Perceptro n &amp;LR&amp; Boosting
-
-\begin{align*}
-&amp;Perceptron:\sum-yf_w(x)\\
-&amp;LR:\log_2(1+\exp(-yf_w(x))\\
-&amp;AdaBoost:\exp(-yf_w(x))
-\end{align*}
-
-可以看出，相较于简单的感知机模型，后两种模型的损失函数更加光滑，且对噪声数据比较明显（分类错误误差的增加比较多）
-</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/6/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#content-inner">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/8/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">爱编程的小明</div><div class="author-info__description">只要不折腾，万般可将就</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如果网页加载较慢请访问https://kebu.netlify.app/</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/41b133f5/" title="随机森林"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10006.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="随机森林"/></a><div class="content"><a class="title" href="/41b133f5/" title="随机森林">随机森林</a><time datetime="2022-09-08T13:55:39.000Z" title="更新于 2022-09-08 21:55:39">2022-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/72fab9d8/" title="集成学习"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10026.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="集成学习"/></a><div class="content"><a class="title" href="/72fab9d8/" title="集成学习">集成学习</a><time datetime="2022-09-08T04:36:00.000Z" title="更新于 2022-09-08 12:36:00">2022-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/f3404829/" title="碎碎念"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/碎碎念.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="碎碎念"/></a><div class="content"><a class="title" href="/f3404829/" title="碎碎念">碎碎念</a><time datetime="2022-09-07T14:40:00.000Z" title="更新于 2022-09-07 22:40:00">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/264bec0e/" title="统计机器学习理论"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10046.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="统计机器学习理论"/></a><div class="content"><a class="title" href="/264bec0e/" title="统计机器学习理论">统计机器学习理论</a><time datetime="2022-09-07T13:51:00.000Z" title="更新于 2022-09-07 21:51:00">2022-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/ccb44eef/" title="爬虫入门"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/top_img/10032.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="爬虫入门"/></a><div class="content"><a class="title" href="/ccb44eef/" title="爬虫入门">爬虫入门</a><time datetime="2022-09-07T02:34:00.000Z" title="更新于 2022-09-07 10:34:00">2022-09-07</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Vscode/" style="font-size: 1.15em; color: rgb(34, 175, 187)">Vscode</a><a href="/tags/Statistics/" style="font-size: 1.25em; color: rgb(167, 63, 183)">Statistics</a><a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.42em; color: rgb(151, 154, 88)">Python基础</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 1.35em; color: rgb(59, 100, 5)">数据分析</a><a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/" style="font-size: 1.22em; color: rgb(154, 193, 132)">可视化</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.45em; color: rgb(182, 80, 2)">机器学习</a><a href="/tags/EM%E7%AE%97%E6%B3%95/" style="font-size: 1.15em; color: rgb(75, 36, 80)">EM算法</a><a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 1.22em; color: rgb(189, 102, 167)">优化</a><a href="/tags/%E4%BF%A1%E6%81%AF%E7%86%B5/" style="font-size: 1.22em; color: rgb(84, 58, 40)">信息熵</a><a href="/tags/Excel/" style="font-size: 1.15em; color: rgb(100, 198, 36)">Excel</a><a href="/tags/Hypothesis-Testing/" style="font-size: 1.15em; color: rgb(77, 186, 105)">Hypothesis Testing</a><a href="/tags/Ipython/" style="font-size: 1.15em; color: rgb(17, 141, 95)">Ipython</a><a href="/tags/Game-Theory/" style="font-size: 1.22em; color: rgb(189, 109, 119)">Game Theory</a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/" style="font-size: 1.15em; color: rgb(37, 15, 74)">线性规划</a><a href="/tags/Linear-Regression/" style="font-size: 1.15em; color: rgb(90, 129, 32)">Linear Regression</a><a href="/tags/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/" style="font-size: 1.28em; color: rgb(86, 58, 19)">有监督学习</a><a href="/tags/%E5%9B%9E%E5%BD%92/" style="font-size: 1.25em; color: rgb(70, 95, 178)">回归</a><a href="/tags/Markdown/" style="font-size: 1.15em; color: rgb(104, 19, 104)">Markdown</a><a href="/tags/Python%E5%BA%93/" style="font-size: 1.38em; color: rgb(135, 36, 170)">Python库</a><a href="/tags/Matplotlib/" style="font-size: 1.15em; color: rgb(150, 197, 188)">Matplotlib</a><a href="/tags/Numpy/" style="font-size: 1.15em; color: rgb(90, 9, 182)">Numpy</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BC%96%E7%A8%8B/" style="font-size: 1.38em; color: rgb(128, 49, 141)">机器学习编程</a><a href="/tags/Pandas/" style="font-size: 1.18em; color: rgb(6, 38, 13)">Pandas</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.15em; color: rgb(164, 35, 121)">数据结构</a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 1.15em; color: rgb(50, 183, 4)">面向对象</a><a href="/tags/%E6%AD%A3%E5%88%99%E5%8C%96/" style="font-size: 1.15em; color: rgb(119, 106, 6)">正则化</a><a href="/tags/SQL/" style="font-size: 1.15em; color: rgb(5, 5, 11)">SQL</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.18em; color: rgb(25, 114, 134)">数据库</a><a href="/tags/Python%E7%88%AC%E8%99%AB/" style="font-size: 1.32em; color: rgb(117, 20, 193)">Python爬虫</a><a href="/tags/Seaborn/" style="font-size: 1.15em; color: rgb(149, 152, 142)">Seaborn</a><a href="/tags/Tensorflow/" style="font-size: 1.15em; color: rgb(5, 76, 29)">Tensorflow</a><a href="/tags/API/" style="font-size: 1.15em; color: rgb(117, 65, 80)">API</a><a href="/tags/Time-Library/" style="font-size: 1.18em; color: rgb(124, 144, 166)">Time Library</a><a href="/tags/help/" style="font-size: 1.15em; color: rgb(146, 90, 13)">help</a><a href="/tags/p-values/" style="font-size: 1.15em; color: rgb(19, 30, 194)">p-values</a><a href="/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0/" style="font-size: 1.15em; color: rgb(146, 17, 36)">匿名函数</a><a href="/tags/re/" style="font-size: 1.15em; color: rgb(185, 174, 19)">re</a><a href="/tags/scikit-learn/" style="font-size: 1.15em; color: rgb(81, 29, 73)">scikit-learn</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%AE%9E%E6%88%98/" style="font-size: 1.18em; color: rgb(52, 158, 46)">机器学习实战</a><a href="/tags/Decesion-Tree/" style="font-size: 1.18em; color: rgb(121, 85, 171)">Decesion Tree</a></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">100</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-09-11T04:17:20.654Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.staticfile.org/fancyapps-ui/4.0.27/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>function subtitleType () {
-  if (true) { 
-    window.typed = new Typed("#subtitle", {
-      strings: ["做自己的小太阳,才会有能量发光","从来没有想要刻意留住什么，但是不经意间已经失去了太多太多","我要做最璀璨的烟火，那么，你便不会忘记我。","我曾看到一个时间旅人，从身上拍落两场大雪，由心里携出一篮火焰，独自穿越整个冬天","上天从未抛弃过每一个努力生长的灵魂，也不曾辜负过每一个擦肩而过的生命","所有人生来属于不同的风景","前程似锦，快乐无无无忧","纵使世事千帆而过，路的尽头，也会有温柔和月光"],
+import timenowtime=time.time()print(&quot;today&quot;,nowtime)str1=time.strftime(&quot;今天是%Y年%m月的第%d天&quot;,time.localtime ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/6/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#content-inner">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#content-inner">10</a><a class="extend next" rel="next" href="/page/8/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">爱编程的小明</div><div class="author-info__description">只要不折腾，万般可将就</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如网页加载较慢请尝试魔法上网，博客图文可能无关可以忽略</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10003.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Lasso回归"/></a><div class="content"><a class="title" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归">Lasso回归</a><time datetime="2023-11-14T16:00:00.000Z" title="更新于 2023-11-15 00:00:00">2023-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/岭回归_20231109082818.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="岭回归"/></a><div class="content"><a class="title" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归">岭回归</a><time datetime="2023-11-07T16:00:00.000Z" title="更新于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/优雅论文排版_20230921093206.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="优雅论文排版"/></a><div class="content"><a class="title" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版">优雅论文排版</a><time datetime="2023-09-20T16:00:00.000Z" title="更新于 2023-09-21 00:00:00">2023-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/多元统计分析_多元正态曲线.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="多元统计分析"/></a><div class="content"><a class="title" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析">多元统计分析</a><time datetime="2023-06-16T02:22:54.000Z" title="更新于 2023-06-16 10:22:54">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hypothesis%20testing/" title="假设检验"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10030.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="假设检验"/></a><div class="content"><a class="title" href="/Hypothesis%20testing/" title="假设检验">假设检验</a><time datetime="2023-05-09T02:34:00.000Z" title="更新于 2023-05-09 10:34:00">2023-05-09</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Statistics/" style="font-size: 1.25em; color: rgb(127, 151, 121)">Statistics</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.45em; color: rgb(173, 200, 23)">机器学习</a><a href="/tags/EM%E7%AE%97%E6%B3%95/" style="font-size: 1.15em; color: rgb(104, 158, 180)">EM算法</a><a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 1.22em; color: rgb(46, 46, 170)">优化</a><a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.42em; color: rgb(190, 52, 153)">Python基础</a><a href="/tags/%E4%BF%A1%E6%81%AF%E7%86%B5/" style="font-size: 1.18em; color: rgb(76, 180, 144)">信息熵</a><a href="/tags/Hypothesis-Testing/" style="font-size: 1.15em; color: rgb(154, 19, 82)">Hypothesis Testing</a><a href="/tags/Ipython/" style="font-size: 1.18em; color: rgb(189, 60, 91)">Ipython</a><a href="/tags/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/" style="font-size: 1.28em; color: rgb(146, 147, 21)">回归分析</a><a href="/tags/Game-Theory/" style="font-size: 1.22em; color: rgb(77, 3, 162)">Game-Theory</a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/" style="font-size: 1.15em; color: rgb(121, 195, 164)">线性规划</a><a href="/tags/Linear-Regression/" style="font-size: 1.15em; color: rgb(181, 145, 133)">Linear-Regression</a><a href="/tags/Markdown/" style="font-size: 1.15em; color: rgb(123, 72, 147)">Markdown</a><a href="/tags/Python%E5%BA%93/" style="font-size: 1.38em; color: rgb(119, 100, 165)">Python库</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 1.35em; color: rgb(155, 19, 131)">数据分析</a><a href="/tags/Numpy/" style="font-size: 1.15em; color: rgb(171, 167, 141)">Numpy</a><a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/" style="font-size: 1.22em; color: rgb(139, 24, 115)">可视化</a><a href="/tags/Matplotlib/" style="font-size: 1.15em; color: rgb(170, 87, 20)">Matplotlib</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BC%96%E7%A8%8B/" style="font-size: 1.38em; color: rgb(74, 103, 112)">机器学习编程</a><a href="/tags/Pandas/" style="font-size: 1.18em; color: rgb(10, 101, 155)">Pandas</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.15em; color: rgb(103, 53, 35)">数据结构</a><a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 1.15em; color: rgb(99, 140, 146)">面向对象</a><a href="/tags/%E6%AD%A3%E5%88%99%E5%8C%96/" style="font-size: 1.18em; color: rgb(33, 88, 93)">正则化</a><a href="/tags/R/" style="font-size: 1.18em; color: rgb(8, 68, 36)">R</a><a href="/tags/SQL/" style="font-size: 1.15em; color: rgb(145, 12, 14)">SQL</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 1.15em; color: rgb(74, 59, 42)">数据库</a><a href="/tags/Python%E7%88%AC%E8%99%AB/" style="font-size: 1.32em; color: rgb(7, 73, 156)">Python爬虫</a><a href="/tags/SVM/" style="font-size: 1.18em; color: rgb(35, 20, 35)">SVM</a><a href="/tags/Seaborn/" style="font-size: 1.15em; color: rgb(128, 125, 157)">Seaborn</a><a href="/tags/Deep-Learning/" style="font-size: 1.18em; color: rgb(14, 173, 26)">Deep-Learning</a><a href="/tags/Tensorflow/" style="font-size: 1.15em; color: rgb(22, 26, 15)">Tensorflow</a><a href="/tags/Vscode/" style="font-size: 1.15em; color: rgb(131, 118, 41)">Vscode</a><a href="/tags/API/" style="font-size: 1.15em; color: rgb(93, 68, 30)">API</a><a href="/tags/Time-Library/" style="font-size: 1.18em; color: rgb(168, 13, 171)">Time-Library</a><a href="/tags/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0/" style="font-size: 1.15em; color: rgb(146, 103, 96)">匿名函数</a><a href="/tags/sklearn/" style="font-size: 1.15em; color: rgb(80, 193, 122)">sklearn</a><a href="/tags/re/" style="font-size: 1.15em; color: rgb(11, 96, 163)">re</a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 1.18em; color: rgb(52, 183, 140)">正则表达式</a><a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" style="font-size: 1.18em; color: rgb(35, 159, 58)">特征工程</a><a href="/tags/Latex/" style="font-size: 1.15em; color: rgb(190, 96, 113)">Latex</a></div></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">100</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-07-06T08:50:44.548Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="/js/tw_cn.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: (str) => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
       startDelay: 300,
       typeSpeed: 150,
       loop: true,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = '做自己的小太阳,才会有能量发光'
+      backSpeed: 50,
+    }, null))
+  },
+  run: (subtitleType) => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
   }
 }
-
-if (true) {
-  if (typeof Typed === 'function') {
-    subtitleType()
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["做自己的小太阳,才会有能量发光","从来没有想要刻意留住什么，但是不经意间已经失去了太多太多","我要做最璀璨的烟火，那么，你便不会忘记我。","我曾看到一个时间旅人，从身上拍落两场大雪，由心里携出一篮火焰，独自穿越整个冬天","上天从未抛弃过每一个努力生长的灵魂，也不曾辜负过每一个擦肩而过的生命","所有人生来属于不同的风景","前程似锦，快乐无无无忧","纵使世事千帆而过，路的尽头，也会有温柔和月光"])
   } else {
-    getScript('https://gcore.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+    document.getElementById("subtitle").textContent = "做自己的小太阳,才会有能量发光"
   }
-} else {
-  subtitleType()
-}</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+}
+typedJSFn.run(subtitleType)</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><script src="/Scripts/js/fireworks.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
 for(var i = 0;i<arr.length;i++){
     arr[i].classList.add('wow');
     arr[i].classList.add('animate__zoomIn');
@@ -306,4 +398,4 @@ for(var i = 0;i<arr.length;i++){
     arr[i].setAttribute('data-wow-delay', '');
     arr[i].setAttribute('data-wow-offset', '');
     arr[i].setAttribute('data-wow-iteration', '');
-  }</script></div><script defer src="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
+  }</script></div><script defer src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/wow/1.1.2/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>
