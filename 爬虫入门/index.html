@@ -1,1 +1,391 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>爬虫入门 | 小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="python爬虫书目推荐.xmind 基本内容 爬虫通俗来说就是一个模拟人类请求网站行为的程序。可以自动请求网页、并把数据抓取下来，然后使用一定的规则则提取有价值的数据。也可以理解为使用某种编程语言（这里当然是使用Python语言） 按照一定的顺序、 规则主动抓取互联网特定信息的程序或者脚本。 爬虫"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.top/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//www.clarity.ms"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?4e3a07c287f8fb6cfc09bf5a7fdc1dd7";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script>!function(e,t,n,c,a,i,r){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},(i=t.createElement(c)).async=1,i.src="https://www.clarity.ms/tag/e8bjif1knd",(r=t.getElementsByTagName(c)[0]).parentNode.insertBefore(i,r)}(window,document,"clarity","script")</script><script>const GLOBAL_CONFIG={root:"/",algolia:void 0,localSearch:void 0,translate:{defaultEncoding:1,translateDelay:0,msgToTraditionalChinese:"繁",msgToSimplifiedChinese:"簡"},noticeOutdate:void 0,highlight:{plugin:"highlight.js",highlightCopy:!0,highlightLang:!0,highlightHeightLimit:120},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},relativeDate:{homepage:!1,post:!1},runtime:"",dateSuffix:{just:"刚刚",min:"分钟前",hour:"小时前",day:"天前",month:"个月前"},copyright:void 0,lightbox:"fancybox",Snackbar:void 0,infinitegrid:{js:"https://gcore.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js",buttonText:"加载更多"},isPhotoFigcaption:!1,islazyload:!0,isAnchor:!1,percent:{toc:!0,rightside:!1},autoDarkmode:!1}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"爬虫入门",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2022-09-07 10:34:00"}</script><script>(e=>{e.saveToLocal={set:(e,t,o)=>{if(0===o)return;const a={value:t,expiry:Date.now()+864e5*o};localStorage.setItem(e,JSON.stringify(a))},get:e=>{const t=localStorage.getItem(e);if(!t)return;const o=JSON.parse(t);if(!(Date.now()>o.expiry))return o.value;localStorage.removeItem(e)}},e.getScript=(e,t={})=>new Promise(((o,a)=>{const n=document.createElement("script");n.src=e,n.async=!0,n.onerror=a,n.onload=n.onreadystatechange=function(){const e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(n.onload=n.onreadystatechange=null,o())},Object.keys(t).forEach((e=>{n.setAttribute(e,t[e])})),document.head.appendChild(n)})),e.getCSS=(e,t=!1)=>new Promise(((o,a)=>{const n=document.createElement("link");n.rel="stylesheet",n.href=e,t&&(n.id=t),n.onerror=a,n.onload=n.onreadystatechange=function(){const e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(n.onload=n.onreadystatechange=null,o())},document.head.appendChild(n)})),e.activateDarkMode=()=>{document.documentElement.setAttribute("data-theme","dark"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#0d0d0d")},e.activateLightMode=()=>{document.documentElement.setAttribute("data-theme","light"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#e68ab8")};const t=saveToLocal.get("theme");"dark"===t?activateDarkMode():"light"===t&&activateLightMode();const o=saveToLocal.get("aside-status");void 0!==o&&("hide"===o?document.documentElement.classList.add("hide-aside"):document.documentElement.classList.remove("hide-aside"));/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)&&document.documentElement.classList.add("apple")})(window)</script><style>#article-container.post-content h1:before,h2:before,h3:before,h4:before,h5:before,h6:before{-webkit-animation:avatar_turn_around 1s linear infinite;-moz-animation:avatar_turn_around 1s linear infinite;-o-animation:avatar_turn_around 1s linear infinite;-ms-animation:avatar_turn_around 1s linear infinite;animation:avatar_turn_around 1s linear infinite}</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><link rel="stylesheet" href="/Scripts/css/tags.css"><link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"><style>#recent-posts>.recent-post-item>.recent-post-info>.article-meta-wrap>.tags:before{content:"\A";white-space:pre}#recent-posts>.recent-post-item>.recent-post-info>.article-meta-wrap>.tags>.article-meta__separator{display:none}</style><link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" media="print" onload='this.media="screen"'><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i> <span>首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i> <span>存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i> <span>标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i> <span>分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i> <span>友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i> <span>关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i> <span>壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i> <span>开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="小明的博客"><span class="site-name">小明的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i> <span>首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i> <span>存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i> <span>标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i> <span>分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i> <span>友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i> <span>关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i> <span>壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i> <span>开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">爬虫入门<a class="post-edit-link" href="https://github.dev/kebuAAA/myblog/blob/main/source/_posts/爬虫入门.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-27T02:34:00.000Z" title="发表于 2022-02-27 10:34:00">2022-02-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-07T02:34:00.000Z" title="更新于 2022-09-07 10:34:00">2022-09-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%88%AC%E8%99%AB/%E7%90%86%E8%AE%BA/">理论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title="爬虫入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2022/xmind/23180166/1646046173524-9b58db54-2fcc-480d-a418-9467ace70f54.xmind">python爬虫书目推荐.xmind</a></p><h1 id="基本内容">基本内容</h1><p>爬虫通俗来说就是一个模拟人类请求网站行为的程序。可以自动请求网页、并把数据抓取下来，然后使用一定的规则则提取有价值的数据。也可以理解为使用某种编程语言（这里当然是使用Python语言） 按照一定的顺序、 规则主动抓取互联网特定信息的程序或者脚本。<br><strong>爬虫可以分为通用爬虫和聚焦爬虫</strong><br>各大搜索引擎是通用爬虫一个很好的例子，通用爬虫在爬取内容时并不会对网页内容进行筛选，将网页的全部内容给爬取下来。<br>聚焦爬虫则是只爬取网页上自己需要的内容。<br>使用语言：</p><ul><li>php:多线程异步处理能力弱</li><li>C/C++:学习成本高，运行速度快但学习和开发成本高</li><li>Java:生态圈完善，python爬虫的最大竞争对手。但Java语言本身笨重，代码量大。重构成本搞（有的网站会更新网页编码的规则，需要不断重构来匹配规则）</li><li>python:语法优美，代码简洁，开发效率高。相关的HTTP请求模块和HTML解析模块非常丰富。还有Scrapy和Scrapy-redis框架让我们开发爬虫变得异常简单。</li></ul><h2 id="http协议">http协议</h2><p>HTTP协议：全称是HyperText Transfer Protoco1,中文意思是超文本传输协议，是一种发布和接收HTML页面的方法。服务器端口号是80端口。<br>HTTPS协议：是HTTP协议的加密版本，在HTTP下加入了SSL层。服务器端口号是443端口。</p><h3 id="在浏览器中发送一个http请求的过程：">在浏览器中发送一个http请求的过程：</h3><p>1.当用户在浏览器的地址栏中输入一个URL并按回车键之后，刘览器会向HTTP服务器发送HTTP请求。HTTP请求主要分为“Get&quot;和&quot;Post&quot;两种方法。<br>2.当我们在浏览器输入URL http:/www.baidu.com的时候，浏览器发送一个Request请求去获http:/www.baidu.com的html文件，服务器把Response文件对象发送回给浏览器。<br>3.浏览器分析Responset中的HTML,发现其中引用了很多其他文件，比如Images文件，CSS文件，JS文件。浏览器会自动再次发送Request去获取图片，CSS文件，或者JS文件。<br>4.当所有的文件都下载成功后，网页会根据HTML语法结构，完整的显示出来了。</p><h3 id="url">url</h3><p>URL是Uniform Resource Locator的简写，统一资源定位符。<br>一个URL由以下几部分组成：<br><code>scheme://host:port/path/?query-string-xxx#anchor</code></p><ul><li>scheme:代表的是访问的协议处般为http或者https以及ftp等。</li><li>host:主机名，域名，<a target="_blank" rel="noopener" href="http://xn--www-eo8er22f.baidu.com">比如www.baidu.com</a>。</li><li>port:端口号。当你访问一个网站的时候，浏览器默认使用80端口。</li><li>path:查找路径。比如：<a target="_blank" rel="noopener" href="http://mm.jianshu.com/trending/now,%E5%90%8E%E9%9D%A2%E7%9A%84trending/now%E5%B0%B1%E6%98%AFpath%E3%80%82">mm.jianshu.com/trending/now,后面的trending/now就是path。</a></li><li>query-string:查询字符串，比如：<a target="_blank" rel="noopener" href="http://ww.baidu.com/swd=python,%E5%90%8E%E9%9D%A2%E7%9A%84wd=python%E5%B0%B1%E6%98%AF%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%82">ww.baidu.com/swd=python,后面的wd=python就是查询字符串。</a></li><li>anchor:锚点，后台一般不用管，前端用来做**页面定位（浏览器滚动位置）**的。</li></ul><p>在浏览器中请求一个url,浏览器会对这个url进行一个编码。除英文字母，数字和分符号外，其他的全部使用百分号+十六进制码值进行编码。这也意味着我们在进行爬虫的过程中要对爬取内容先进行一个解码</p><h2 id="请求方法">请求方法</h2><p>在http协议中，定义了八种请求方法。这里介绍两种常用的请求方法，分别是get请求和post请求。<br>1.get请求：一般情况下，从服务器获取数据下来，<strong>并不会对服务器资源产生任何影响的时候会使用get请求</strong>。<br>2.post请求：向服务器<strong>发送数据</strong>（登录）、上传文件等，<strong>会对服务器资源产生影响的时候会使用post请求</strong>。<br>以上是在网站开发中常用的两种方法。并且一般情况下都会遵循使用的原侧。但是有的网站和服务器为了做反爬虫机制，也经常会不按常理出牌，有可能一个应该使用get方法的请求就一定要改成post请求，这个要视情况而定。<br>检查爬虫请求方式的方法<br><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/0.png" alt="image.png"></p><h3 id="请求头常见参数：">请求头常见参数：</h3><p>在http协议中，向服务器发送一个请求，数据分为三分，第一个是把数据放在url中，第二个是把数据放在body中（在post请求中），第三个就是把数据放在head中。这里介绍在路爬虫中经常会用到的一些请求头参数：<br>1.User-Aget:浏览器名称。请求一个网页的时候，服务器通过这个参数就可以知道这个请求是由那种览器发送的。我们要经常设置这个值为一些浏览器的值，来伪装我们的爬虫。<br>2.Referer:表明当前这个请求是从哪个url过来的。这个一般也可以用来做反爬虫技术。如果不是从指定页面过来的，那么就不做相关的响应。<br>3.Cookie:http协议是无状态的。也就是同一个人发送了两次请求，服务器没有能力知道这两个请求是否来自同一个人。因此这时候就用cookie来做标识。一般如果想要做登录后才能访问的网站，那么就需要发送cookie信息了。在Python中， 负责Cookie部分的模块为cookielib。</p><h3 id="常见响应状态码：">常见响应状态码：</h3><p>200：请求正常，服务器正常的返回数据。浏览器响应的过程是正常的。<br>301:永久重定向。<a target="_blank" rel="noopener" href="http://xn--m-xh0b45e8z4amp0b60m.jingdong.xn--comw-xe6fv6cbxg6ve97vwny6t5b7o6d.jd.com">比如在访问m.jingdong.com的时候会重定向到w.jd.com</a>.<br>302:临时重定向。比如在访问一个需要登录的页面的时候，而此时没有登录，那么就会重定向到登录页面。<br>400:请求的url在服务器上找不到。换句话说就是请求ur1错误。<br>403:服务器拒绝访问，权限不够。<br>500:服务器内部错误。可能是服务器出现bug了。</p><h1 id="基本流程">基本流程</h1><p><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/1.png" alt="image.png"></p><h2 id="url管理器">URL管理器</h2><p>管理待抓URL以及已抓取URL集合，防止重复循环抓取。</p><h3 id="实现方式">实现方式</h3><p><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/2.png" alt="image.png"></p><h2 id="网页下载器">网页下载器</h2><p>将网页对应的html文件下载到本地<br>python中的网页下载器：</p><ul><li>urllib2：python官方的基础模块</li><li>requests：对urllib的封装，功能更加强大</li></ul><p><a href="./%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD">具体使用方法见</a></p><h2 id="网页解析器">网页解析器</h2><p>从网页中提取出有价值的数据的工具，将新的url返回给调度器<br><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/3.png" alt="image.png"></p><p>正则表达式：将整个网页文档当成一个字符串用模糊匹配的方式来提取出有价值的数据<br>Beautidul Soup：一个强大的第三方插件<br>lxml：解析html网页或者xml网页</p><h1 id="爬虫去重策略">爬虫去重策略</h1><p><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/7.png" alt="image.png"><br>储存到数据库中的方法效率会比较低，直接保存到内存中占用空间会非常大。<br>通过特定的方法对URl进行映射是一种不错的方法，但是可能会导致不同url之间的冲突。</p></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者:</span> <span class="post-copyright-info"><a href="https://kobal.top">爱编程的小明</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接:</span> <span class="post-copyright-info"><a href="https://kobal.top/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/">https://kobal.top/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明:</span> <span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kobal.top" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python%E7%88%AC%E8%99%AB/">Python爬虫</a></div><div class="post_share"><div class="social-share" data-image="/top_img/10017.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://gcore.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/" title="神经网络学习"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10028.webp" onerror='onerror=null,src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">神经网络学习</div></div></a></div><div class="next-post pull-right"><a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/" title="机器学习入门"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10017.webp" onerror='onerror=null,src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">机器学习入门</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Working%20with%20APIs/" title="Working with APIs"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10008.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">Working with APIs</div></div></a></div><div><a href="/html/" title="html"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/html_20230406215949.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-24</div><div class="title">html</div></div></a></div><div><a href="/%E7%BA%BF%E7%A8%8B&%E8%BF%9B%E7%A8%8B/" title="线程&amp;进程"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10032.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-08</div><div class="title">线程&amp;进程</div></div></a></div><div><a href="/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/" title="网页下载"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10045.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-19</div><div class="title">网页下载</div></div></a></div><div><a href="/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8C%85/" title="网页抓包"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10025.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-22</div><div class="title">网页抓包</div></div></a></div><div><a href="/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8F%96%E6%95%99%E7%A8%8B/" title="爬虫注意"><img class="cover" src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10032.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-05</div><div class="title">爬虫注意</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i> <span>评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info__name">爱编程的小明</div><div class="author-info__description">只要不折腾，万般可将就</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如网页加载较慢请尝试魔法上网，博客图文可能无关可以忽略</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text">http协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AAhttp%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">在浏览器中发送一个http请求的过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url"><span class="toc-number">1.1.2.</span> <span class="toc-text">url</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">请求方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%B8%B8%E8%A7%81%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">请求头常见参数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">常见响应状态码：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">基本流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#url%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">URL管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.1.</span> <span class="toc-text">实现方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">网页下载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">网页解析器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%8E%BB%E9%87%8D%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text">爬虫去重策略</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10003.webp" onerror='this.onerror=null,this.src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="Lasso回归"></a><div class="content"><a class="title" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归">Lasso回归</a><time datetime="2023-11-14T16:00:00.000Z" title="更新于 2023-11-15 00:00:00">2023-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/岭回归_20231109082818.png" onerror='this.onerror=null,this.src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="岭回归"></a><div class="content"><a class="title" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归">岭回归</a><time datetime="2023-11-07T16:00:00.000Z" title="更新于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/优雅论文排版_20230921093206.png" onerror='this.onerror=null,this.src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="优雅论文排版"></a><div class="content"><a class="title" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版">优雅论文排版</a><time datetime="2023-09-20T16:00:00.000Z" title="更新于 2023-09-21 00:00:00">2023-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/多元统计分析_多元正态曲线.png" onerror='this.onerror=null,this.src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="多元统计分析"></a><div class="content"><a class="title" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析">多元统计分析</a><time datetime="2023-06-16T02:22:54.000Z" title="更新于 2023-06-16 10:22:54">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hypothesis%20testing/" title="假设检验"><img src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10007.webp" onerror='this.onerror=null,this.src="https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600"' alt="假设检验"></a><div class="content"><a class="title" href="/Hypothesis%20testing/" title="假设检验">假设检验</a><time datetime="2023-05-09T02:34:00.000Z" title="更新于 2023-05-09 10:34:00">2023-05-09</time></div></div></div></div></div></div></main><footer id="footer" style="background:0 0"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>if(window.MathJax)MathJax.startup.document.state(0),MathJax.texReset(),MathJax.typesetPromise();else{window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],tags:"ams"},chtml:{scale:1.1},options:{renderActions:{findScript:[10,t=>{for(const e of document.querySelectorAll('script[type^="math/tex"]')){const a=!!e.type.match(/; *mode=display/),n=new t.options.MathItem(e.textContent,t.inputJax[0],a),s=document.createTextNode("");e.parentNode.replaceChild(s,e),n.start={node:s,delim:"",n:0},n.end={node:s,delim:"",n:0},t.math.push(n)}},""]}}};const t=document.createElement("script");t.src="https://gcore.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js",t.id="MathJax-script",t.async=!0,document.head.appendChild(t)}</script><script>(()=>{const t=()=>{twikoo.init(Object.assign({el:"#twikoo-wrap",envId:"https://twikoo.kobal.top/",region:"",onCommentLoaded:()=>{btf.loadLightbox(document.querySelectorAll("#twikoo .tk-content img:not(.tk-owo-emotion)"))}},null))},o=()=>{"object"==typeof twikoo?setTimeout(t,0):getScript("https://cdn.staticfile.org/twikoo/1.6.22/twikoo.all.min.js").then(t)};btf.loadComment(document.getElementById("twikoo-wrap"),o)})()</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><script src="/Scripts/js/fireworks.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors=["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"];var pjax=new Pjax({elements:'a:not([target="_blank"])',selectors:pjaxSelectors,cacheBust:!1,analytics:!1,scrollRestoration:!1});document.addEventListener("pjax:send",(function(){if(btf.removeGlobalFnEvent("pjax"),btf.removeGlobalFnEvent("themeChange"),document.getElementById("rightside").classList.remove("rightside-show"),window.aplayers)for(let e=0;e<window.aplayers.length;e++)window.aplayers[e].options.fixed||window.aplayers[e].destroy();"object"==typeof typed&&typed.destroy();const e=document.body.classList;e.contains("read-mode")&&e.remove("read-mode"),"object"==typeof disqusjs&&disqusjs.destroy()})),document.addEventListener("pjax:complete",(function(){window.refreshFn(),document.querySelectorAll("script[data-pjax]").forEach((e=>{const t=document.createElement("script"),o=e.text||e.textContent||e.innerHTML||"";Array.from(e.attributes).forEach((e=>t.setAttribute(e.name,e.value))),t.appendChild(document.createTextNode(o)),e.parentNode.replaceChild(t,e)})),GLOBAL_CONFIG.islazyload&&window.lazyLoadInstance.update(),"function"==typeof panguInit&&panguInit(),"function"==typeof gtag&&gtag("config","",{page_path:window.location.pathname}),"object"==typeof _hmt&&_hmt.push(["_trackPageview",window.location.pathname]),"function"==typeof loadMeting&&document.getElementsByClassName("aplayer").length&&loadMeting(),"object"==typeof Prism&&Prism.highlightAll()})),document.addEventListener("pjax:error",(e=>{404===e.request.status&&pjax.loadUrl("/404.html")}))</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="js-pjax"><script async>for(var arr=document.getElementsByClassName("recent-post-item"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__zoomIn"),arr[i].setAttribute("data-wow-duration","2s"),arr[i].setAttribute("data-wow-delay","0.5s"),arr[i].setAttribute("data-wow-offset","100"),arr[i].setAttribute("data-wow-iteration","1")</script><script async>for(var arr=document.getElementsByClassName("card-widget"),i=0;i<arr.length;i++)arr[i].classList.add("wow"),arr[i].classList.add("animate__zoomIn"),arr[i].setAttribute("data-wow-duration",""),arr[i].setAttribute("data-wow-delay",""),arr[i].setAttribute("data-wow-offset",""),arr[i].setAttribute("data-wow-iteration","")</script></div><script defer src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/wow/1.1.2/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script></body></html>
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>爬虫入门 | 小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="python爬虫书目推荐.xmind 基本内容 爬虫通俗来说就是一个模拟人类请求网站行为的程序。可以自动请求网页、并把数据抓取下来，然后使用一定的规则则提取有价值的数据。也可以理解为使用某种编程语言（这里当然是使用Python语言） 按照一定的顺序、 规则主动抓取互联网特定信息的程序或者脚本。 爬虫"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.top/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4e3a07c287f8fb6cfc09bf5a7fdc1dd7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "e8bjif1knd");</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '爬虫入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-09-07 10:34:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><link rel="stylesheet" href="/Scripts/css/tags.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="小明的博客"><span class="site-name">小明的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">爬虫入门<a class="post-edit-link" href="https://github.dev/kebuAAA/myblog/blob/main/source/_posts/爬虫入门.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-27T02:34:00.000Z" title="发表于 2022-02-27 10:34:00">2022-02-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-09-07T02:34:00.000Z" title="更新于 2022-09-07 10:34:00">2022-09-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%88%AC%E8%99%AB/%E7%90%86%E8%AE%BA/">理论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="爬虫入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2022/xmind/23180166/1646046173524-9b58db54-2fcc-480d-a418-9467ace70f54.xmind">python爬虫书目推荐.xmind</a></p>
+<h1 id="基本内容">基本内容</h1>
+<p>爬虫通俗来说就是一个模拟人类请求网站行为的程序。可以自动请求网页、并把数据抓取下来，然后使用一定的规则则提取有价值的数据。也可以理解为使用某种编程语言（这里当然是使用Python语言） 按照一定的顺序、 规则主动抓取互联网特定信息的程序或者脚本。<br>
+<strong>爬虫可以分为通用爬虫和聚焦爬虫</strong><br>
+各大搜索引擎是通用爬虫一个很好的例子，通用爬虫在爬取内容时并不会对网页内容进行筛选，将网页的全部内容给爬取下来。<br>
+聚焦爬虫则是只爬取网页上自己需要的内容。<br>
+使用语言：</p>
+<ul>
+<li>php:多线程异步处理能力弱</li>
+<li>C/C++:学习成本高，运行速度快但学习和开发成本高</li>
+<li>Java:生态圈完善，python爬虫的最大竞争对手。但Java语言本身笨重，代码量大。重构成本搞（有的网站会更新网页编码的规则，需要不断重构来匹配规则）</li>
+<li>python:语法优美，代码简洁，开发效率高。相关的HTTP请求模块和HTML解析模块非常丰富。还有Scrapy和Scrapy-redis框架让我们开发爬虫变得异常简单。</li>
+</ul>
+<h2 id="http协议">http协议</h2>
+<p>HTTP协议：全称是HyperText Transfer Protoco1,中文意思是超文本传输协议，是一种发布和接收HTML页面的方法。服务器端口号是80端口。<br>
+HTTPS协议：是HTTP协议的加密版本，在HTTP下加入了SSL层。服务器端口号是443端口。</p>
+<h3 id="在浏览器中发送一个http请求的过程：">在浏览器中发送一个http请求的过程：</h3>
+<p>1.当用户在浏览器的地址栏中输入一个URL并按回车键之后，刘览器会向HTTP服务器发送HTTP请求。HTTP请求主要分为“Get&quot;和&quot;Post&quot;两种方法。<br>
+2.当我们在浏览器输入URL http:/www.baidu.com的时候，浏览器发送一个Request请求去获http:/www.baidu.com的html文件，服务器把Response文件对象发送回给浏览器。<br>
+3.浏览器分析Responset中的HTML,发现其中引用了很多其他文件，比如Images文件，CSS文件，JS文件。浏览器会自动再次发送Request去获取图片，CSS文件，或者JS文件。<br>
+4.当所有的文件都下载成功后，网页会根据HTML语法结构，完整的显示出来了。</p>
+<h3 id="url">url</h3>
+<p>URL是Uniform Resource Locator的简写，统一资源定位符。<br>
+一个URL由以下几部分组成：<br>
+<code>scheme://host:port/path/?query-string-xxx#anchor</code></p>
+<ul>
+<li>scheme:代表的是访问的协议处般为http或者https以及ftp等。</li>
+<li>host:主机名，域名，<a target="_blank" rel="noopener" href="http://xn--www-eo8er22f.baidu.com">比如www.baidu.com</a>。</li>
+<li>port:端口号。当你访问一个网站的时候，浏览器默认使用80端口。</li>
+<li>path:查找路径。比如：<a target="_blank" rel="noopener" href="http://mm.jianshu.com/trending/now,%E5%90%8E%E9%9D%A2%E7%9A%84trending/now%E5%B0%B1%E6%98%AFpath%E3%80%82">mm.jianshu.com/trending/now,后面的trending/now就是path。</a></li>
+<li>query-string:查询字符串，比如：<a target="_blank" rel="noopener" href="http://ww.baidu.com/swd=python,%E5%90%8E%E9%9D%A2%E7%9A%84wd=python%E5%B0%B1%E6%98%AF%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%82">ww.baidu.com/swd=python,后面的wd=python就是查询字符串。</a></li>
+<li>anchor:锚点，后台一般不用管，前端用来做**页面定位（浏览器滚动位置）**的。</li>
+</ul>
+<p>在浏览器中请求一个url,浏览器会对这个url进行一个编码。除英文字母，数字和分符号外，其他的全部使用百分号+十六进制码值进行编码。这也意味着我们在进行爬虫的过程中要对爬取内容先进行一个解码</p>
+<h2 id="请求方法">请求方法</h2>
+<p>在http协议中，定义了八种请求方法。这里介绍两种常用的请求方法，分别是get请求和post请求。<br>
+1.get请求：一般情况下，从服务器获取数据下来，<strong>并不会对服务器资源产生任何影响的时候会使用get请求</strong>。<br>
+2.post请求：向服务器<strong>发送数据</strong>（登录）、上传文件等，<strong>会对服务器资源产生影响的时候会使用post请求</strong>。<br>
+以上是在网站开发中常用的两种方法。并且一般情况下都会遵循使用的原侧。但是有的网站和服务器为了做反爬虫机制，也经常会不按常理出牌，有可能一个应该使用get方法的请求就一定要改成post请求，这个要视情况而定。<br>
+检查爬虫请求方式的方法<br>
+<img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/0.png" alt="image.png"></p>
+<h3 id="请求头常见参数：">请求头常见参数：</h3>
+<p>在http协议中，向服务器发送一个请求，数据分为三分，第一个是把数据放在url中，第二个是把数据放在body中（在post请求中），第三个就是把数据放在head中。这里介绍在路爬虫中经常会用到的一些请求头参数：<br>
+1.User-Aget:浏览器名称。请求一个网页的时候，服务器通过这个参数就可以知道这个请求是由那种览器发送的。我们要经常设置这个值为一些浏览器的值，来伪装我们的爬虫。<br>
+2.Referer:表明当前这个请求是从哪个url过来的。这个一般也可以用来做反爬虫技术。如果不是从指定页面过来的，那么就不做相关的响应。<br>
+3.Cookie:http协议是无状态的。也就是同一个人发送了两次请求，服务器没有能力知道这两个请求是否来自同一个人。因此这时候就用cookie来做标识。一般如果想要做登录后才能访问的网站，那么就需要发送cookie信息了。在Python中， 负责Cookie部分的模块为cookielib。</p>
+<h3 id="常见响应状态码：">常见响应状态码：</h3>
+<p>200：请求正常，服务器正常的返回数据。浏览器响应的过程是正常的。<br>
+301:永久重定向。<a target="_blank" rel="noopener" href="http://xn--m-xh0b45e8z4amp0b60m.jingdong.xn--comw-xe6fv6cbxg6ve97vwny6t5b7o6d.jd.com">比如在访问m.jingdong.com的时候会重定向到w.jd.com</a>.<br>
+302:临时重定向。比如在访问一个需要登录的页面的时候，而此时没有登录，那么就会重定向到登录页面。<br>
+400:请求的url在服务器上找不到。换句话说就是请求ur1错误。<br>
+403:服务器拒绝访问，权限不够。<br>
+500:服务器内部错误。可能是服务器出现bug了。</p>
+<h1 id="基本流程">基本流程</h1>
+<p><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/1.png" alt="image.png"></p>
+<h2 id="url管理器">URL管理器</h2>
+<p>管理待抓URL以及已抓取URL集合，防止重复循环抓取。</p>
+<h3 id="实现方式">实现方式</h3>
+<p><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/2.png" alt="image.png"></p>
+<h2 id="网页下载器">网页下载器</h2>
+<p>将网页对应的html文件下载到本地<br>
+python中的网页下载器：</p>
+<ul>
+<li>urllib2：python官方的基础模块</li>
+<li>requests：对urllib的封装，功能更加强大</li>
+</ul>
+<p><a href="./%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD">具体使用方法见</a></p>
+<h2 id="网页解析器">网页解析器</h2>
+<p>从网页中提取出有价值的数据的工具，将新的url返回给调度器<br>
+<img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/3.png" alt="image.png"></p>
+<p>正则表达式：将整个网页文档当成一个字符串用模糊匹配的方式来提取出有价值的数据<br>
+Beautidul Soup：一个强大的第三方插件<br>
+lxml：解析html网页或者xml网页</p>
+<h1 id="爬虫去重策略">爬虫去重策略</h1>
+<p><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="../md_imgs/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/7.png" alt="image.png"><br>
+储存到数据库中的方法效率会比较低，直接保存到内存中占用空间会非常大。<br>
+通过特定的方法对URl进行映射是一种不错的方法，但是可能会导致不同url之间的冲突。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://kobal.top">爱编程的小明</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://kobal.top/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/">https://kobal.top/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kobal.top" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python%E7%88%AC%E8%99%AB/">Python爬虫</a></div><div class="post_share"><div class="social-share" data-image="/top_img/10046.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/" title="神经网络学习"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10042.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">神经网络学习</div></div></a></div><div class="next-post pull-right"><a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/" title="机器学习入门"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10048.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">机器学习入门</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Working%20with%20APIs/" title="Working with APIs"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10031.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-23</div><div class="title">Working with APIs</div></div></a></div><div><a href="/html/" title="html"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/html_20230406215949.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-24</div><div class="title">html</div></div></a></div><div><a href="/%E7%BA%BF%E7%A8%8B&%E8%BF%9B%E7%A8%8B/" title="线程&amp;进程"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10031.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-08</div><div class="title">线程&amp;进程</div></div></a></div><div><a href="/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/" title="网页下载"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10036.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-19</div><div class="title">网页下载</div></div></a></div><div><a href="/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8C%85/" title="网页抓包"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10025.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-22</div><div class="title">网页抓包</div></div></a></div><div><a href="/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8F%96%E6%95%99%E7%A8%8B/" title="爬虫注意"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10028.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-05</div><div class="title">爬虫注意</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">爱编程的小明</div><div class="author-info__description">只要不折腾，万般可将就</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如网页加载较慢请尝试魔法上网，博客图文可能无关可以忽略</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.</span> <span class="toc-text">http协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AAhttp%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">在浏览器中发送一个http请求的过程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url"><span class="toc-number">1.1.2.</span> <span class="toc-text">url</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">请求方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E5%B8%B8%E8%A7%81%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">请求头常见参数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">常见响应状态码：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">基本流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#url%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">URL管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.1.</span> <span class="toc-text">实现方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">网页下载器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">网页解析器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%8E%BB%E9%87%8D%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text">爬虫去重策略</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10030.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Lasso回归"/></a><div class="content"><a class="title" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归">Lasso回归</a><time datetime="2023-11-14T16:00:00.000Z" title="更新于 2023-11-15 00:00:00">2023-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/岭回归_20231109082818.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="岭回归"/></a><div class="content"><a class="title" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归">岭回归</a><time datetime="2023-11-07T16:00:00.000Z" title="更新于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/优雅论文排版_20230921093206.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="优雅论文排版"/></a><div class="content"><a class="title" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版">优雅论文排版</a><time datetime="2023-09-20T16:00:00.000Z" title="更新于 2023-09-21 00:00:00">2023-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/多元统计分析_多元正态曲线.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="多元统计分析"/></a><div class="content"><a class="title" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析">多元统计分析</a><time datetime="2023-06-16T02:22:54.000Z" title="更新于 2023-06-16 10:22:54">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hypothesis%20testing/" title="假设检验"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10005.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="假设检验"/></a><div class="content"><a class="title" href="/Hypothesis%20testing/" title="假设检验">假设检验</a><time datetime="2023-05-09T02:34:00.000Z" title="更新于 2023-05-09 10:34:00">2023-05-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.kobal.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.kobal.top/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.staticfile.org/twikoo/1.6.22/twikoo.all.min.js').then(init)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><script src="/Scripts/js/fireworks.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '0.5s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/wow/1.1.2/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --></body></html>

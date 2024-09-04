@@ -1,1 +1,10 @@
-@font-face{font-family:'ROBOTO MEDIUM';src:url(/font/Roboto-Medium.woff) format("truetype");font-display:swap}body{font-family:'ROBOTO MEDIUM',SourceHanSerifSC-Light,"Microsoft YaHei",sans-serif}
+@font-face {
+    font-family: 'ROBOTO MEDIUM';
+    src: url('/font/Roboto-Medium.woff') format("truetype");
+    /* src: url('/font/ZiTiChuanQiXueJiaHei-FenSiMianFei-2.woff') format('woff'); */
+    font-display: swap;
+
+}
+body {
+    font-family: 'ROBOTO MEDIUM','SourceHanSerifSC-Light',"Microsoft YaHei", sans-serif;
+}

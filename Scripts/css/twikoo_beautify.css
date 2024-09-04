@@ -1,1 +1,162 @@
-:root{--heo-white:#fff;--heo-blue:#286dea;--heo-none:rgba(0,0,0,0);--heo-gray:#999999}[data-theme=light]{--heo-fontcolor:#000;--heo-background:rgb(235 235 235 / 60%);--heo-maskbg:rgba(255, 255, 255, 0.6);--heo-navbg:rgba(255, 255, 255, 0.9);--heo-hovertext:#286dea;--heo-ahoverbg:#F7F7FA;--heo-lighttext:#ef794f;--heo-secondtext:rgba(0, 0, 0, 0.6);--heo-card-btn-bg:rgba(255, 255, 255, 0.7);--heo-post-blockquote-bg:rgb(235 235 235 / 80%);--heo-sceondbg:rgba(255, 255, 255, 0.7)}[data-theme=dark]{--heo-fontcolor:#fff;--heo-background:rgba(0, 0, 0, .2);--heo-maskbg:rgba(0,0,0, 0.6);--heo-navbg:rgba(0,0,0, 0.9);--heo-hovertext:#286dea;--heo-ahoverbg:#fff;--heo-lighttext:#f2b94b;--heo-secondtext:rgba(255, 255, 255, 0.6);--heo-card-btn-bg:#3f3f3f;--heo-post-blockquote-bg:#rgba(0, 0, 0, .9);--heo-sceondbg:#252627}.el-input-group__append,.el-input-group__prepend{background-color:var(--heo-sceondbg)!important;color:var(--heo-fontcolor)!important;border:0 solid var(--heo-blue)!important}.el-input__inner{background:var(--heo-post-blockquote-bg)!important;border:0 solid var(--heo-blue)!important;color:var(--heo-fontcolor)!important}.el-textarea__inner{background:var(--heo-post-blockquote-bg)!important;border:0 solid var(--heo-blue)!important;color:var(--heo-fontcolor)!important}#twikoo>div.tk-comments>div.tk-comments-container>div.tk-comments-title>span:nth-child(1){display:none!important}.tk-icon[data-v-2619081a]{transform:translateY(-46px)}.el-loading-mask{background-color:var(--heo-background)!important}.tk-tag-green{border-radius:12px!important;border:0 solid #e1f3d8!important}[data-theme=dark] .tk-tag-green{background-color:#67c23a21!important}.tk-tag-red{border-radius:12px!important;border:0 solid #e1f3d8!important}[data-theme=dark] .tk-tag-green{background-color:#67c23a21!important}.el-button{background:var(--heo-card-btn-bg)!important;border:0 solid var(--heo-blue)!important;color:var(--heo-fontcolor)!important}.el-button:hover{background:var(--heo-blue)!important;color:var(--heo-white)!important}.el-button--primary{background-color:var(--heo-blue)!important;border-color:var(--heo-blue)!important;color:var(--heo-white)!important}.el-button--primary.is-disabled,.el-button--primary.is-disabled:active,.el-button--primary.is-disabled:focus,.el-button--primary.is-disabled:hover{opacity:.4}[data-theme=dark] .tk-expand{background:linear-gradient(rgba(29,31,32,0),#1d1f20)!important;color:var(--heo-fontcolor)}.tk-time{color:var(--heo-gray)}.tk-input[data-v-619b4c52] .el-textarea__inner{height:130px!important}#twikoo .tk-content{background:var(--card-bg);padding:10px 15px;border-radius:10px;color:var(--heo-fontcolor)!important}#twikoo .tk-nick tk-nick-link{color:red}.tk-admin-config-groups .tk-admin-config-group-title[data-v-7dc9bac2]{background:0 0;color:var(--heo-fontcolor)!important;font-size:large}details summary{cursor:pointer;padding:0;margin:0;border-radius:4px;color:rgba(68,68,68,.7);font-size:.875rem!important;font-weight:700;position:relative;line-height:normal}
+/* 评论回复区简单的加一加方框 */
+:root{
+  --heo-white: #fff;
+  --heo-blue: #286dea;
+  --heo-none: rgba(0,0,0,0);
+  --heo-gray: #999999;
+}
+[data-theme=light] {
+  --heo-fontcolor: #000;
+  --heo-background: rgb(235 235 235 / 60%);
+  --heo-maskbg: rgba(255, 255, 255, 0.6);
+  --heo-navbg: rgba(255, 255, 255, 0.9);;
+  --heo-hovertext: #286dea;
+  --heo-ahoverbg: #F7F7FA;
+  --heo-lighttext: #ef794f;
+  --heo-secondtext: rgba(0, 0, 0, 0.6);
+  /* --heo-card-btn-bg: #F7F7FA; */
+  --heo-card-btn-bg: rgba(255, 255, 255, 0.7);
+  --heo-post-blockquote-bg: rgb(235 235 235 / 80%);
+  /* --heo-sceondbg: #F7F7FA; */
+  --heo-sceondbg: rgba(255, 255, 255, 0.7);
+}
+[data-theme=dark] {
+  --heo-fontcolor: #fff;
+  --heo-background: rgba(0, 0, 0, .2);
+  --heo-maskbg: rgba(0,0,0, 0.6);
+  --heo-navbg: rgba(0,0,0, 0.9);
+  --heo-hovertext: #286dea;
+  --heo-ahoverbg: #fff;
+  --heo-lighttext: #f2b94b;
+  --heo-secondtext: rgba(255, 255, 255, 0.6);
+  --heo-card-btn-bg: #3f3f3f;
+  --heo-post-blockquote-bg: #rgba(0, 0, 0, .9);
+  --heo-sceondbg: #252627;
+}
+
+/* 评论 */
+/* ---------------------------------------------------------------- */
+
+/* 填写项标题 */
+.el-input-group__append, .el-input-group__prepend{
+  background-color: var(--heo-sceondbg)!important;
+  color: var(--heo-fontcolor)!important;
+  border: 0px solid var(--heo-blue)!important;
+}
+
+/* 输入框 */
+.el-input__inner{
+  background: var(--heo-post-blockquote-bg)!important;
+  border: 0px solid var(--heo-blue)!important;
+  color: var(--heo-fontcolor)!important;
+}
+
+/* 评论输入框 */
+.el-textarea__inner{
+  background: var(--heo-post-blockquote-bg)!important;
+  border: 0px solid var(--heo-blue)!important;
+  color: var(--heo-fontcolor)!important;
+}
+
+/* 评论数量字号 */
+#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title > span:nth-child(1){
+  display: none!important;
+}
+
+.tk-icon[data-v-2619081a]{
+  transform: translateY(-46px);
+}
+
+/* 加载时背景颜色 */
+.el-loading-mask{
+  background-color: var(--heo-background)!important;
+}
+
+
+/* 评论博主标签圆角 */
+.tk-tag-green{
+  border-radius: 12px!important;
+  border: 0px solid #e1f3d8!important;
+}
+
+[data-theme=dark] .tk-tag-green{
+  background-color: #67c23a21!important;
+}
+/* 评论置顶标签圆角 */
+.tk-tag-red{
+  border-radius: 12px!important;
+  border: 0px solid #e1f3d8!important;
+}
+
+[data-theme=dark] .tk-tag-green{
+  background-color: #67c23a21!important;
+}
+
+/* 预览按钮 */
+.el-button{
+  background: var(--heo-card-btn-bg)!important;
+  border: 0px solid var(--heo-blue)!important;
+  color: var(--heo-fontcolor)!important;
+}
+
+.el-button:hover{
+  background: var(--heo-blue)!important;
+  color: var(--heo-white)!important;
+}
+
+/* 发送按钮正常状态 */
+.el-button--primary{
+  background-color: var(--heo-blue)!important;
+  border-color: var(--heo-blue)!important;
+  color: var(--heo-white)!important;
+}
+
+/* 发送按钮禁用状态 */
+.el-button--primary.is-disabled, .el-button--primary.is-disabled:active, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:hover{
+  opacity: 0.4;
+}
+
+/* 更多评论的渐变遮罩 */
+[data-theme=dark] .tk-expand{
+  background: linear-gradient(rgba(29, 31, 32,0), rgba(29, 31, 32,1))!important;
+  color: var(--heo-fontcolor);
+}
+
+/* 评论时间 */
+.tk-time{
+  color: var(--heo-gray);
+}
+/* 自定义twikoo评论输入框高度 */
+.tk-input[data-v-619b4c52] .el-textarea__inner {
+  height: 130px !important;
+}
+/* 自己对样式做的一些调整 */
+#twikoo .tk-content {
+    background: var(--card-bg);
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: var(--heo-fontcolor)!important;
+}
+#twikoo .tk-nick tk-nick-link {
+    /* color: var(--heo-fontcolor)!important; */
+    color: red;
+}
+.tk-admin-config-groups .tk-admin-config-group-title[data-v-7dc9bac2] {
+  background: transparent;
+  color: var(--heo-fontcolor)!important;
+  font-size: large;
+}
+details summary {
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 4px;
+    color: rgba(68,68,68,.7);
+    font-size: .875rem!important;
+    font-weight: 700;
+    position: relative;
+    line-height: normal;
+}
+
+
+
