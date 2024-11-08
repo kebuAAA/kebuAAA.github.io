@@ -1,10 +1,103 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Numpy | 小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="numpy(numerical  Python) 是 Python 数值计算最重要的基础包，大多数提供科学计算的包都是用 NumPy 的数组为构建基础。 NumPy 可以用于数值计算的一个重要原因是因为他能处理大数组的数据：  在连续的内存块储存数据，独立于其他 Python 内置对象（C 语言编写"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.top/Numpy/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Numpy | 小明的博客</title><meta name="author" content="爱编程的小明"><meta name="copyright" content="爱编程的小明"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#e68ab8"><meta name="description" content="numpy(numerical  Python) 是 Python 数值计算最重要的基础包，大多数提供科学计算的包都是用 NumPy 的数组为构建基础。 NumPy 可以用于数值计算的一个重要原因是因为他能处理大数组的数据：  在连续的内存块储存数据，独立于其他 Python 内置对象（C..."><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kobal.top/Numpy/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//www.clarity.ms"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?4e3a07c287f8fb6cfc09bf5a7fdc1dd7";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
 </script><script>(function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -14,11 +107,10 @@
   algolia: undefined,
   localSearch: undefined,
   translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":120},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -34,10 +126,10 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
   infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
     buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
@@ -54,107 +146,11 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-03-28 10:49:00'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#e68ab8')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><link rel="stylesheet" href="/Scripts/css/tags.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/Scripts/css/cardlistpost.min.css"/>
+  isShuoshuo: false
+}</script><style>#article-container.post-content h1:before, h2:before, h3:before, h4:before, h5:before, h6:before { -webkit-animation: avatar_turn_around 1s linear infinite; -moz-animation: avatar_turn_around 1s linear infinite; -o-animation: avatar_turn_around 1s linear infinite; -ms-animation: avatar_turn_around 1s linear infinite; animation: avatar_turn_around 1s linear infinite; }</style><link rel="stylesheet" href="/Scripts/css/transparent.css"><link rel="stylesheet" href="/Scripts/css/font.css"><link rel="stylesheet" href="/Scripts/css/foot_style.css"><link rel="stylesheet" href="/Scripts/css/twikoo_beautify.css"><link rel="stylesheet" href="/Scripts/css/tags.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/Scripts/css/cardlistpost.min.css"/>
 <style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
   white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
-<link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="小明的博客"><span class="site-name">小明的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Numpy<a class="post-edit-link" href="https://github.dev/kebuAAA/myblog/blob/main/source/_posts/Numpy.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T02:49:00.000Z" title="发表于 2022-03-27 10:49:00">2022-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-28T02:49:00.000Z" title="更新于 2022-03-28 10:49:00">2022-03-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/Python%E5%BA%93/">Python库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Numpy"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>numpy(numerical  Python) 是 Python 数值计算最重要的基础包，大多数提供科学计算的包都是用 NumPy 的数组为构建基础。<br>
+<link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="web_bg" style="background-image: url(url(/img/index_img.webp));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">小明的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Numpy</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 存档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/wallpaper/"><i class="fa-fw fas fa-image fa-fw"></i><span> 壁纸</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://www.travellings.cn/go.html"><i class="fa-fw fa fa-subway"></i><span> 开往</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Numpy<a class="post-edit-link" href="https://github.dev/kebuAAA/myblog/blob/main/source/_posts/Numpy.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-27T02:49:00.000Z" title="发表于 2022-03-27 10:49:00">2022-03-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-28T02:49:00.000Z" title="更新于 2022-03-28 10:49:00">2022-03-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/Python%E5%BA%93/">Python库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p>numpy(numerical  Python) 是 Python 数值计算最重要的基础包，大多数提供科学计算的包都是用 NumPy 的数组为构建基础。<br>
 NumPy 可以用于数值计算的一个重要原因是因为他能处理大数组的数据：</p>
 <ul>
 <li>在连续的内存块储存数据，独立于其他 Python 内置对象（C 语言编写的算法库，在 C 的基础上封装）</li>
@@ -290,42 +286,10 @@ axis= 0 表示按行进行元素重复；axis= 1 表示按列进行元素重复�
 <h2 id="expressing-conditional-logic-as-array-operations">Expressing Conditional Logic as Array Operations</h2>
 <p>相比于普通的条件循环，NumPy 能够依据其自身特点大大加快运算速度，因此我们有必要使用 NumPy 的表达来代替平时的条件逻辑。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># transposing and swaping</span></span><br><span class="line"><span class="comment"># 置换和交换</span></span><br><span class="line">arr1 = np.arange(<span class="number">16</span>).reshape(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">arr2 = np.arange(<span class="number">16</span>,<span class="number">32</span>).reshape(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">con=np.array([<span class="literal">True</span>,<span class="literal">True</span>,<span class="literal">False</span>,<span class="literal">False</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=&quot;</span>*<span class="number">40</span>)</span><br><span class="line"><span class="built_in">print</span>(arr1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=&quot;</span>*<span class="number">40</span>)</span><br><span class="line"><span class="built_in">print</span>(arr2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=&quot;</span>*<span class="number">40</span>)</span><br><span class="line"><span class="built_in">print</span>([(x <span class="keyword">if</span> con1 <span class="keyword">else</span> y)</span><br><span class="line">       <span class="keyword">for</span> x,y,con1 <span class="keyword">in</span> <span class="built_in">zip</span>(arr1,arr2,con) ])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;=&quot;</span>*<span class="number">40</span>)</span><br><span class="line"><span class="built_in">print</span>(np.where(con,arr1,arr2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://kobal.top">爱编程的小明</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://kobal.top/Numpy/">https://kobal.top/Numpy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kobal.top" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python%E5%BA%93/">Python库</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><a class="post-meta__tags" href="/tags/Numpy/">Numpy</a></div><div class="post_share"><div class="social-share" data-image="/top_img/10047.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B/" title="综合实例"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10050.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">综合实例</div></div></a></div><div class="next-post pull-right"><a href="/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="python基础知识"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://www.python.org/static/community_logos/python-logo.png" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">python基础知识</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/Matplotlib/" title="Matplotlib库"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://matplotlib.org/_static/images/logo2.svg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-01</div><div class="title">Matplotlib库</div></div></a></div><div><a href="/Pandas/" title="Pandas"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://camo.githubusercontent.com/981d48e57e23a4907cebc4eb481799b5882595ea978261f22a3e131dcd6ebee6/68747470733a2f2f70616e6461732e7079646174612e6f72672f7374617469632f696d672f70616e6461732e737667" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="title">Pandas</div></div></a></div><div><a href="/Seaborn%E5%BA%93%E7%AE%80%E4%BB%8B/" title="Seaborn库简介"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://seaborn.pydata.org/_images/logo-wide-lightbg.svg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-21</div><div class="title">Seaborn库简介</div></div></a></div><div><a href="/PyCaret/" title="PyCaret"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10044.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-31</div><div class="title">PyCaret</div></div></a></div><div><a href="/datetime%E6%A8%A1%E5%9D%97/" title="datetime模块"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10040.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-02</div><div class="title">datetime模块</div></div></a></div><div><a href="/re/" title="re"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10025.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-05</div><div class="title">re</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">爱编程的小明</div><div class="author-info__description">只要不折腾，万般可将就</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如网页加载较慢请尝试魔法上网，博客图文可能无关可以忽略</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9F%E6%9F%A5"><span class="toc-number">1.</span> <span class="toc-text">速查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#creating-ndarray"><span class="toc-number">3.1.</span> <span class="toc-text">Creating ndarray</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">数组的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-np-astype"><span class="toc-number">3.2.1.</span> <span class="toc-text">类型转换–np.astype</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BD%A2%E7%8A%B6"><span class="toc-number">3.3.</span> <span class="toc-text">数组形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-indexing-and-slicing"><span class="toc-number">3.4.</span> <span class="toc-text">Basic Indexing and Slicing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#where-%E5%87%BD%E6%95%B0"><span class="toc-number">3.5.</span> <span class="toc-text">Where 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.6.</span> <span class="toc-text">数组拼接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.6.1.</span> <span class="toc-text">行拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.6.2.</span> <span class="toc-text">列拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4-n-%E5%88%97%E6%95%B0%E7%BB%84%E6%8B%BC%E6%8E%A5%E7%BB%84%E5%90%88%E6%88%90-n-%E7%BB%B4%E5%9D%90%E6%A0%87%E7%82%B9"><span class="toc-number">3.6.3.</span> <span class="toc-text">一维 n 列数组拼接组合成 n 维坐标点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.</span> <span class="toc-text">读写文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90"><span class="toc-number">3.8.</span> <span class="toc-text">随机数生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy-%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="toc-number">3.9.</span> <span class="toc-text">Numpy 统计分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">3.9.1.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D%E5%92%8C%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE"><span class="toc-number">3.9.2.</span> <span class="toc-text">去重和重复数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1"><span class="toc-number">3.9.3.</span> <span class="toc-text">描述性统计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97"><span class="toc-number">3.10.</span> <span class="toc-text">集合运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linear-algebra"><span class="toc-number">3.11.</span> <span class="toc-text">Linear Algebra</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">4.1.</span> <span class="toc-text">生成模拟数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%9F%E5%8A%A9%E8%A1%8C%E5%88%97%E6%8B%BC%E6%8E%A5%E7%94%9F%E6%88%90%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">4.1.1.</span> <span class="toc-text">借助行列拼接生成分类数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%9F%E5%8A%A9np-c-%E7%94%9F%E6%88%90%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A0%B7%E6%9C%AC%E9%9B%86"><span class="toc-number">4.1.2.</span> <span class="toc-text">借助np.c[]生成线性回归样本集。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#expressing-conditional-logic-as-array-operations"><span class="toc-number">4.2.</span> <span class="toc-text">Expressing Conditional Logic as Array Operations</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10019.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Lasso回归"/></a><div class="content"><a class="title" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归">Lasso回归</a><time datetime="2023-11-14T16:00:00.000Z" title="更新于 2023-11-15 00:00:00">2023-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/岭回归_20231109082818.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="岭回归"/></a><div class="content"><a class="title" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归">岭回归</a><time datetime="2023-11-07T16:00:00.000Z" title="更新于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/优雅论文排版_20230921093206.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="优雅论文排版"/></a><div class="content"><a class="title" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版">优雅论文排版</a><time datetime="2023-09-20T16:00:00.000Z" title="更新于 2023-09-21 00:00:00">2023-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/多元统计分析_多元正态曲线.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="多元统计分析"/></a><div class="content"><a class="title" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析">多元统计分析</a><time datetime="2023-06-16T02:22:54.000Z" title="更新于 2023-06-16 10:22:54">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hypothesis%20testing/" title="假设检验"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10041.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="假设检验"/></a><div class="content"><a class="title" href="/Hypothesis%20testing/" title="假设检验">假设检验</a><time datetime="2023-05-09T02:34:00.000Z" title="更新于 2023-05-09 10:34:00">2023-05-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
-  window.MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      tags: 'ams'
-    },
-    chtml: {
-      scale: 1.1
-    },
-    options: {
-      renderActions: {
-        findScript: [10, doc => {
-          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
-            const display = !!node.type.match(/; *mode=display/)
-            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
-            const text = document.createTextNode('')
-            node.parentNode.replaceChild(text, node)
-            math.start = {node: text, delim: '', n: 0}
-            math.end = {node: text, delim: '', n: 0}
-            doc.math.push(math)
-          }
-        }, '']
-      }
-    }
-  }
-  
-  const script = document.createElement('script')
-  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
-  script.id = 'MathJax-script'
-  script.async = true
-  document.head.appendChild(script)
-} else {
-  MathJax.startup.document.state(0)
-  MathJax.texReset()
-  MathJax.typesetPromise()
-}</script><script>(() => {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://kobal.top">爱编程的小明</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://kobal.top/Numpy/">https://kobal.top/Numpy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://kobal.top" target="_blank">小明的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python%E5%BA%93/">Python库</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a><a class="post-meta__tags" href="/tags/Numpy/">Numpy</a></div><div class="post-share"><div class="social-share" data-image="/top_img/10030.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B/" title="综合实例"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10009.webp" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">综合实例</div></div><div class="info-2"><div class="info-item-1"> 本文主要记录在学习机器学习过程中做的一些简单的小项目，项目代码均来自于杨志晓老师的《Python机器学习一本通》一书，机缘巧合之下这本书也算是我接触Python机器学习的启蒙书籍，书本很厚，但是其实内容不多，至今犹记得去年年末封在宿舍独自一人啃这本书的心酸经历，一本书看来收获颇丰。  加载boston数据集、另存并重新访问 from sklearn import datasetsimport pandas as pdimport numpy as npimport seaborn as...</div></div></div></a><a class="pagination-related" href="/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="python基础知识"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://www.python.org/static/community_logos/python-logo.png" onerror="onerror=null;src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">python基础知识</div></div><div class="info-2"><div class="info-item-1">迭代器和生成器 for element in [1, 2, 3]:    print(element)for element in (1, 2, 3):    print(element)for key in &#123;&#x27;one&#x27;:1, &#x27;two&#x27;:2&#125;:    print(key)for char in &quot;123&quot;:    print(char)for line in open(&quot;myfile.txt&quot;):    print(line, end=&#x27;&#x27;) 我们之所以能通过 for 方法如此轻松的打印这些内容，从本质上说是因为列表元组等这些东西是一个可迭代对象。而 for 方法则可以调用迭代器对象的方法来实现对整个迭代对象的遍历。for 驱动可迭代对象调用 iter()返回了一个有next()方法的迭代器对象(可以通过 next（）访问），该方法可以逐一访问对象中的所有元素。  生成器则是用来为迭代器产生数据的，写法类似于标准的函数，但当他们要返回数据时要使用...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/Matplotlib/" title="Matplotlib库"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://matplotlib.org/_static/images/logo2.svg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-01</div><div class="info-item-2">Matplotlib库</div></div><div class="info-2"><div class="info-item-1">将本文结合代码使用效果更佳哦❤️❤️   matplotlib is a desktop plotting package designed for creating (mostly twodimensional) publication-quality plots. The project was started by John Hunter in 2002 to enable a MATLAB-like plotting interface in Python. Over time, matplotlib has spawned a number of add-on toolkits for data visualization that use matplotlib for their underlying plotting. One of these is...</div></div></div></a><a class="pagination-related" href="/Pandas/" title="Pandas"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://camo.githubusercontent.com/981d48e57e23a4907cebc4eb481799b5882595ea978261f22a3e131dcd6ebee6/68747470733a2f2f70616e6461732e7079646174612e6f72672f7374617469632f696d672f70616e6461732e737667" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-02</div><div class="info-item-2">Pandas</div></div><div class="info-2"><div class="info-item-1">放一个目录做的的思维导图   一场数模国赛下来发现对于pandas里的一些基础操作还不是很熟练，整个建模过程中用到了许多pandas中对DataFrame的索引，切片访问，分组交叉透视等功能，除此以外稍微高级一点的就是用了几次apply函数来对某一行的值进行一个计算输出，虽然知识描述统计这部分的内容，但是能明显的感觉到对于这些基本功能有些生疏。坦白来讲，pandas的描述统计相关的这些工作其实借助excel也能够实现，但是当考虑到可迁移性这些方面的内容时，使用编程语言的优越性也就自然而然地体现出来，当然，如果对相关的函数不能做到很熟悉的话，其实反而加大了工作量。  简介 Pandas 是 Python 的核心数据分析支持库，提供了快速、灵活、明确的数据结构，旨在简单、直观地处理关系型、标记型数据。Pandas 的目标是成为 Python 数据分析实践与实战的必备高级工具，其长远目标是成为最强大、最灵活、可以支持任何语言的开源数据分析工具。经过多年不懈的努力，Pandas 离这个目标已经越来越近了。  虽然 pandas 采用了大量的 NumPy 编码风格，但二者最大的不同是...</div></div></div></a><a class="pagination-related" href="/Seaborn%E5%BA%93%E7%AE%80%E4%BB%8B/" title="Seaborn库简介"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://seaborn.pydata.org/_images/logo-wide-lightbg.svg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-21</div><div class="info-item-2">Seaborn库简介</div></div><div class="info-2"><div class="info-item-1">将本文结合代码使用效果更佳哦❤️❤️  速查  example gallery:      Seaborn 库简介 特点:  Seaborn, a statistical graphics library created by Michael Waskom. Seaborn simplifies creating many common visualization types. Unlike when using matplotlib directly, it wasn’t necessary to specify attributes of the plot elements in terms of the color values or marker codes. Behind the scenes, seaborn handled the translation from values in the dataframe to arguments that matplotlib understands. This declarative approach lets you...</div></div></div></a><a class="pagination-related" href="/PyCaret/" title="PyCaret"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10057.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-31</div><div class="info-item-2">PyCaret</div></div><div class="info-2"><div class="info-item-1">PyCaret是Python中的低代码机器学习开发平台，能够自动完成机器学习的整个工作流。  这个库提供了借助相对工整的数据（无缺失值、类型明确）对一类的机器学习模型（分类、回归、聚类）进行训练，该库能够自己对数据集进行处理，并且能够自动生成模型，除此以外还能进行模型的评价和在测试集上的训练，这些都可以在官方文档中的QuickStart中查看。  这个库非常好的一点在于可以直接根据输入数据来判断数据类型然后作相应的数据处理操作，除此以外它也支持自定义的数据处理操作，这些操作可以在官方文档中的Preprocessing中查看。 最后，这个库也支持对于某一个特定的模型进行调优，这些调优可以在官方文档中的Hyperparameter Tuning中查看。 </div></div></div></a><a class="pagination-related" href="/datetime%E6%A8%A1%E5%9D%97/" title="datetime模块"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10054.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-02</div><div class="info-item-2">datetime模块</div></div><div class="info-2"><div class="info-item-1"> 字符串和 Datetime 之间的转换 对于 datetime 模块的所有与时间点相关的对象：  这些对象转化成字符串只需要利用 str 函数（格式化） 也可以利用对象的 strftime（）方法，该方法需要传入参数来指定格式化的形式，规范遵循 ISO C89 compatible（详见 time 模块的时间对象格式化方法）。 通过字符串得到这些对象一般要借助对应类的方法 strptime，这个方法需要传入两个参数，一个参数是要解析的字符串，一个参数是规定了字符串的格式。datetime.strptime('2022-02-10','%Y-%m-%d')需要注意的是两个参数的形式必须完全一致否则会解析错误。  考虑到 strptime（）方法不适用于格式不相同的字符串转化为时间对象，这里可以使用dateutil.parser.parse()函数对一些常见的时间字符串进行自动解析（这个库会在安装 pd 时自动安装），另外也可以调节参数对解析方式微调    from dateutil.parser import...</div></div></div></a><a class="pagination-related" href="/re/" title="re"><img class="cover" src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10048.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-05</div><div class="info-item-2">re</div></div><div class="info-2"><div class="info-item-1"> 有了准备知识，我们就可以在 Python 中使用正则表达式了。Python 提供re模块，包含所有正则表达式的功能。  re.compile(pattern, flags=0)： 将字符串形式的正则表达式编译为 Pattern对象。有的时候进行复杂的匹配，可以通过先对模式进行编译来加快匹配速度 re.finditer(string, pos, endpos)： 从string任意位置开始匹配， 返回一个迭代器。 一般匹配findall就可以了， 大数量的匹配还是使用finditer比较好。  由于 Python 的字符串本身也用\转义，所以要特别注意： s = &#x27;ABC\\-001&#x27; 因此我们强烈建议使用 Python 的**r**前缀，就不用考虑转义的问题了： s = r&#x27;ABC\-001&#x27; 首次匹配：match and search（）  re.match(string, pos, endpos)： 从string的开头开始匹配。 re.search(string, pos, endpos)：...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/img/avatar.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">爱编程的小明</div><div class="author-info-description">只要不折腾，万般可将就</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">57</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">18</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kebuAAA"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/kebuAAA" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2945190789@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/img/wechat.webp" target="_blank" title="欢迎交流"><i class="fa-brands fa-weixin"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">如网页加载较慢请尝试魔法上网，博客图文可能无关可以忽略</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9F%E6%9F%A5"><span class="toc-number">1.</span> <span class="toc-text">速查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#creating-ndarray"><span class="toc-number">3.1.</span> <span class="toc-text">Creating ndarray</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.2.</span> <span class="toc-text">数组的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-np-astype"><span class="toc-number">3.2.1.</span> <span class="toc-text">类型转换–np.astype</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%BD%A2%E7%8A%B6"><span class="toc-number">3.3.</span> <span class="toc-text">数组形状</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-indexing-and-slicing"><span class="toc-number">3.4.</span> <span class="toc-text">Basic Indexing and Slicing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#where-%E5%87%BD%E6%95%B0"><span class="toc-number">3.5.</span> <span class="toc-text">Where 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.6.</span> <span class="toc-text">数组拼接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.6.1.</span> <span class="toc-text">行拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E6%8B%BC%E6%8E%A5"><span class="toc-number">3.6.2.</span> <span class="toc-text">列拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4-n-%E5%88%97%E6%95%B0%E7%BB%84%E6%8B%BC%E6%8E%A5%E7%BB%84%E5%90%88%E6%88%90-n-%E7%BB%B4%E5%9D%90%E6%A0%87%E7%82%B9"><span class="toc-number">3.6.3.</span> <span class="toc-text">一维 n 列数组拼接组合成 n 维坐标点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">3.7.</span> <span class="toc-text">读写文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90"><span class="toc-number">3.8.</span> <span class="toc-text">随机数生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#numpy-%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="toc-number">3.9.</span> <span class="toc-text">Numpy 统计分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">3.9.1.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%BB%E9%87%8D%E5%92%8C%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE"><span class="toc-number">3.9.2.</span> <span class="toc-text">去重和重复数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1"><span class="toc-number">3.9.3.</span> <span class="toc-text">描述性统计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97"><span class="toc-number">3.10.</span> <span class="toc-text">集合运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linear-algebra"><span class="toc-number">3.11.</span> <span class="toc-text">Linear Algebra</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">4.1.</span> <span class="toc-text">生成模拟数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%9F%E5%8A%A9%E8%A1%8C%E5%88%97%E6%8B%BC%E6%8E%A5%E7%94%9F%E6%88%90%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">4.1.1.</span> <span class="toc-text">借助行列拼接生成分类数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%9F%E5%8A%A9np-c-%E7%94%9F%E6%88%90%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A0%B7%E6%9C%AC%E9%9B%86"><span class="toc-number">4.1.2.</span> <span class="toc-text">借助np.c[]生成线性回归样本集。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#expressing-conditional-logic-as-array-operations"><span class="toc-number">4.2.</span> <span class="toc-text">Expressing Conditional Logic as Array Operations</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10054.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="Lasso回归"/></a><div class="content"><a class="title" href="/Lasso%E5%9B%9E%E5%BD%92/" title="Lasso回归">Lasso回归</a><time datetime="2023-11-14T16:00:00.000Z" title="更新于 2023-11-15 00:00:00">2023-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/岭回归_20231109082818.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="岭回归"/></a><div class="content"><a class="title" href="/%E5%B2%AD%E5%9B%9E%E5%BD%92/" title="岭回归">岭回归</a><time datetime="2023-11-07T16:00:00.000Z" title="更新于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/优雅论文排版_20230921093206.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="优雅论文排版"/></a><div class="content"><a class="title" href="/%E4%BC%98%E9%9B%85%E8%AE%BA%E6%96%87%E6%8E%92%E7%89%88/" title="优雅论文排版">优雅论文排版</a><time datetime="2023-09-20T16:00:00.000Z" title="更新于 2023-09-21 00:00:00">2023-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/多元统计分析_多元正态曲线.png" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="多元统计分析"/></a><div class="content"><a class="title" href="/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/" title="多元统计分析">多元统计分析</a><time datetime="2023-06-16T02:22:54.000Z" title="更新于 2023-06-16 10:22:54">2023-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Hypothesis%20testing/" title="假设检验"><img src= "https://gcore.jsdelivr.net/gh/kebuAAA/Picloud@main/img/loading.gif" data-lazy-src="/top_img/10007.webp" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/374918/pexels-photo-374918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600'" alt="假设检验"/></a><div class="content"><a class="title" href="/Hypothesis%20testing/" title="假设检验">假设检验</a><time datetime="2023-05-09T02:34:00.000Z" title="更新于 2023-05-09 10:34:00">2023-05-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="footer_custom_text"><div id="runtime"></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/instant.page/5.1.0/instantpage.min.js" type="module"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vanilla-lazyload/17.3.1/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
   const getCount = () => {
     const countELement = document.getElementById('twikoo-count')
     if(!countELement) return
@@ -341,22 +305,38 @@ axis= 0 表示按行进行元素重复；axis= 1 表示按列进行元素重复�
     })
   }
 
-  const init = () => {
-    twikoo.init(Object.assign({
-      el: '#twikoo-wrap',
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
       envId: 'https://twikoo.kobal.top/',
       region: '',
       onCommentLoaded: () => {
         btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
-      }
-    }, null))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
 
     
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
   }
 
-  const loadTwikoo = () => {
-    if (typeof twikoo === 'object') setTimeout(init,0)
-    else getScript('https://cdn.staticfile.org/twikoo/1.6.22/twikoo.all.min.js').then(init)
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.staticfile.org/twikoo/1.6.22/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
   }
 
   if ('Twikoo' === 'Twikoo' || !true) {
@@ -365,73 +345,53 @@ axis= 0 表示按行进行元素重复；axis= 1 表示按列进行元素重复�
   } else {
     window.loadOtherComment = loadTwikoo
   }
-})()</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><script src="/Scripts/js/fireworks.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+})()</script></div><script src="/Scripts/js/beijing.js"></script><script src="/Scripts/js/foot_style.js"></script><script src="/Scripts/js/fireworks.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.bootcdn.net/ajax/libs/butterfly-extsrc/1.1.3/fireworks.min.js"></script><script src="https://lib.baomitu.com/pjax/0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener
-  btf.removeGlobalFnEvent('pjax')
-  btf.removeGlobalFnEvent('themeChange')
-
-  document.getElementById('rightside').classList.remove('rightside-show')
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
-
-  typeof typed === 'object' && typed.destroy()
-
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
-
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
   })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
-
-document.addEventListener('pjax:error', e => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
   }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
 for(var i = 0;i<arr.length;i++){
     arr[i].classList.add('wow');
     arr[i].classList.add('animate__zoomIn');
